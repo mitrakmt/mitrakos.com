@@ -5,12 +5,12 @@ import '@/styles/tailwind.css'
 
 export const metadata = {
   title: {
-    template: '%s - Spencer Sharp',
+    template: '%s - Michael Mitrakos',
     default:
-      'Spencer Sharp - Software designer, founder, and amateur astronaut',
+      'Michael Mitrakos - Software designer, founder, and world traveler',
   },
   description:
-    'I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.',
+    'I’m Michael, a software designer and entrepreneur from the US and based in Egypt. I’m the CEO of Higglo Digital, where we build businesses through full-suite SEO and high-end marketing on own terms.',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,

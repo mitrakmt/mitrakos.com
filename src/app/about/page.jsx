@@ -58,58 +58,44 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I’m Spencer Sharp. I live in New York City, where I design the
+            I’m Michael Mitrakos. I live in Egypt, where I design the
             future.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I’ve loved making things for as long as I can remember, and wrote
-              my first program when I was 6 years old, just two weeks after my
-              mom brought home the brand new Macintosh LC 550 that I taught
-              myself to type on.
+              Hi, I’m Michael Mitrakos, the CEO of Higglo Digital, founder of WanderlustApp, and Web Design Awards. I've always been passionate about creating and exploring, and my journey has been shaped by a love for both technology and the boundless possibilities of imagination.
             </p>
             <p>
-              The only thing I loved more than computers as a kid was space.
-              When I was 8, I climbed the 40-foot oak tree at the back of our
-              yard while wearing my older sister’s motorcycle helmet, counted
-              down from three, and jumped — hoping the tree was tall enough that
-              with just a bit of momentum I’d be able to get to orbit.
+              Pursuing engineering in college further fueled my drive to create and explore. A lifelong dream of traveling the globe has taken me to over 150 countries, enriching my perspective and inspiring the work I do every day.
             </p>
             <p>
-              I spent the next few summers indoors working on a rocket design,
-              while I recovered from the multiple surgeries it took to fix my
-              badly broken legs. It took nine iterations, but when I was 15 I
-              sent my dad’s Blackberry into orbit and was able to transmit a
-              photo back down to our family computer from space.
+              Today, I lead Higglo Digital, where we craft cutting-edge SEO strategies for industries as diverse as esports and beyond. I'm also deeply committed to celebrating and elevating great design through Web Design Awards and encouraging exploration and discovery through WanderlustApp.
             </p>
             <p>
-              Today, I’m the founder of Planetaria, where we’re working on
-              civilian space suits and manned shuttle kits you can assemble at
-              home so that the next generation of kids really <em>can</em> make
-              it to orbit — from the comfort of their own backyards.
+              I believe the future is built by those who dare to create, and I’m grateful to be part of that journey.
             </p>
           </div>
         </div>
         <div className="lg:pl-20">
           <ul role="list">
-            <SocialLink href="#" icon={XIcon}>
+            <SocialLink href="https://x.com/Mike_Mitrakos" icon={XIcon} target="_blank">
               Follow on X
             </SocialLink>
-            <SocialLink href="#" icon={InstagramIcon} className="mt-4">
+            <SocialLink href="https://www.instagram.com/mike_mitrakos/" icon={InstagramIcon} className="mt-4" target="_blank">
               Follow on Instagram
             </SocialLink>
-            <SocialLink href="#" icon={GitHubIcon} className="mt-4">
+            <SocialLink href="https://github.com/mitrakmt" icon={GitHubIcon} className="mt-4" target="_blank">
               Follow on GitHub
             </SocialLink>
-            <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
+            <SocialLink href="https://www.linkedin.com/in/mitrakos" icon={LinkedInIcon} className="mt-4" target="_blank">
               Follow on LinkedIn
             </SocialLink>
             <SocialLink
-              href="mailto:spencer@planetaria.tech"
+              href="mailto:mike@higglo.io"
               icon={MailIcon}
               className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
             >
-              spencer@planetaria.tech
+              mike@higglo.io
             </SocialLink>
           </ul>
         </div>

@@ -11,10 +11,12 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import logoCivility from '@/images/logos/civility_international.jpg'
+import logoDoubletap from '@/images/logos/doubletap.png'
+import logoHigglo from '@/images/logos/higglo_digital.jpg'
+import logoVerys from '@/images/logos/verys.jpg'
+import logoWanderlust from '@/images/logos/wanderlustapp.jpg'
+import logoWebdesign from '@/images/logos/webdesignawards.avif'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -146,7 +148,7 @@ function Role({ role }) {
   return (
     <li className="flex gap-4">
       <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+        <Image src={role.logo} alt="" className="h-7 w-7 rounded-full" unoptimized />
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
@@ -174,35 +176,49 @@ function Role({ role }) {
 function Resume() {
   let resume = [
     {
-      company: 'Planetaria',
+      company: 'Higglo Digital',
       title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
+      logo: logoHigglo,
+      start: '2022',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
+      company: 'Wanderlust',
+      title: 'Founder',
+      logo: logoWanderlust,
+      start: '2020',
+      end: new Date().getFullYear().toString(),
     },
     {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
+      company: 'Web Design Awards',
+      title: 'Founder',
+      logo: logoWebdesign,
+      start: '2021',
+      end: new Date().getFullYear().toString(),
     },
     {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'DoubleTap Consulting',
+      title: 'CTO',
+      logo: logoDoubletap,
+      start: '2017',
+      end: '2022',
+    },
+    {
+      company: 'Civility International',
+      title: 'CTO',
+      logo: logoCivility,
+      start: '2017',
+      end: '2018',
+    },
+    {
+      company: 'Verys',
+      title: 'Senior Software Engineer',
+      logo: logoVerys,
+      start: '2015',
+      end: '2017',
     },
   ]
 
@@ -260,30 +276,32 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Software designer, founder, and amateur astronaut.
+            Software designer, founder, and world traveler.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
+            I’m Michael, a software designer and entrepreneur from the US and based in Egypt. I’m the CEO of Higglo Digital, where we build
+            businesses through full-suite SEO and high-end marketing on
             own terms.
           </p>
           <div className="mt-6 flex gap-6">
-            <SocialLink href="#" aria-label="Follow on X" icon={XIcon} />
+            <SocialLink href="https://x.com/mike_mitrakos" aria-label="Follow on X" icon={XIcon} target="_blank" />
             <SocialLink
-              href="#"
+              href="https://www.instagram.com/mike_mitrakos/"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
+              target="_blank"
             />
             <SocialLink
-              href="#"
+              href="https://github.com/mitrakmt"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
+              target="_blank"
             />
             <SocialLink
-              href="#"
+              href="https://www.linkedin.com/in/mitrakos/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
+              target="_blank"
             />
           </div>
         </div>
