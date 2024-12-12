@@ -2,47 +2,48 @@ import Image from 'next/image'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoHigglo from '@/images/logos/higglo_digital.jpg'
+import logoInitjs from '@/images/logos/initjs.png'
+import logoWanderlust from '@/images/logos/wanderlustapp.jpg'
+import logoWebdesign from '@/images/logos/webdesignawards.avif'
+import logo9pm from '@/images/logos/9pm.png'
+
 
 const projects = [
   {
-    name: 'Planetaria',
+    name: 'Higglo Digital',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: logoPlanetaria,
+      'Memorable brand experiences, SEO & award winning websites',
+    link: { href: 'http://www.higglo.io', label: 'higglo.io' },
+    logo: logoHigglo,
   },
   {
-    name: 'Animaginary',
+    name: 'Wanderlust App',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
+      'Beautiful places on your new tab page',
+    link: { href: 'https://www.wanderlustapp.io', label: 'wanderlustapp.io' },
+    logo: logoWanderlust,
   },
   {
-    name: 'HelioStream',
+    name: 'Web Design Awards',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
+      'Recognizing the best of the web.',
+    link: { href: 'https://www.webdesignawards.io', label: 'webdesignawards.io' },
+    logo: logoWebdesign,
   },
   {
-    name: 'cosmOS',
+    name: '9PM Store',
     description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
+      'High-end mixology tools that bring professional quality to your home bar.',
+    link: { href: 'https://www.9pmstore.com', label: '9pmstore.com' },
+    logo: logo9pm,
   },
   {
-    name: 'OpenShuttle',
+    name: 'InitJS',
     description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
+      'Teaching JavaScript to over 400,000 readers..',
+    link: { href: 'https://www.initjs.org', label: 'initjs.org' },
+    logo: logoInitjs,
   },
 ]
 
@@ -66,7 +67,7 @@ export default function Projects() {
   return (
     <SimpleLayout
       title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. If you see something that piques your interest, check out the project and get in touch if you have ideas for how it can be improved."
     >
       <ul
         role="list"

@@ -37,73 +37,46 @@ export default function Uses() {
       <div className="space-y-20">
         <ToolsSection title="Workstation">
           <Tool title="M2 MacBook Air, 64GB RAM (2022)">
-            I was using an Intel-based 16” MacBook Pro prior to this and the
-            difference is night and day. I’ve never heard the fans turn on a
-            single time, even under the incredibly heavy loads I put it through
-            with our various launch simulations.
-          </Tool>
-          <Tool title="Apple Pro Display XDR (Standard Glass)">
-            The only display on the market if you want something HiDPI and
-            bigger than 27”. When you’re working at planetary scale, every pixel
-            you can get counts.
-          </Tool>
-          <Tool title="IBM Model M SSK Industrial Keyboard">
-            They don’t make keyboards the way they used to. I buy these any time
-            I see them go up for sale and keep them in storage in case I need
-            parts or need to retire my main.
+            This machine has been a game-changer for me, offering silent performance even under demanding tasks. The efficiency and power of the M2 chip make it ideal for all my productivity needs.
           </Tool>
           <Tool title="Apple Magic Trackpad">
             Something about all the gestures makes me feel like a wizard with
             special powers. I really like feeling like a wizard with special
             powers.
           </Tool>
-          <Tool title="Herman Miller Aeron Chair">
-            If I’m going to slouch in the worst ergonomic position imaginable
-            all day, I might as well do it in an expensive chair.
-          </Tool>
         </ToolsSection>
         <ToolsSection title="Development tools">
-          <Tool title="Sublime Text 4">
-            I don’t care if it’s missing all of the fancy IDE features everyone
-            else relies on, Sublime Text is still the best text editor ever
-            made.
+          <Tool title="Visual Studio Code">
+            My coding environment of choice, Visual Studio Code provides all the features of an IDE with the flexibility of a text editor. Its extensive plugin ecosystem allows me to customize my development environment perfectly to my needs.
           </Tool>
           <Tool title="iTerm2">
             I’m honestly not even sure what features I get with this that aren’t
             just part of the macOS Terminal but it’s what I use.
           </Tool>
-          <Tool title="TablePlus">
-            Great software for working with databases. Has saved me from
-            building about a thousand admin interfaces for my various projects
-            over the years.
-          </Tool>
         </ToolsSection>
-        <ToolsSection title="Design">
-          <Tool title="Figma">
-            We started using Figma as just a design tool but now it’s become our
-            virtual whiteboard for the entire company. Never would have expected
-            the collaboration features to be the real hook.
+        <ToolsSection title="Marketing">
+          <Tool title="Buffer">
+            Managing social media has never been easier with Buffer. It allows me to schedule posts across platforms, ensuring my content strategy is consistent without constant manual input.
+          </Tool>
+          <Tool title="Ubersuggest">
+            For quick keyword research and SEO insights, UberSuggest is my go-to tool. It helps me understand what my audience is searching for, optimizing my content for better visibility.
+          </Tool>
+          <Tool title="Google Search Console">
+            This tool is essential for monitoring and maintaining my site's presence in Google Search results. It gives me detailed reports on search traffic, crawl errors, and site security issues.
           </Tool>
         </ToolsSection>
         <ToolsSection title="Productivity">
-          <Tool title="Alfred">
-            It’s not the newest kid on the block but it’s still the fastest. The
-            Sublime Text of the application launcher world.
+          <Tool title="Notion">
+            I've found Notion to be incredibly versatile for organizing my thoughts, projects, and daily tasks. It's like having a digital workspace where everything from notes to project management can be seamlessly integrated.
           </Tool>
-          <Tool title="Reflect">
-            Using a daily notes system instead of trying to keep things
-            organized by topics has been super powerful for me. And with
-            Reflect, it’s still easy for me to keep all of that stuff
-            discoverable by topic even though all of my writing happens in the
-            daily note.
+          <Tool title="Google Drive">
+            All my document storage, sharing, and collaboration happen here. Google Drive's integration with other Google services makes it a cornerstone for my digital workflow.
           </Tool>
-          <Tool title="SavvyCal">
-            Great tool for scheduling meetings while protecting my calendar and
-            making sure I still have lots of time for deep work during the week.
+          <Tool title="Pitch">
+            For presentations, Pitch has been a revelation. It's intuitive, collaborative, and the templates are professional enough to make my presentations stand out without spending hours on design.
           </Tool>
-          <Tool title="Focus">
-            Simple tool for blocking distracting websites when I need to just do
-            the work and get some momentum going.
+          <Tool title="Canva">
+            When it comes to design, Canva simplifies everything. Whether it's social media graphics, flyers, or even simple infographics, Canva's user-friendly interface lets me create professional-looking content quickly.
           </Tool>
         </ToolsSection>
       </div>
