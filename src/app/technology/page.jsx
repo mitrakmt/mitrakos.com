@@ -24,11 +24,11 @@ function Tool({ title, href, children }) {
 }
 
 export const metadata = {
-  title: 'Uses',
+  title: 'Technology',
   description: 'Software I use, gadgets I love, and other things I recommend.',
 }
 
-export default function Uses() {
+export default function Technology() {
   return (
     <SimpleLayout
       title="Software I use, gadgets I love, and other things I recommend."
