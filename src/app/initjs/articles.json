@@ -1,0 +1,312 @@
+[
+    {
+        "title": "React JS Best Practices",
+        "url": "https://initjs.org/react-js-best-practices-fbd180e665b2",
+        "date": "Dec 26, 2022"
+    },
+    {
+        "title": "Master Recursion in JavaScript: Tips, Tricks, and Examples",
+        "url": "https://initjs.org/master-recursion-in-javascript-tips-tricks-and-examples-87f7c6e3769b",
+        "date": "Feb 12, 2024"
+    },
+    {
+        "title": "JavaScript Promises Explained for Beginners: Master Async Code",
+        "url": "https://initjs.org/javascript-promises-explained-for-beginners-master-async-code-1a8bf4e27d15",
+        "date": "Dec 6, 2023"
+    },
+    {
+        "title": "Beginner’s Guide to JavaScript Cross-Browser Compatibility",
+        "url": "https://initjs.org/beginners-guide-to-javascript-cross-browser-compatibility-01a87d9eaa83",
+        "date": "Dec 4, 2023"
+    },
+    {
+        "title": "Beginner’s Guide to JSON in JavaScript: Parsing & Stringifying",
+        "url": "https://initjs.org/beginners-guide-to-json-in-javascript-parsing-stringifying-38b354933910",
+        "date": "Dec 2, 2023"
+    },
+    {
+        "title": "JavaScript Interview Tips for Developers: Navigating the Path to Success",
+        "url": "https://medium.com/@mitrakos/javascript-interview-tips-for-developers-navigating-the-path-to-success-df73ed683948",
+        "date": "Nov 20, 2023"
+    },
+    {
+        "title": "Creating Stunning Animations with JavaScript",
+        "url": "https://initjs.org/creating-stunning-animations-with-javascript-aac404dd14ef",
+        "date": "Oct 31, 2023"
+    },
+    {
+        "title": "How to grow your chrome extension from 0 to 1000 users",
+        "url": "https://initjs.org/how-to-grow-your-chrome-extension-from-0-to-1000-users-d468d2765e1f",
+        "date": "Sep 19, 2023"
+    },
+    {
+        "title": "JavaScript Interview Tips for Developers",
+        "url": "https://initjs.org/javascript-interview-tips-for-developers-a2c4a659d841",
+        "date": "Sep 17, 2023"
+    },
+    {
+        "title": "How to Use JavaScript for Web Scraping",
+        "url": "https://initjs.org/how-to-use-javascript-for-web-scraping-9335aed31311",
+        "date": "Sep 11, 2023"
+    },
+    {
+        "title": "5 Tips to Master JavaScript Functions",
+        "url": "https://initjs.org/master-javascript-functions-top-5-tips-tricks-for-efficient-coding-7b27aaedb617",
+        "date": "Aug 6, 2023"
+    },
+    {
+        "title": "The Future of JavaScript: Exploring TC39 Proposals",
+        "url": "https://initjs.org/the-future-of-javascript-exploring-tc39-proposals-b8ba6fed169c",
+        "date": "Aug 2, 2023"
+    },
+    {
+        "title": "How to Scale a Node API for Millions of Requests per Second — The Ultimate Guide",
+        "url": "https://initjs.org/how-to-scale-a-node-api-for-millions-of-requests-per-second-the-ultimate-guide-e6f6694ad92b",
+        "date": "Jul 20, 2023"
+    },
+    {
+        "title": "JavaScript Implicit Coercion Explained: Demystifying a Fundamental Concept",
+        "url": "https://initjs.org/unveiling-javascripts-implicit-coercion-decoding-a-core-concept-eff102f2f0f2",
+        "date": "Jul 20, 2023"
+    },
+    {
+        "title": "Check if a Binary Tree is Balanced in JavaScript",
+        "url": "https://initjs.org/check-if-a-binary-tree-is-balanced-in-javascript-e029bdf2cb04",
+        "date": "Jun 29, 2023"
+    },
+    {
+        "title": "Linked List Nth From End in JavaScript",
+        "url": "https://initjs.org/linked-list-nth-from-end-in-javascript-fad5f92f45a3",
+        "date": "Jun 29, 2023"
+    },
+    {
+        "title": "Exploring Quick Sort in JavaScript: An Efficient Sorting Algorithm for Performance-Critical Applications",
+        "url": "https://initjs.org/exploring-quick-sort-an-efficient-sorting-algorithm-for-performance-critical-applications-688fc18e44c4",
+        "date": "Jun 29, 2023"
+    },
+    {
+        "title": "SEO for Your Firefox Extensions",
+        "url": "https://initjs.org/seo-for-your-firefox-extensions-172fbe7ee99f",
+        "date": "Jun 27, 2023"
+    },
+    {
+        "title": "SEO for Your Chrome Extension",
+        "url": "https://initjs.org/seo-for-your-chrome-extensions-1b7ebf7a1dad",
+        "date": "Jun 27, 2023"
+    },
+    {
+        "title": "Mastering Sort by JS: A Comprehensive Guide",
+        "url": "https://initjs.org/mastering-sort-by-js-a-comprehensive-guide-9d34b12f581d",
+        "date": "Jun 25, 2023"
+    },
+    {
+        "title": "The 10 Best Blogs to Follow for React JS Development",
+        "url": "https://initjs.org/the-10-best-blogs-to-follow-for-react-js-development-a97bf83a47d0",
+        "date": "Jun 19, 2023"
+    },
+    {
+        "title": "Developing and Launching a Featured Chrome Extension",
+        "url": "https://initjs.org/developing-and-launching-a-featured-chrome-extension-7e8ead87e0f",
+        "date": "Jun 8, 2023"
+    },
+    {
+        "title": "Benefits of using NextJS Server Side Rendering",
+        "url": "https://medium.com/@mitrakos/benefits-of-using-nextjs-server-side-rendering-9d9583f1866e",
+        "date": "Apr 15, 2023"
+    },
+    {
+        "title": "Building a custom hook in React",
+        "url": "https://initjs.org/building-a-custom-hook-in-react-641b49b4fdd1",
+        "date": "Apr 8, 2023"
+    },
+    {
+        "title": "10 Tips for Improving Your React JS Skills",
+        "url": "https://initjs.org/10-tips-for-improving-your-react-js-skills-647d84b7545f",
+        "date": "Apr 4, 2023"
+    },
+    {
+        "title": "Working with higher-order components in React",
+        "url": "https://initjs.org/working-with-higher-order-components-in-react-5d328f2341f2",
+        "date": "Jan 20, 2023"
+    },
+    {
+        "title": "Setting up your React Development Environment for Beginners",
+        "url": "https://initjs.org/setting-up-your-react-development-environment-beginners-df6a2d361be3",
+        "date": "Jan 17, 2023"
+    },
+    {
+        "title": "Lazy loading in React",
+        "url": "https://initjs.org/lazy-loading-in-react-747e644463e0",
+        "date": "Jan 4, 2023"
+    },
+    {
+        "title": "Form Handling in React",
+        "url": "https://initjs.org/form-handling-in-react-1679f2f788d8",
+        "date": "Jan 2, 2023"
+    },
+    {
+        "title": "State Management in React: An Overview",
+        "url": "https://initjs.org/state-management-in-react-an-overview-28fc4f216223",
+        "date": "Dec 31, 2022"
+    },
+    {
+        "title": "Handling Auth Tokens in a React App",
+        "url": "https://initjs.org/handling-auth-tokens-in-a-react-app-4b7a0d036bed",
+        "date": "Dec 30, 2022"
+    },
+    {
+        "title": "React Error Boundaries Explained",
+        "url": "https://initjs.org/react-error-boundaries-explained-56f495a3c393",
+        "date": "Dec 29, 2022"
+    },
+    {
+        "title": "React Redux vs React Context",
+        "url": "https://initjs.org/react-redux-vs-react-context-1d1ed6581e73",
+        "date": "Dec 27, 2022"
+    },
+    {
+        "title": "Keys to Good Software Design",
+        "url": "https://initjs.org/keys-to-good-software-design-79f5d7c18036",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Prototypal Inheritance in JavaScript",
+        "url": "https://initjs.org/prototypal-inheritance-in-javascript-137fab274648",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Implement a Tree in JavaScript",
+        "url": "https://initjs.org/implement-a-tree-in-javascript-291f0400b364",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Implement a Trie in JavaScript",
+        "url": "https://initjs.org/implement-a-trie-in-javascript-c830595c7505",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Implement a Hash Table in JavaScript",
+        "url": "https://initjs.org/implement-a-hash-table-in-javascript-1c1722d18664",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Implement a Set in JavaScript",
+        "url": "https://initjs.org/implement-a-set-in-javascript-d2bedd361ed9",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Implement a Graph in JavaScript",
+        "url": "https://initjs.org/implement-a-graph-in-javascript-dae55488ecc9",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Implement Quick Sort in JavaScript",
+        "url": "https://initjs.org/implement-quick-sort-in-javascript-8df06498bd6a",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Implementing Heap Sort in JavaScript",
+        "url": "https://initjs.org/implementing-heap-sort-in-javascript-85ea3d0e4ca6",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Implement Selection Sort in JavaScript",
+        "url": "https://initjs.org/selection-sort-in-javascript-937feccae23d",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "The Event Loop in JavaScript Explained",
+        "url": "https://initjs.org/the-event-loop-in-javascript-explained-12959b35f17e",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "JavaScript Closures Explained",
+        "url": "https://initjs.org/javascript-closures-explained-f1fbeaced281",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Understanding “this” in JavaScript",
+        "url": "https://initjs.org/understanding-this-in-javascript-f2f41f6517a9",
+        "date": "Dec 24, 2022"
+    },
+    {
+        "title": "Choosing between NoSQL vs SQL databases for your project",
+        "url": "https://initjs.org/choosing-between-nosql-vs-sql-databases-for-your-project-ef720a54ac94",
+        "date": "Dec 18, 2022"
+    },
+    {
+        "title": "Learning to use JavaScript’s Async Await",
+        "url": "https://initjs.org/learning-to-use-async-await-d94aea29ec21",
+        "date": "Feb 23, 2020"
+    },
+    {
+        "title": "React Hooks — Made Simple",
+        "url": "https://initjs.org/react-hooks-what-are-they-and-the-ones-you-should-know-5b451e5a4f0e",
+        "date": "Feb 23, 2020"
+    },
+    {
+        "title": "Don’t Attend That Coding Bootcamp Until You Read This",
+        "url": "https://medium.com/@mitrakos/dont-attend-that-coding-bootcamp-until-you-read-this-ac29023b4bf4",
+        "date": "Nov 19, 2017"
+    },
+    {
+        "title": "How to Make Remote Working Work",
+        "url": "https://initjs.org/how-to-make-remote-working-work-aa80e3d75c0c",
+        "date": "Nov 18, 2017"
+    },
+    {
+        "title": "Implement Bucket Sort in JavaScript",
+        "url": "https://initjs.org/bucket-sort-in-javascript-dc040b8f0058",
+        "date": "Oct 2, 2016"
+    },
+    {
+        "title": "Implement Merge Sort in JavaScript",
+        "url": "https://initjs.org/merge-sort-in-javascript-4614386c1374",
+        "date": "Sep 30, 2016"
+    },
+    {
+        "title": "What you need to know about sorting algorithms — JavaScript",
+        "url": "https://initjs.org/what-you-need-to-know-about-sorting-algorithms-javascript-2deb17585b03",
+        "date": "Sep 29, 2016"
+    },
+    {
+        "title": "Implement Insertion Sort in JavaScript",
+        "url": "https://initjs.org/insertion-sort-in-javascript-6c48563b4643",
+        "date": "Sep 29, 2016"
+    },
+    {
+        "title": "Implement Bubble Sort in JavaScript",
+        "url": "https://initjs.org/bubble-sort-in-javascript-19fa6fdfbb46",
+        "date": "Sep 28, 2016"
+    },
+    {
+        "title": "Implement Translate Roman Numerals in JavaScript",
+        "url": "https://initjs.org/translate-roman-numerals-in-javascript-482ef6e55ee7",
+        "date": "Sep 26, 2016"
+    },
+    {
+        "title": "Implement a Binary Search Tree in JavaScript",
+        "url": "https://initjs.org/implement-a-binary-search-tree-in-javascript-952a44ee7c26",
+        "date": "Sep 22, 2016"
+    },
+    {
+        "title": "Implement Even Occurrence in JavaScript",
+        "url": "https://initjs.org/even-occurrence-in-javascript-17b7fb2db08a",
+        "date": "Sep 21, 2016"
+    },
+    {
+        "title": "Implement a Queue in JavaScript",
+        "url": "https://initjs.org/implement-a-queue-in-javascript-de306a8821c",
+        "date": "Sep 21, 2016"
+    },
+    {
+        "title": "Implement All Permutations of a Set in JavaScript",
+        "url": "https://initjs.org/all-permutations-of-a-set-f1be174c79f8",
+        "date": "Sep 20, 2016"
+    },
+    {
+        "title": "Implement a Stack in JavaScript",
+        "url": "https://initjs.org/data-structure-stack-in-javascript-714f45dbf889",
+        "date": "Sep 20, 2016"
+    }
+]

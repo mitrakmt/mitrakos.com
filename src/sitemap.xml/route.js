@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const siteUrl = "https://www.mitrakos.com"; // Replace with your website's URL
-  const staticPages = ["/", "/articles", "/projects", "/technology", "/about"];
+  const staticPages = ["/", "/articles", "/projects", "/technology", "/about", "/initjs", "/ebook"];
   const dynamicPages = await getDynamicPages();
 
   const urls = [...staticPages, ...dynamicPages];
