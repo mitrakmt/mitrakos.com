@@ -7,6 +7,7 @@ import logoInitjs from '@/images/logos/initjs.png'
 import logoWanderlust from '@/images/logos/wanderlustapp.jpg'
 import logoWebdesign from '@/images/logos/webdesignawards.avif'
 import logo9pm from '@/images/logos/9pm.png'
+import logoOrthodoxChristianity101 from '@/images/logos/oc101.avif'
 
 
 const projects = [
@@ -37,6 +38,13 @@ const projects = [
       'High-end mixology tools that bring professional quality to your home bar.',
     link: { href: 'https://www.9pmstore.com', label: '9pmstore.com' },
     logo: logo9pm,
+  },
+  {
+    name: 'Orthodox Christianity 101',
+    description:
+      'Teaching the basics of Orthodox Christianity for beginners',
+    link: { href: 'https://www.orthodoxchristianity101.com', label: 'orthodoxchristianity101.com' },
+    logo: logoOrthodoxChristianity101,
   },
   {
     name: 'InitJS',
