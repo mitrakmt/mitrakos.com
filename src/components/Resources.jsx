@@ -9,9 +9,9 @@ import videoPlayerImage from '@/images/resources/video-player.svg'
 
 const resources = [
   {
-    title: 'Figma icon templates',
+    title: 'JavaScript project templates',
     description:
-      'Pefectly structured templates for quickly designing new icons at dozens of common sizes.',
+      'Ready-to-use templates for building your own JavaScript projects, with examples to help you start coding right away.',
     image: function FigmaImage() {
       return (
         <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(#2C313D_35%,#000)]">
@@ -21,9 +21,9 @@ const resources = [
     },
   },
   {
-    title: 'Weekly icon teardowns',
+    title: 'Weekly coding challenges',
     description:
-      'Weekly videos where we dissect and recreate beautiful icons we find on the web.',
+      'New coding challenges every week to test your skills, with solutions and detailed explanations to help you learn and grow.',
     image: function VideoPlayerImage() {
       return (
         <div className="absolute inset-0 flex items-center justify-center">
@@ -44,9 +44,9 @@ const resources = [
     },
   },
   {
-    title: 'Community of icon designers',
+    title: 'Community of coders',
     description:
-      "A private Discord server where you can get help and give feedback on each others' work.",
+      "Join a private forum where you can connect with other learners, ask questions, share projects, and get valuable feedback.",
     image: function DiscordImage() {
       return (
         <div className="absolute inset-0 flex items-center justify-center bg-[#6366F1]">
@@ -69,13 +69,10 @@ export function Resources() {
           Resources
         </SectionHeading>
         <p className="mt-8 font-display text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-          Tools and resources you can use to get started even faster and
-          progress even further.
+          Tools and resources to help you learn JavaScript faster and build your skills more effectively.
         </p>
         <p className="mt-4 text-lg tracking-tight text-slate-700 dark:text-slate-300">
-          Design assets, icon teardowns, and a community of fellow icon
-          designers where you can ask questions, get feedback, and accelerate
-          your learning.
+          Practical coding exercises, project templates, and a supportive community where you can ask questions, get feedback, and accelerate your coding journey.
         </p>
       </Container>
       <Container size="lg" className="mt-16">

@@ -9,30 +9,30 @@ import strokesImage from '@/images/screencasts/strokes.svg'
 
 const videos = [
   {
-    title: 'Getting started with Figma',
+    title: 'Getting started with JavaScript',
     description:
-      'Get familiar with the Figma UI, the different tools it offers, and the most important features.',
+      'Familiarize yourself with the core JavaScript concepts, the basic syntax, and how to set up your development environment for coding.',
     image: setupImage,
     runtime: { minutes: 16, seconds: 54 },
   },
   {
-    title: 'Setting up your artboard',
+    title: 'Writing your first JavaScript code',
     description:
-      'Learn how to create a new artboard and configure your grid and rulers for designing icons.',
+      'Learn how to write your first program by printing text to the console and understanding how JavaScript interacts with your browser.',
     image: gridsImage,
     runtime: { minutes: 9, seconds: 12 },
   },
   {
-    title: 'Designing your first icon',
+    title: 'Working with variables and data types',
     description:
-      'Using basic shapes and boolean operations, learn how to design your own notification icon from scratch.',
+      'Dive into JavaScript variables, data types, and how to use them effectively in your programs.',
     image: strokesImage,
     runtime: { minutes: 23, seconds: 25 },
   },
   {
-    title: 'Advanced design techniques',
+    title: 'Building simple projects',
     description:
-      'Learn the techniques you need to know to adapt your original icon to a modern duotone style.',
+      'Apply what you have learned by creating small, functional projects, like a calculator or a to-do list, using JavaScript fundamentals.',
     image: duotoneImage,
     runtime: { minutes: 28, seconds: 44 },
   },
@@ -63,16 +63,13 @@ export function Screencasts() {
     >
       <Container>
         <SectionHeading number="2" id="screencasts-title">
-          Screencasts
+          Hands on Coding Challenges
         </SectionHeading>
         <p className="mt-8 font-display text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-          Over an hour of high quality, step-by-step video content to sharpen
-          your icon design workflow.
+         Hours of practical coding exercises to build your JavaScript skills.
         </p>
         <p className="mt-4 text-lg tracking-tight text-slate-700 dark:text-slate-300">
-          Learn how to design your very first icons in a series of screencasts
-          that will teach you everything you need to know to go from beginner to
-          pro in just over an hour.
+          Learn how to write your very first lines of JavaScript and build small projects through a series of hands-on challenges that will take you from beginner to confident coder in just over an hour.
         </p>
       </Container>
       <Container size="lg" className="mt-16">

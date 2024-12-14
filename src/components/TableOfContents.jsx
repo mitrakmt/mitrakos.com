@@ -7,28 +7,82 @@ import {
 import { SectionHeading } from '@/components/SectionHeading'
 
 const tableOfContents = {
-  'Getting started': {
+  'Introduction': {
     'Getting started': 1,
-    'Intro to Figma': 15,
-    'Setting up your first artboard': 20,
+    'How to approach learning coding': 15,
+    'The outcome': 20,
   },
-  Fundamentals: {
-    'Strokes and fills': 21,
-    'End points': 22,
-    'Bezier curves': 26,
-    'Designing on a grid': 31,
-    'Vector shapes': 45,
+  'Concepts': {
+    'Variables and Basic Data Types': 21,
+    'Basic Operations': 21,
+    'Errors and Debugging': 21,
+    '...and more!': 82,
   },
-  'Boolean operations': {
-    'Combining shapes': 50,
-    'Subtracting shapes': 57,
-    'Intersecting shapes': 66,
-    Flattening: 78,
+  'Javascript Fundamentals': {
+    'Operators': 50,
+    'Control Structures': 82,
+    'Interacting with the user': 82,
+    '...and more!': 82,
   },
-  'Optimizing for production': {
-    'Preparing for SVG': 82,
-    'Configuring your export settings': 88,
-    'Minifying and removing metadata': 95,
+  'Looping and Iteration': {
+    'Intro to Loops': 82,
+    'Basic Looping': 82,
+    'Advanced Looping': 82,
+    '...and more!': 82,
+  },
+  'Functions and Scope': {
+    'Declaring and Invoking Functions': 82,
+    'Function Scope': 82,
+    'Closures': 82,
+    '...and more!': 82,
+  },
+  'Arrays and Objects': {
+    'Intro to Data Structures': 82,
+    'Manipulating Objects': 82,
+    '...and more!': 82,
+  },
+  'Advanced Javascript Concepts': {
+    'The Document Object Model': 82,
+    'Prototypal Inheritance': 82,
+    '...and more!': 82,
+  },
+  'APIs, AJAX and Data Interaction': {
+    'Making AJAX Calls': 82,
+    'Working with JSON': 82,
+    '...and more!': 82,
+  },
+  'Best Practices and Design Patterns': {
+    'Coding Conventions and Style Guides': 82,
+    'Variables and Data': 82,
+    '...and more!': 82,
+  },
+  'Modern Javascript Features': {
+    'Let, Const, and Block Scope': 82,
+    'Template Literals': 82,
+    '...and more!': 82,
+  },
+  'Object Oriented Javascript': {
+    'Understanding Objects in Depth': 82,
+    'ES6 Classes': 82,
+    '...and more!': 82,
+  },
+  'Frameworks and Libraries': {
+    'Popular JavaScript Libraries': 82,
+    'Diving into Front-end Frameworks': 82,
+    'React Deep Dive': 82,
+    '...and more!': 82,
+  },
+  'Building Your First Project': {
+    'Recap and Reflection': 82,
+    'Project Ideas to Get Started': 82,
+    'Building a Portfolio': 82,
+    '...and more!': 82,
+  },
+  'Beat the Interviews': {
+    'Coding Challenges': 82,
+    'Cracking the Coding Interview': 82,
+    'Into FANG': 82,
+    '...and more!': 82,
   },
 }
 

@@ -1,5 +1,4 @@
 import { Author } from '@/components/Author'
-import { Footer } from '@/components/Footer'
 import { FreeChapters } from '@/components/FreeChapters'
 import { Hero } from '@/components/Hero'
 import { Introduction } from '@/components/Introduction'
@@ -23,28 +22,26 @@ export default function Home() {
       <Testimonial
         id="testimonial-from-tommy-stroman"
         author={{
-          name: 'Tommy Stroman',
-          role: 'Front-end developer',
+          name: 'Joey Yaccarino',
+          role: 'Sales Engineer',
           image: avatarImage1,
         }}
       >
         <p>
-          “I didn’t know a thing about icon design until I read this book. Now I
-          can create any icon I need in no time. Great resource!”
+          “An incredibly clear and approachable guide—From Zero to Code turned JavaScript from a daunting subject into something I now feel excited to learn and explore further!”
         </p>
       </Testimonial>
       <Screencasts />
       <Testimonial
         id="testimonial-from-gerardo-stark"
         author={{
-          name: 'Gerardo Stark',
-          role: 'Creator of Pandemicons',
+          name: 'Tony Galidro',
+          role: 'Entrepreneur',
           image: avatarImage2,
         }}
       >
         <p>
-          “I’ve tried to create my own icons in the past but quickly got
-          frustrated and gave up. Now I sell my own custom icon sets online.”
+        "An excellent resource for beginners! From Zero to Code made JavaScript feel approachable and fun—this ebook helped me go from complete beginner to confident coder in no time!"
         </p>
       </Testimonial>
       <Resources />

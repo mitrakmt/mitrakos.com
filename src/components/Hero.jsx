@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { GridPattern } from '@/components/GridPattern'
 import { StarRating } from '@/components/StarRating'
-import coverImage from '@/images/cover.png'
+import coverImage from '@/images/cover.avif'
 
 function Testimonial() {
   return (
@@ -13,15 +13,14 @@ function Testimonial() {
       </div>
       <blockquote className="mt-2">
         <p className="font-display text-xl font-medium text-slate-900">
-          “This method of designing icons is genius. I wish I had known this
-          method a lot sooner.”
+          “Clear, concise, and incredibly easy to follow—this ebook is the perfect starting point for anyone new to JavaScript!”
         </p>
       </blockquote>
       <figcaption className="mt-2 text-sm text-slate-500">
         <strong className="font-semibold text-blue-600 before:content-['—_']">
-          Stacey Solomon
+          Shan Qureshi
         </strong>
-        , Founder at Retail Park
+        , Frontend Engineer
       </figcaption>
     </figure>
   )
@@ -40,7 +39,7 @@ export function Hero() {
             />
           </div>
           <div className="relative z-10 mx-auto flex w-64 rounded-xl bg-slate-600 shadow-xl md:w-80 lg:w-auto">
-            <Image className="w-full" src={coverImage} alt="" priority />
+            <Image className="w-full rounded-md" src={coverImage} alt="" priority />
           </div>
         </div>
         <div className="relative px-4 sm:px-6 lg:col-span-7 lg:pb-14 lg:pl-16 lg:pr-0 xl:pl-20">
@@ -50,11 +49,10 @@ export function Hero() {
         <div className="bg-white pt-16 lg:col-span-7 lg:bg-transparent lg:pl-16 lg:pt-0 xl:pl-20">
           <div className="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
             <h1 className="font-display text-5xl font-extrabold text-slate-900 dark:text-slate-100 sm:text-6xl">
-              Get lost in the world of icon design.
+              From Zero to Code: JavaScript for Absolute Beginners
             </h1>
             <p className="mt-4 text-3xl text-slate-600 dark:text-slate-300">
-              A book and video course that teaches you how to design your own
-              icons from scratch.
+              JavaScript for Absolute Beginners is your step-by-step guide to mastering the basics of JavaScript, designed to take you from a complete novice to writing your first lines of code with confidence.
             </p>
             <div className="mt-8 flex gap-4">
               <Button href="#free-chapters" color="blue">

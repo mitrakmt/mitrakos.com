@@ -33,16 +33,16 @@ function Article({ article }) {
 }
 
 export const metadata = {
-  title: 'initJS',
+  title: 'initJS | Learn JavaScript',
   description:
-    'All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order.',
+    'Learn about everything Javascript to take you from beginner to advanced.',
 }
 
 export default async function ArticlesIndex() {
   return (
     <SimpleLayout
-      title="Writing on software design, company building, and travel."
-      intro="All of my long-form thoughts on programming, leadership, product, and more, collected in chronological order."
+      title="Writing on All Things Javascript"
+      intro="All of my long-form thoughts on programming in Javascript."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">

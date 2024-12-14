@@ -12,29 +12,24 @@ export function Introduction() {
     >
       <Container className="text-lg tracking-tight text-slate-700 dark:text-slate-100">
         <p className="font-display text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          “Everything Starts as a Square” is a book and video course that
-          teaches you a simple method to designing icons that anyone can learn.
+          "From Zero to Code: JavaScript for Absolute Beginners" is an ebook designed to teach you the fundamentals of JavaScript in a simple, easy-to-understand way.
         </p>
         <p className="mt-4">
-          Before I learned how to design icons myself, I always imagined that
-          they were drawn by hand using the pen tool, some sort of fancy
-          graphics tablet, and hours and hours spent manually fine-tuning bezier
-          curves.
+          Before I dove into coding, I thought programming was for experts with years of experience, who knew every detail and complex syntax by heart. I imagined long, difficult lines of code that would take forever to understand.
         </p>
         <p className="mt-4">
-          But it turns out this isn’t how great icon designers work at all.
+          But that’s not how you should start learning at all.
         </p>
         <p className="mt-4">
-          In “Everything Starts as a Square”, you’ll learn the systems experts
-          use to create pixel perfect icons, without relying on a steady hand.
+          In From Zero to Code, you'll discover a structured approach that helps you learn JavaScript step by step, without feeling overwhelmed.
         </p>
         <ul role="list" className="mt-8 space-y-3">
           {[
-            'Using boolean operations to combine basic shapes into complex icons',
-            'How to adapt icons to different sizes',
-            'Translating icons from an outline style to a solid style',
-            'Identifying the characteristics that make an icon set cohesive',
-            'Figma features and keyboard shortcuts to speed up your workflow',
+            'Understanding the core JavaScript concepts and syntax',
+            'Writing your first lines of code with confidence',
+            'Debugging and troubleshooting errors like a pro',
+            'Using loops, functions, and arrays to build your own small projects',
+            'Building a solid foundation for learning more advanced coding skills',
           ].map((feature) => (
             <li key={feature} className="flex">
               <CheckIcon className="h-8 w-8 flex-none fill-blue-500" />
@@ -43,9 +38,7 @@ export function Introduction() {
           ))}
         </ul>
         <p className="mt-8">
-          By the end of the book, you’ll have all the confidence you need to dig
-          in and start creating beautiful icons that can hold their own against
-          any of the sets you can find online.
+          By the end of the ebook, you’ll have the knowledge and confidence to start writing your own JavaScript code and dive deeper into programming without fear.
         </p>
         <p className="mt-10">
           <Link

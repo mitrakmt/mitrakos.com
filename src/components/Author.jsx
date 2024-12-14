@@ -38,23 +38,16 @@ export function Author() {
               Author
             </SectionHeading>
             <p className="mt-8 font-display text-5xl font-extrabold tracking-tight text-zinc-800 sm:text-6xl">
-              <span className="block text-blue-800">Michael Mitrakos –</span> Hey
-              there, I’m the author behind ‘Everything Starts as a Square’.
+              <span className="block text-blue-800">Michael Mitrakos –</span> Hi, I’m Michael, the author of From Zero to Code: JavaScript for Absolute Beginners.
             </p>
             <p className="mt-4 text-lg tracking-tight text-slate-700">
-              I’ve been designing icons professionally for over a decade and
-              have worked with dozens of the biggest brands to create custom
-              sets for their products. I’m an accomplished conference speaker,
-              and have been teaching icon design workshops every month for the
-              last three years. I’ve worked with designers of all skill levels
-              and honed my way of teaching to really click for anyone who has
-              the itch to start designing their own icons.
+              I’ve been a developer for over a decade, working with clients across various industries to build efficient, scalable websites and applications. As a passionate educator, I’ve been teaching JavaScript workshops for the past three years, helping beginners get started with programming. My teaching style is all about breaking down complex concepts into easy-to-follow steps, making it simple for anyone to dive into coding and start building their own projects with confidence.
             </p>
             <p className="mt-8">
               <Link
                 href="https://www.x.com/mike_mitrakos"
                 target="_blank"
-                className="inline-flex items-center text-base font-medium tracking-tight text-zinc-900 dark:text-zinc-100"
+                className="inline-flex items-center text-base font-medium tracking-tight text-zinc-900"
               >
                 <XIcon className="h-10 w-10 fill-current" />
                 <span className="ml-4">Follow on X</span>
