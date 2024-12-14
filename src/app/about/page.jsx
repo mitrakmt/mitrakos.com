@@ -66,10 +66,10 @@ export default function About() {
               Hi, I’m Michael Mitrakos, the CEO of Higglo Digital, founder of WanderlustApp, and Web Design Awards. I've always been passionate about creating and exploring, and my journey has been shaped by a love for both technology and the boundless possibilities of imagination.
             </p>
             <p>
-              Pursuing engineering in college further fueled my drive to create and explore. A lifelong dream of traveling the globe has taken me to over 150 countries, enriching my perspective and inspiring the work I do every day.
+              Pursuing engineering in college further fueled my drive to create and explore. A lifelong dream of traveling the globe has taken me to over 45 countries, enriching my perspective and inspiring the work I do every day.
             </p>
             <p>
-              Today, I lead Higglo Digital, where we craft cutting-edge SEO strategies for industries as diverse as esports and beyond. I'm also deeply committed to celebrating and elevating great design through Web Design Awards and encouraging exploration and discovery through WanderlustApp.
+              Today, I lead Higglo Digital, where we craft cutting-edge SEO strategies and build stunning websites for industries as diverse as esports and beyond. I'm also deeply committed to celebrating and elevating great design through Web Design Awards and encouraging exploration and discovery through WanderlustApp.
             </p>
             <p>
               I believe the future is built by those who dare to create, and I’m grateful to be part of that journey.
