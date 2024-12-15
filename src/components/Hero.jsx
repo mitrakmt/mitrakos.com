@@ -58,7 +58,7 @@ export function Hero() {
               <Button href="#free-chapters" color="blue">
                 Get sample chapter
               </Button>
-              <Button href="#pricing" variant="outline" color="blue">
+              <Button href="https://buy.stripe.com/4gw2aAdud9Ob4dGdQQ" target="_blank" variant="outline" color="blue">
                 Buy book
               </Button>
             </div>

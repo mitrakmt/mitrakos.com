@@ -114,10 +114,11 @@ export function Pricing() {
             featured
             name="eBook"
             description="Getting you from 0 to coding."
-            price="19.99"
-            href="#"
+            price="9.99"
+            target="_blank"
+            href="https://buy.stripe.com/4gw2aAdud9Ob4dGdQQ"
             features={[
-              'The 240-page ebook'
+              '240 of pure JavaScript'
             ]}
           />
         </div>
