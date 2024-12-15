@@ -12,12 +12,12 @@ function Testimonial() {
         <StarRating />
       </div>
       <blockquote className="mt-2">
-        <p className="font-display text-xl font-medium text-slate-900">
+        <p className="font-display text-xl font-medium text-slate-900 dark:text-white">
           “Clear, concise, and incredibly easy to follow—this ebook is the perfect starting point for anyone new to JavaScript!”
         </p>
       </blockquote>
-      <figcaption className="mt-2 text-sm text-slate-500">
-        <strong className="font-semibold text-blue-600 before:content-['—_']">
+      <figcaption className="mt-2 text-sm text-slate-500 dark:text-slate-300">
+        <strong className="font-semibold text-blue-600 dark:text-blue-400 before:content-['—_']">
           Shan Qureshi
         </strong>
         , Frontend Engineer
@@ -28,7 +28,7 @@ function Testimonial() {
 
 export function Hero() {
   return (
-    <header className="overflow-hidden bg-slate-100 lg:bg-transparent lg:px-5">
+    <header className="overflow-hidden bg-slate-100 dark:bg-black lg:bg-transparent lg:px-5">
       <div className="mx-auto grid max-w-6xl grid-cols-1 grid-rows-[auto_1fr] gap-y-16 pt-16 md:pt-20 lg:grid-cols-12 lg:gap-y-20 lg:px-3 lg:pb-36 lg:pt-20 xl:py-32">
         <div className="relative flex items-end lg:col-span-5 lg:row-span-2">
           <div className="absolute -bottom-12 -top-20 left-0 right-1/2 z-10 rounded-br-6xl bg-blue-600 text-white/10 md:bottom-8 lg:-inset-y-32 lg:left-[-100vw] lg:right-full lg:-mr-40">
@@ -43,10 +43,10 @@ export function Hero() {
           </div>
         </div>
         <div className="relative px-4 sm:px-6 lg:col-span-7 lg:pb-14 lg:pl-16 lg:pr-0 xl:pl-20">
-          <div className="hidden lg:absolute lg:-top-32 lg:bottom-0 lg:left-[-100vw] lg:right-[-100vw] lg:block lg:bg-slate-100" />
+          <div className="hidden lg:absolute lg:-top-32 lg:bottom-0 lg:left-[-100vw] lg:right-[-100vw] lg:block bg-slate-100 dark:bg-black" />
           <Testimonial />
         </div>
-        <div className="bg-white pt-16 lg:col-span-7 lg:bg-transparent lg:pl-16 lg:pt-0 xl:pl-20">
+        <div className="bg-white pt-16 lg:col-span-7 lg:bg-transparent lg:pl-16 lg:pt-0 xl:pl-20 pb-10">
           <div className="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
             <h1 className="font-display text-5xl font-extrabold text-slate-900 dark:text-slate-100 sm:text-6xl">
               From Zero to Code: JavaScript for Absolute Beginners
