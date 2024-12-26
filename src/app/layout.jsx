@@ -1,5 +1,6 @@
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
+import Script from 'next/script'
 
 import '@/styles/tailwind.css'
 
