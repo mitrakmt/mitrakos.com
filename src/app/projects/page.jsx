@@ -6,7 +6,7 @@ import logoHigglo from '@/images/logos/higglo_digital.jpg'
 import logoInitjs from '@/images/logos/initjs.png'
 import logoWanderlust from '@/images/logos/wanderlustapp.jpg'
 import logoWebdesign from '@/images/logos/webdesignawards.avif'
-import logo9pm from '@/images/logos/9pm.png'
+import logonomads from '@/images/logos/nomads.png'
 import logoOrthodoxChristianity101 from '@/images/logos/oc101.avif'
 
 
@@ -33,11 +33,11 @@ const projects = [
     logo: logoWebdesign,
   },
   {
-    name: '9PM Store',
+    name: 'Nomads Ice Hockey',
     description:
-      'High-end mixology tools that bring professional quality to your home bar.',
-    link: { href: 'https://www.9pmstore.com', label: '9pmstore.com' },
-    logo: logo9pm,
+      'The first ice hockey team in Egypt.',
+    link: { href: 'https://www.nomadsicehockey.com', label: 'nomadsicehockey.com' },
+    logo: logonomads,
   },
   {
     name: 'Orthodox Christianity 101',

@@ -45,7 +45,7 @@ export default function Home() {
         </p>
       </Testimonial>
       <Resources />
-      <FreeChapters />
+      {/* <FreeChapters /> */}
       <Pricing />
       <Testimonials />
       <Author />
