@@ -6,7 +6,7 @@ import { Container } from '@/components/Container'
 import { GridPattern } from '@/components/GridPattern'
 import { SectionHeading } from '@/components/SectionHeading'
 
-function Plan({ name, description, price, features, href, featured = false }) {
+function Plan({ name, description, price, features, href, target, featured = false }) {
   return (
     <div
       className={clsx(
@@ -79,6 +79,7 @@ function Plan({ name, description, price, features, href, featured = false }) {
         </div>
         <Button
           href={href}
+          target={target}
           color={featured ? 'white' : 'slate'}
           className="mt-8"
           aria-label={`Get started with the ${name} plan for $${price}`}
