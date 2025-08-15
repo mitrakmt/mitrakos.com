@@ -282,9 +282,8 @@ export default async function Home() {
             Software designer, founder, and world traveler.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Michael, a software designer and entrepreneur from the US and based in Egypt. I’m the CEO of Higglo Digital, where we build
-            businesses through full-suite SEO and high-end marketing on
-            own terms.
+            I’m Michael, a full-stack senior software engineer and tech lead from the US, now based in Egypt. For the past 10 years I’ve been
+            leading teams to build high-quality web applications.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink href="https://x.com/mike_mitrakos" aria-label="Follow on X" icon={XIcon} target="_blank" />
