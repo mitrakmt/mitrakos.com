@@ -6,8 +6,8 @@ import logoHigglo from '@/images/logos/higglo_digital.jpg'
 import logoInitjs from '@/images/logos/initjs.png'
 import logoWanderlust from '@/images/logos/wanderlustapp.jpg'
 import logoWebdesign from '@/images/logos/webdesignawards.avif'
-import logoLivelyVideo from '@/images/logos/livelyvideo.png'
 import logonomads from '@/images/logos/nomads.png'
+import logoenhl from '@/images/logos/enhl.png'
 import logoOrthodoxChristianity101 from '@/images/logos/oc101.avif'
 
 
@@ -18,13 +18,6 @@ const projects = [
       'Memorable brand experiences, SEO & award winning websites',
     link: { href: 'http://www.higglo.io', label: 'higglo.io' },
     logo: logoHigglo,
-  },
-  {
-    name: 'LivelyVideo',
-    description:
-      'A SAAS video company where I was a senior software engineer',
-    link: { href: 'https://www.livelyvideo.tv', label: 'livelyvideo.tv' },
-    logo: logoLivelyVideo,
   },
   {
     name: 'Wanderlust App',
@@ -46,6 +39,13 @@ const projects = [
       'The first ice hockey team in Egypt.',
     link: { href: 'https://www.nomadsicehockey.com', label: 'nomadsicehockey.com' },
     logo: logonomads,
+  },
+  {
+    name: 'ENHL',
+    description:
+      'The Egyptian National Hockey League, the first ice hockey league in Egypt.',
+    link: { href: 'https://www.egyptianhockeyleague.com', label: 'egyptianhockeyleague.com' },
+    logo: logoenhl,
   },
   {
     name: 'Orthodox Christianity 101',
@@ -82,7 +82,7 @@ export const metadata = {
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Things I’ve made trying to put my dent in the universe."
+      title="My Projects: Things I’ve made trying to put my dent in the universe."
       intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. If you see something that piques your interest, check out the project and get in touch if you have ideas for how it can be improved."
     >
       <ul

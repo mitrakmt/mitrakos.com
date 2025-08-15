@@ -282,7 +282,7 @@ export default async function Home() {
             Software designer, founder, and world traveler.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Michael, a full-stack senior software engineer and tech lead from the US, now based in Egypt. For the past 10 years I’ve been
+            I’m Michael, a full-stack senior software engineer and tech lead from the US. For the past 10 years I’ve been
             leading teams to build high-quality web applications.
           </p>
           <div className="mt-6 flex gap-6">
