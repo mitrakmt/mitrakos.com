@@ -43,7 +43,7 @@ function MailIcon(props) {
 export const metadata = {
   title: 'About',
   description:
-    'I’m Michael Mitrakos. I live in Egypt, where I build the future.',
+    'I’m Michael Mitrakos, a US-based software engineer who loves frontend engineering and leading teams.',
 }
 
 export default function About() {
@@ -62,36 +62,63 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I’m Michael Mitrakos. I live in Egypt, where I design the
-            future.
+            I’m Michael Mitrakos. I’m a US-based software engineer who loves
+            building for the web.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              Hi, I’m Michael Mitrakos, the CEO of Higglo Digital, founder of WanderlustApp, and Web Design Awards. I've always been passionate about creating and exploring, and my journey has been shaped by a love for both technology and the boundless possibilities of imagination.
+              Hi, I’m Michael Mitrakos, a software engineer based in the United
+              States. I’ve spent my career building products for startups and
+              agencies, always chasing elegant solutions to real problems.
             </p>
             <p>
-              Pursuing engineering in college further fueled my drive to create and explore. A lifelong dream of traveling the globe has taken me to over 45 countries, enriching my perspective and inspiring the work I do every day.
+              My passion lies in frontend engineering—turning ideas into
+              delightful experiences in the browser. I love working with modern
+              frameworks and crafting interfaces that feel just right.
             </p>
             <p>
-              Today, I lead Higglo Digital, where we craft cutting-edge SEO strategies and build stunning websites for industries as diverse as esports and beyond. I'm also deeply committed to celebrating and elevating great design through Web Design Awards and encouraging exploration and discovery through WanderlustApp.
+              I’m equally excited about leading and growing engineering teams.
+              Mentoring developers, fostering collaboration, and guiding
+              projects from concept to launch energize me every day.
             </p>
             <p>
-              I believe the future is built by those who dare to create, and I’m grateful to be part of that journey.
+              I’m driven by the belief that great software is built by teams who
+              care about the craft, and I’m always looking for new challenges to
+              tackle together.
             </p>
           </div>
         </div>
         <div className="lg:pl-20">
           <ul role="list">
-            <SocialLink href="https://x.com/Mike_Mitrakos" icon={XIcon} target="_blank">
+            <SocialLink
+              href="https://x.com/Mike_Mitrakos"
+              icon={XIcon}
+              target="_blank"
+            >
               Follow on X
             </SocialLink>
-            <SocialLink href="https://www.instagram.com/mike_mitrakos/" icon={InstagramIcon} className="mt-4" target="_blank">
+            <SocialLink
+              href="https://www.instagram.com/mike_mitrakos/"
+              icon={InstagramIcon}
+              className="mt-4"
+              target="_blank"
+            >
               Follow on Instagram
             </SocialLink>
-            <SocialLink href="https://github.com/mitrakmt" icon={GitHubIcon} className="mt-4" target="_blank">
+            <SocialLink
+              href="https://github.com/mitrakmt"
+              icon={GitHubIcon}
+              className="mt-4"
+              target="_blank"
+            >
               Follow on GitHub
             </SocialLink>
-            <SocialLink href="https://www.linkedin.com/in/mitrakos" icon={LinkedInIcon} className="mt-4" target="_blank">
+            <SocialLink
+              href="https://www.linkedin.com/in/mitrakos"
+              icon={LinkedInIcon}
+              className="mt-4"
+              target="_blank"
+            >
               Follow on LinkedIn
             </SocialLink>
             <SocialLink
