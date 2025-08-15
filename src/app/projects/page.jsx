@@ -6,6 +6,7 @@ import logoHigglo from '@/images/logos/higglo_digital.jpg'
 import logoInitjs from '@/images/logos/initjs.png'
 import logoWanderlust from '@/images/logos/wanderlustapp.jpg'
 import logoWebdesign from '@/images/logos/webdesignawards.avif'
+import logoLivelyVideo from '@/images/logos/livelyvideo.png'
 import logonomads from '@/images/logos/nomads.png'
 import logoOrthodoxChristianity101 from '@/images/logos/oc101.avif'
 
@@ -17,6 +18,13 @@ const projects = [
       'Memorable brand experiences, SEO & award winning websites',
     link: { href: 'http://www.higglo.io', label: 'higglo.io' },
     logo: logoHigglo,
+  },
+  {
+    name: 'LivelyVideo',
+    description:
+      'A SAAS video company where I was a senior software engineer',
+    link: { href: 'https://www.livelyvideo.tv', label: 'livelyvideo.tv' },
+    logo: logoLivelyVideo,
   },
   {
     name: 'Wanderlust App',
