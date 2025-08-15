@@ -47,6 +47,7 @@ export function Author() {
               <Link
                 href="https://www.x.com/mike_mitrakos"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center text-base font-medium tracking-tight text-zinc-900"
               >
                 <XIcon className="h-10 w-10 fill-current" />

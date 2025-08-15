@@ -15,6 +15,10 @@ export function Button({ variant = 'primary', className, ...props }) {
     className,
   )
 
+  if (props.target === '_blank' && !props.rel) {
+    props.rel = 'noopener noreferrer'
+  }
+
   return typeof props.href === 'undefined' ? (
     <button className={className} {...props} />
   ) : (
