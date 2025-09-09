@@ -11,12 +11,9 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
-import logoCivility from '@/images/logos/civility_international.jpg'
-import logoDoubletap from '@/images/logos/doubletap.png'
-import logoHigglo from '@/images/logos/higglo_digital.jpg'
+import logoLively from '@/images/logos/livelyvideo.png'
+import logoItalic from '@/images/logos/italic.png'
 import logoVerys from '@/images/logos/verys.jpg'
-import logoWanderlust from '@/images/logos/wanderlustapp.jpg'
-import logoWebdesign from '@/images/logos/webdesignawards.avif'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -179,49 +176,25 @@ function Role({ role }) {
 function Resume() {
   let resume = [
     {
-      company: 'Higglo Digital',
-      title: 'CEO',
-      logo: logoHigglo,
-      start: '2022',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
+      company: 'Lively Video',
+      title: 'Senior Software Engineer',
+      logo: logoLively,
+      start: '2018',
+      end: "2025"
     },
     {
-      company: 'Wanderlust',
-      title: 'Founder',
-      logo: logoWanderlust,
+      company: 'Italic',
+      title: 'UI & Payments Tech Lead',
+      logo: logoItalic,
       start: '2020',
-      end: new Date().getFullYear().toString(),
-    },
-    {
-      company: 'Web Design Awards',
-      title: 'Founder',
-      logo: logoWebdesign,
-      start: '2021',
-      end: new Date().getFullYear().toString(),
-    },
-    {
-      company: 'DoubleTap Consulting',
-      title: 'CTO',
-      logo: logoDoubletap,
-      start: '2017',
-      end: '2022',
-    },
-    {
-      company: 'Civility International',
-      title: 'CTO',
-      logo: logoCivility,
-      start: '2017',
-      end: '2018',
+      end: "2021"
     },
     {
       company: 'Verys',
       title: 'Senior Software Engineer',
       logo: logoVerys,
       start: '2015',
-      end: '2017',
+      end: '2018',
     },
   ]
 
