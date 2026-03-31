@@ -7,13 +7,29 @@ export const article = {
   date: '2025-08-13',
   title:
     'Mastering React: Key Concepts, Best Practices, and How to Build Efficient Applications',
+  url: `https://www.mitrakos.com/articles/mastering-react`,
   description:
     'Learn the core principles of React, its advantages for building scalable UIs, and practical tips to structure, optimize, and maintain your applications effectively.',
 }
 
+
 export const metadata = {
   title: article.title,
   description: article.description,
+  alternates: {
+    canonical: '/articles/mastering-react',
+  },
+  openGraph: {
+    type: 'article',
+    title: article.title,
+    description: article.description,
+    url: `https://www.mitrakos.com/articles/mastering-react`,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />

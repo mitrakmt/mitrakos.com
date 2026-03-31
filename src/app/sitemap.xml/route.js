@@ -1,37 +1,54 @@
-// app/sitemap.xml/route.ts
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
+
+import { getAllArticles } from '@/lib/articles'
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.mitrakos.com'
 
 export async function GET() {
-  const siteUrl = "https://www.mitrakos.com"; // Replace with your website's URL
-  const staticPages = ["/", "/articles", "/projects", "/technology", "/about", "/initjs", "/ebook"];
-  const dynamicPages = await getDynamicPages();
+  const staticPages = [
+    '/',
+    '/about',
+    '/articles',
+    '/ebook',
+    '/initjs',
+    '/projects',
+    '/technology',
+  ]
 
-  const urls = [...staticPages, ...dynamicPages];
+  const articles = await getAllArticles()
+  const dynamicPages = articles.map((article) => ({
+    path: `/articles/${article.slug}`,
+    lastmod: new Date(article.date).toISOString(),
+    changefreq: 'monthly',
+    priority: '0.8',
+  }))
+
+  const staticEntries = staticPages.map((path) => ({
+    path,
+    lastmod: new Date().toISOString(),
+    changefreq: path === '/' ? 'weekly' : 'monthly',
+    priority: path === '/' ? '1.0' : '0.7',
+  }))
+
+  const urls = [...staticEntries, ...dynamicPages]
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${urls
-    .map(
-      (url) => `
-    <url>
-      <loc>${siteUrl}${url}</loc>
-      <lastmod>${new Date().toISOString()}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>${url === "/" ? "1.0" : "0.7"}</priority>
-    </url>
-  `
-    )
-    .join("")}
-</urlset>`;
+${urls
+  .map(
+    ({ path, lastmod, changefreq, priority }) => `  <url>
+    <loc>${siteUrl}${path}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`
+  )
+  .join('\n')}
+</urlset>`
 
   return new NextResponse(sitemap, {
     headers: {
-      "Content-Type": "application/xml",
+      'Content-Type': 'application/xml',
     },
-  });
-}
-
-async function getDynamicPages() {
-  // Replace this with your logic to fetch dynamic routes (e.g., from a database or API)
-  return ["/articles/mastering-tailwind-css"];
+  })
 }
