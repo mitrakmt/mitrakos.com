@@ -22,6 +22,17 @@ import image5 from '@/images/photos/image-5.jpg'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
+
+export const metadata = {
+  title: 'Home',
+  description:
+    'Portfolio of Michael Mitrakos, a US-based senior software engineer and tech lead focused on building high-quality web applications.',
+  alternates: {
+    canonical: '/',
+  },
+}
+
+
 function MailIcon(props) {
   return (
     <svg

@@ -25,6 +25,20 @@ export function ArticleLayout({ article, children }) {
   let router = useRouter()
   let { previousPathname } = useContext(AppContext)
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      '@type': 'Person',
+      name: article.author,
+    },
+    description: article.description,
+    mainEntityOfPage: article.url,
+  }
+
   return (
     <Container className="mt-16 lg:mt-32">
       <div className="xl:relative">
@@ -40,6 +54,10 @@ export function ArticleLayout({ article, children }) {
             </button>
           )}
           <article>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
             <header className="flex flex-col">
               <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
                 {article.title}
