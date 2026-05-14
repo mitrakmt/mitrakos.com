@@ -11,7 +11,6 @@ export const article = {
     'Discover why Tailwind CSS is a powerful utility-first framework for modern web design. Learn its benefits, setup process, and practical examples to streamline your workflow.',
 }
 
-
 export const metadata = {
   title: article.title,
   description: article.description,
@@ -23,11 +22,14 @@ export const metadata = {
     title: article.title,
     description: article.description,
     url: `https://www.mitrakos.com/articles/mastering-tailwind-css`,
+    publishedTime: article.date,
+    authors: [article.author],
   },
   twitter: {
     card: 'summary_large_image',
     title: article.title,
     description: article.description,
+    creator: '@Mike_Mitrakos',
   },
 }
 

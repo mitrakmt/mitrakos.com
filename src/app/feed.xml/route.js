@@ -2,13 +2,9 @@ import assert from 'assert'
 import * as cheerio from 'cheerio'
 import { Feed } from 'feed'
 
+import { siteDescription, siteUrl } from '@/lib/site'
+
 export async function GET(req) {
-  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-
-  if (!siteUrl) {
-    throw Error('Missing NEXT_PUBLIC_SITE_URL environment variable')
-  }
-
   let author = {
     name: 'Michael Mitrakos',
     email: 'mike@higglo.io',
@@ -16,7 +12,7 @@ export async function GET(req) {
 
   let feed = new Feed({
     title: author.name,
-    description: 'Your blog description',
+    description: siteDescription,
     author,
     id: siteUrl,
     link: siteUrl,

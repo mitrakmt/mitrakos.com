@@ -10,6 +10,7 @@ import {
   XIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
+import { pageMetadata } from '@/lib/site'
 
 function SocialLink({ className, href, children, icon: Icon, ...props }) {
   if (props.target === '_blank' && !props.rel) {
@@ -40,11 +41,12 @@ function MailIcon(props) {
   )
 }
 
-export const metadata = {
-  title: 'About',
+export const metadata = pageMetadata({
+  title: 'About Michael Mitrakos',
   description:
-    'I’m Michael Mitrakos, a US-based software engineer who loves frontend engineering and leading teams.',
-}
+    'Learn about Michael Mitrakos, a US-based senior software engineer and tech lead focused on frontend engineering, team leadership, and web product development.',
+  path: '/about',
+})
 
 export default function About() {
   return (

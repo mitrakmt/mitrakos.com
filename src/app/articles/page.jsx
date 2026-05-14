@@ -2,6 +2,7 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
+import { pageMetadata } from '@/lib/site'
 
 function Article({ article }) {
   return (
@@ -32,11 +33,12 @@ function Article({ article }) {
   )
 }
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Articles',
   description:
-    'All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order.',
-}
+    'Read Michael Mitrakos’s articles on programming, frontend engineering, leadership, product design, and building high-quality web applications.',
+  path: '/articles',
+})
 
 export default async function ArticlesIndex() {
   let articles = await getAllArticles()

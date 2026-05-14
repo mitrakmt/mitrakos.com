@@ -1,4 +1,6 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.mitrakos.com'
+import { siteUrl } from '@/lib/site'
+
+const siteHost = new URL(siteUrl).host
 
 export default function robots() {
   return {
@@ -7,6 +9,6 @@ export default function robots() {
       allow: '/',
     },
     sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+    host: siteHost,
   }
 }

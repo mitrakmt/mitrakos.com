@@ -12,7 +12,6 @@ export const article = {
     'Learn the core principles of React, its advantages for building scalable UIs, and practical tips to structure, optimize, and maintain your applications effectively.',
 }
 
-
 export const metadata = {
   title: article.title,
   description: article.description,
@@ -24,11 +23,14 @@ export const metadata = {
     title: article.title,
     description: article.description,
     url: `https://www.mitrakos.com/articles/mastering-react`,
+    publishedTime: article.date,
+    authors: [article.author],
   },
   twitter: {
     card: 'summary_large_image',
     title: article.title,
     description: article.description,
+    creator: '@Mike_Mitrakos',
   },
 }
 

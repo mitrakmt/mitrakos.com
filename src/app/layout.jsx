@@ -3,9 +3,10 @@ import { Layout } from '@/components/Layout'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 
+import { siteDescription, siteName, siteUrl } from '@/lib/site'
+
 import '@/styles/tailwind.css'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.mitrakos.com'
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
 export const metadata = {
@@ -15,8 +16,7 @@ export const metadata = {
     default:
       'Michael Mitrakos - Software designer, founder, and world traveler',
   },
-  description:
-    'I’m Michael, a full-stack senior software engineer and tech lead from the US. For the past 10 years I’ve been leading teams to build high-quality web applications.',
+  description: siteDescription,
   keywords: [
     'Michael Mitrakos',
     'software engineer',
@@ -24,30 +24,29 @@ export const metadata = {
     'frontend engineering',
     'web development',
   ],
-  authors: [{ name: 'Michael Mitrakos', url: siteUrl }],
-  creator: 'Michael Mitrakos',
-  publisher: 'Michael Mitrakos',
+  applicationName: siteName,
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
   alternates: {
     canonical: '/',
     types: {
       'application/rss+xml': `${siteUrl}/feed.xml`,
+      'text/plain': `${siteUrl}/llms.txt`,
     },
   },
   openGraph: {
     type: 'website',
     url: siteUrl,
     title: 'Michael Mitrakos - Software designer, founder, and world traveler',
-    description:
-      'I’m Michael, a full-stack senior software engineer and tech lead from the US. For the past 10 years I’ve been leading teams to build high-quality web applications.',
-    siteName: 'Michael Mitrakos',
-    images: [{ url: '/cover.avif', width: 1200, height: 630, alt: 'Michael Mitrakos' }],
+    description: siteDescription,
+    siteName,
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Michael Mitrakos - Software designer, founder, and world traveler',
-    description:
-      'I’m Michael, a full-stack senior software engineer and tech lead from the US. For the past 10 years I’ve been leading teams to build high-quality web applications.',
-    images: ['/cover.avif'],
+    description: siteDescription,
     creator: '@Mike_Mitrakos',
   },
   robots: {
@@ -66,7 +65,7 @@ export const metadata = {
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Michael Mitrakos',
+  name: siteName,
   jobTitle: 'Senior Software Engineer and Tech Lead',
   url: siteUrl,
   sameAs: [
@@ -80,7 +79,7 @@ const personSchema = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Michael Mitrakos',
+  name: siteName,
   url: siteUrl,
   inLanguage: 'en-US',
 }
