@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
+import { pageMetadata } from '@/lib/site'
 import logoHigglo from '@/images/logos/higglo_digital.jpg'
 import logoInitjs from '@/images/logos/initjs.png'
 import logoWanderlust from '@/images/logos/wanderlustapp.jpg'
@@ -10,54 +11,59 @@ import logonomads from '@/images/logos/nomads.png'
 import logoenhl from '@/images/logos/enhl.png'
 import logoOrthodoxChristianity101 from '@/images/logos/oc101.avif'
 
-
 const projects = [
   {
     name: 'Higglo Digital',
-    description:
-      'Memorable brand experiences, SEO & award winning websites',
+    description: 'Memorable brand experiences, SEO & award winning websites',
     link: { href: 'http://www.higglo.io', label: 'higglo.io' },
     logo: logoHigglo,
   },
   {
     name: 'Wanderlust App',
-    description:
-      'Beautiful places on your new tab page',
+    description: 'Beautiful places on your new tab page',
     link: { href: 'https://www.wanderlustapp.io', label: 'wanderlustapp.io' },
     logo: logoWanderlust,
   },
   {
     name: 'Web Design Awards',
-    description:
-      'Recognizing the best of the web.',
-    link: { href: 'https://www.webdesignawards.io', label: 'webdesignawards.io' },
+    description: 'Recognizing the best of the web.',
+    link: {
+      href: 'https://www.webdesignawards.io',
+      label: 'webdesignawards.io',
+    },
     logo: logoWebdesign,
   },
   {
     name: 'Nomads Ice Hockey',
-    description:
-      'The first ice hockey team in Egypt.',
-    link: { href: 'https://www.nomadsicehockey.com', label: 'nomadsicehockey.com' },
+    description: 'The first ice hockey team in Egypt.',
+    link: {
+      href: 'https://www.nomadsicehockey.com',
+      label: 'nomadsicehockey.com',
+    },
     logo: logonomads,
   },
   {
     name: 'ENHL',
     description:
       'The Egyptian National Hockey League, the first ice hockey league in Egypt.',
-    link: { href: 'https://www.egyptianhockeyleague.com', label: 'egyptianhockeyleague.com' },
+    link: {
+      href: 'https://www.egyptianhockeyleague.com',
+      label: 'egyptianhockeyleague.com',
+    },
     logo: logoenhl,
   },
   {
     name: 'Orthodox Christianity 101',
-    description:
-      'Teaching the basics of Orthodox Christianity for beginners',
-    link: { href: 'https://www.orthodoxchristianity101.com', label: 'orthodoxchristianity101.com' },
+    description: 'Teaching the basics of Orthodox Christianity for beginners',
+    link: {
+      href: 'https://www.orthodoxchristianity101.com',
+      label: 'orthodoxchristianity101.com',
+    },
     logo: logoOrthodoxChristianity101,
   },
   {
     name: 'InitJS',
-    description:
-      'Teaching JavaScript to over 400,000 readers..',
+    description: 'Teaching JavaScript to over 400,000 readers..',
     link: { href: 'https://www.initjs.org', label: 'initjs.org' },
     logo: logoInitjs,
   },
@@ -74,10 +80,12 @@ function LinkIcon(props) {
   )
 }
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Projects',
-  description: 'Things I’ve made trying to put my dent in the universe.',
-}
+  description:
+    'Explore selected projects by Michael Mitrakos, including web applications, startup products, and engineering work across frontend and full-stack development.',
+  path: '/projects',
+})
 
 export default function Projects() {
   return (

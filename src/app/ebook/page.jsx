@@ -11,6 +11,14 @@ import { Testimonial } from '@/components/Testimonial'
 import { Testimonials } from '@/components/Testimonials'
 import avatarImage1 from '@/images/avatars/avatar-1.png'
 import avatarImage2 from '@/images/avatars/avatar-2.png'
+import { pageMetadata } from '@/lib/site'
+
+export const metadata = pageMetadata({
+  title: 'From Zero to Code JavaScript Ebook',
+  description:
+    'Learn JavaScript from the ground up with From Zero to Code, a beginner-friendly ebook by Michael Mitrakos with practical lessons, resources, and examples.',
+  path: '/ebook',
+})
 
 export default function Home() {
   return (
@@ -28,7 +36,9 @@ export default function Home() {
         }}
       >
         <p>
-          “An incredibly clear and approachable guide—From Zero to Code turned JavaScript from a daunting subject into something I now feel excited to learn and explore further!”
+          “An incredibly clear and approachable guide—From Zero to Code turned
+          JavaScript from a daunting subject into something I now feel excited
+          to learn and explore further!”
         </p>
       </Testimonial>
       <Screencasts />
@@ -41,7 +51,9 @@ export default function Home() {
         }}
       >
         <p>
-        "An excellent resource for beginners! From Zero to Code made JavaScript feel approachable and fun—this ebook helped me go from complete beginner to confident coder in no time!"
+          "An excellent resource for beginners! From Zero to Code made
+          JavaScript feel approachable and fun—this ebook helped me go from
+          complete beginner to confident coder in no time!"
         </p>
       </Testimonial>
       <Resources />

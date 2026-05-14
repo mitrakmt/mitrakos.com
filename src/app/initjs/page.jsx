@@ -1,16 +1,15 @@
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/lib/formatDate'
+import { pageMetadata } from '@/lib/site'
 
-import articles from './articles.json';
+import articles from './articles.json'
 
 function Article({ article }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={article.url}>
-          {article.title}
-        </Card.Title>
+        <Card.Title href={article.url}>{article.title}</Card.Title>
         <Card.Eyebrow
           as="time"
           dateTime={article.date}
@@ -32,11 +31,12 @@ function Article({ article }) {
   )
 }
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'initJS | Learn JavaScript',
   description:
-    'Learn about everything Javascript to take you from beginner to advanced.',
-}
+    'Learn JavaScript with initJS articles and resources that take you from beginner concepts to more advanced programming topics.',
+  path: '/initjs',
+})
 
 export default async function ArticlesIndex() {
   return (
