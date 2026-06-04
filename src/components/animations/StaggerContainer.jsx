@@ -58,12 +58,12 @@ export function StaggerContainer({
   }
 
   const animationProps = animate
-    ? { animate: 'visible' }
+    ? { animate: 'visible', initial: 'visible' }
     : { whileInView: 'visible', viewport: { once, amount } }
 
   return (
     <motion.div
-      initial="hidden"
+      initial={animate ? 'visible' : 'hidden'}
       variants={variants}
       className={className}
       {...animationProps}
