@@ -29,6 +29,13 @@ function ProjectLogo({ name, color = 'bg-zinc-100 dark:bg-zinc-800' }) {
 
 const projects = [
   {
+    name: 'Print Club Society',
+    description: 'Premium print-on-demand community and marketplace.',
+    link: { href: 'https://www.printclubsociety.com', label: 'printclubsociety.com' },
+    logo: null,
+    logoColor: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300',
+  },
+  {
     name: 'Verdacert',
     description: 'Sustainability certification platform for businesses.',
     link: { href: 'https://www.verdacert.com', label: 'verdacert.com' },
@@ -55,6 +62,20 @@ const projects = [
     link: { href: 'https://www.hireaiscore.com', label: 'hireaiscore.com' },
     logo: null,
     logoColor: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
+  },
+  {
+    name: 'Elite Hockey HQ',
+    description: 'Elite ice hockey training, resources, and community.',
+    link: { href: 'https://www.elitehockeyhq.com', label: 'elitehockeyhq.com' },
+    logo: null,
+    logoColor: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300',
+  },
+  {
+    name: 'ABA Rank',
+    description: 'Ranking and analytics platform for applied behavior analysis.',
+    link: { href: 'https://www.abarank.com', label: 'abarank.com' },
+    logo: null,
+    logoColor: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
   },
   {
     name: 'Higglo Digital',
