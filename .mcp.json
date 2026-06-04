@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "google-analytics": {
+      "command": "uv",
+      "args": ["tool", "run", "--python", "3.12", "analytics-mcp"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/michaelmitrakos/.config/gcloud/higglo-digital-sa.json",
+        "GOOGLE_PROJECT_ID": "higglo-digital"
+      }
+    }
+  }
+}

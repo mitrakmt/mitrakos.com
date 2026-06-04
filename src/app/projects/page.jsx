@@ -11,7 +11,51 @@ import logonomads from '@/images/logos/nomads.png'
 import logoenhl from '@/images/logos/enhl.png'
 import logoOrthodoxChristianity101 from '@/images/logos/oc101.avif'
 
+function ProjectLogo({ name, color = 'bg-zinc-100 dark:bg-zinc-800' }) {
+  const initials = name
+    .split(' ')
+    .map((word) => word[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
+  return (
+    <div
+      className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-zinc-600 dark:text-zinc-300 ${color}`}
+    >
+      {initials}
+    </div>
+  )
+}
+
 const projects = [
+  {
+    name: 'Verdacert',
+    description: 'Sustainability certification platform for businesses.',
+    link: { href: 'https://www.verdacert.com', label: 'verdacert.com' },
+    logo: null,
+    logoColor: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
+  },
+  {
+    name: 'Habeo',
+    description: 'Modern platform for managing and sharing digital assets.',
+    link: { href: 'https://www.usehabeo.com', label: 'usehabeo.com' },
+    logo: null,
+    logoColor: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+  },
+  {
+    name: 'Casework',
+    description: 'Streamlined case management for modern teams.',
+    link: { href: 'https://www.getcasework.com', label: 'getcasework.com' },
+    logo: null,
+    logoColor: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300',
+  },
+  {
+    name: 'HireAIScore',
+    description: 'AI-powered candidate scoring and hiring intelligence.',
+    link: { href: 'https://www.hireaiscore.com', label: 'hireaiscore.com' },
+    logo: null,
+    logoColor: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
+  },
   {
     name: 'Higglo Digital',
     description: 'Memorable brand experiences, SEO & award winning websites',
@@ -100,12 +144,16 @@ export default function Projects() {
         {projects.map((project) => (
           <Card as="li" key={project.name}>
             <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image
-                src={project.logo}
-                alt=""
-                className="h-8 w-8 rounded-full"
-                unoptimized
-              />
+              {project.logo ? (
+                <Image
+                  src={project.logo}
+                  alt=""
+                  className="h-8 w-8 rounded-full"
+                  unoptimized
+                />
+              ) : (
+                <ProjectLogo name={project.name} color={project.logoColor} />
+              )}
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link href={project.link.href}>{project.name}</Card.Link>

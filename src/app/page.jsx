@@ -11,6 +11,7 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
+import logoHigglo from '@/images/logos/higglo_digital.jpg'
 import logoLively from '@/images/logos/livelyvideo.png'
 import logoItalic from '@/images/logos/italic.png'
 import logoVerys from '@/images/logos/verys.jpg'
@@ -186,6 +187,13 @@ function Role({ role }) {
 
 function Resume() {
   let resume = [
+    {
+      company: 'Higglo Digital',
+      title: 'Founder & CEO',
+      logo: logoHigglo,
+      start: '2023',
+      end: 'Present',
+    },
     {
       company: 'Lively Video',
       title: 'Senior Software Engineer',
