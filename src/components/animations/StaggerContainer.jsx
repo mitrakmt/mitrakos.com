@@ -33,6 +33,7 @@ export function StaggerContainer({
   delayChildren = 0.05,
   once = true,
   amount = 0.15,
+  animate = false,
   ...props
 })
 {
@@ -46,21 +47,26 @@ export function StaggerContainer({
     )
   }
 
+  const variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: staggerDelay,
+        delayChildren,
+      },
+    },
+  }
+
+  const animationProps = animate
+    ? { animate: 'visible' }
+    : { whileInView: 'visible', viewport: { once, amount } }
+
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: staggerDelay,
-            delayChildren,
-          },
-        },
-      }}
+      variants={variants}
       className={className}
+      {...animationProps}
       {...props}
     >
       {children}

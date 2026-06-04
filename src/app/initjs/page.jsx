@@ -49,6 +49,7 @@ export default async function ArticlesIndex() {
         <StaggerContainer
           className="flex max-w-3xl flex-col space-y-16"
           staggerDelay={0.1}
+          animate
         >
           {articles.map((article) => (
             <StaggerItem key={article.url}>
