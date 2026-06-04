@@ -1,26 +1,29 @@
 import { Card } from '@/components/Card'
 import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
+import { StaggerContainer, StaggerItem } from '@/components/animations'
 import { pageMetadata } from '@/lib/site'
 
 function ToolsSection({ children, ...props }) {
   return (
     <Section {...props}>
-      <ul role="list" className="space-y-16">
+      <StaggerContainer role="list" className="space-y-16" staggerDelay={0.1}>
         {children}
-      </ul>
+      </StaggerContainer>
     </Section>
   )
 }
 
 function Tool({ title, href, children }) {
   return (
-    <Card as="li">
-      <Card.Title as="h3" href={href}>
-        {title}
-      </Card.Title>
-      <Card.Description>{children}</Card.Description>
-    </Card>
+    <StaggerItem>
+      <Card as="li" className="transition-transform duration-300 hover:translate-x-1">
+        <Card.Title as="h3" href={href}>
+          {title}
+        </Card.Title>
+        <Card.Description>{children}</Card.Description>
+      </Card>
+    </StaggerItem>
   )
 }
 
@@ -35,14 +38,14 @@ export default function Technology() {
   return (
     <SimpleLayout
       title="Software I use, gadgets I love, and other things I recommend."
-      intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."
+      intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I'm being productive when I'm really just procrastinating. Here's a big list of all of my favorite stuff."
     >
       <div className="space-y-20">
         <ToolsSection title="Workstation">
-          <Tool title="M2 MacBook Air, 64GB RAM (2022)">
-            This machine has been a game-changer for me, offering silent
-            performance even under demanding tasks. The efficiency and power of
-            the M2 chip make it ideal for all my productivity needs.
+          <Tool title="MacBook Pro 14&quot;, M5">
+            My daily driver for everything from heavy development work to
+            content creation. The M5 chip handles everything I throw at it
+            without breaking a sweat.
           </Tool>
           <Tool title="Apple Magic Trackpad">
             Something about all the gestures makes me feel like a wizard with
@@ -58,8 +61,8 @@ export default function Technology() {
             environment perfectly to my needs.
           </Tool>
           <Tool title="iTerm2">
-            I’m honestly not even sure what features I get with this that aren’t
-            just part of the macOS Terminal but it’s what I use.
+            I'm honestly not even sure what features I get with this that aren't
+            just part of the macOS Terminal but it's what I use.
           </Tool>
         </ToolsSection>
         <ToolsSection title="Marketing">
@@ -81,8 +84,8 @@ export default function Technology() {
         </ToolsSection>
         <ToolsSection title="Productivity">
           <Tool title="Notion">
-            I've found Notion to be incredibly versatile for organizing my
-            thoughts, projects, and daily tasks. It's like having a digital
+            I&apos;ve found Notion to be incredibly versatile for organizing my
+            thoughts, projects, and daily tasks. It&apos;s like having a digital
             workspace where everything from notes to project management can be
             seamlessly integrated.
           </Tool>

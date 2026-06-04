@@ -1,5 +1,6 @@
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
+import { StaggerContainer, StaggerItem } from '@/components/animations'
 import { formatDate } from '@/lib/formatDate'
 import { pageMetadata } from '@/lib/site'
 
@@ -45,11 +46,16 @@ export default async function ArticlesIndex() {
       intro="All of my long-form thoughts on programming in Javascript."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
-        <div className="flex max-w-3xl flex-col space-y-16">
+        <StaggerContainer
+          className="flex max-w-3xl flex-col space-y-16"
+          staggerDelay={0.1}
+        >
           {articles.map((article) => (
-            <Article key={article.slug} article={article} />
+            <StaggerItem key={article.slug}>
+              <Article article={article} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </SimpleLayout>
   )

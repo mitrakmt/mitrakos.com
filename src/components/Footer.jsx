@@ -1,12 +1,13 @@
 import Link from 'next/link'
 
 import { ContainerInner, ContainerOuter } from '@/components/Container'
+import { FadeIn } from '@/components/animations'
 
 function NavLink({ href, children }) {
   return (
     <Link
       href={href}
-      className="transition hover:text-teal-500 dark:hover:text-teal-400"
+      className="transition-colors duration-200 hover:text-teal-500 dark:hover:text-teal-400"
     >
       {children}
     </Link>
@@ -19,19 +20,20 @@ export function Footer() {
       <ContainerOuter>
         <div className="border-t border-zinc-100 pb-16 pt-10 dark:border-zinc-700/40">
           <ContainerInner>
-            <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                <NavLink href="/about">About</NavLink>
-                <NavLink href="/projects">Projects</NavLink>
-                <NavLink href="/technology">Technology</NavLink>
-                <NavLink href="/initjs">initJS</NavLink>
-                <NavLink href="/ebook">eBook</NavLink>
+            <FadeIn direction="fade-up">
+              <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                  <NavLink href="/about">About</NavLink>
+                  <NavLink href="/projects">Projects</NavLink>
+                  <NavLink href="/technology">Technology</NavLink>
+                  <NavLink href="/initjs">initJS</NavLink>
+                </div>
+                <p className="text-sm text-zinc-400 dark:text-zinc-500">
+                  &copy; {new Date().getFullYear()} Michael Mitrakos. All rights
+                  reserved.
+                </p>
               </div>
-              <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Michael Mitrakos. All rights
-                reserved.
-              </p>
-            </div>
+            </FadeIn>
           </ContainerInner>
         </div>
       </ContainerOuter>

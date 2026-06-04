@@ -16,7 +16,6 @@ Michael Mitrakos is a US-based senior software engineer and tech lead. The site 
 - Articles index: ${siteUrl}/articles
 - Technology: ${siteUrl}/technology
 - InitJS: ${siteUrl}/initjs
-- Ebook: ${siteUrl}/ebook
 
 ## Feeds and discovery
 - RSS feed: ${siteUrl}/feed.xml

@@ -19,11 +19,7 @@ const staticPages = [
     changefreq: 'weekly',
     priority: '0.8',
   },
-  {
-    path: '/ebook',
-    changefreq: 'monthly',
-    priority: '0.8',
-  },
+
   {
     path: '/initjs',
     changefreq: 'weekly',
