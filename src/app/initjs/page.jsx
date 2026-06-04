@@ -51,7 +51,7 @@ export default async function ArticlesIndex() {
           staggerDelay={0.1}
         >
           {articles.map((article) => (
-            <StaggerItem key={article.slug}>
+            <StaggerItem key={article.url}>
               <Article article={article} />
             </StaggerItem>
           ))}
