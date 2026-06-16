@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const transitions = {
   fade: {
@@ -64,12 +64,20 @@ export function FadeIn({
   spring = false,
   once = true,
   amount = 0.2,
+  animateOnMount = false,
   className,
   ...props
 })
 {
   const shouldReduceMotion = useReducedMotion()
   const ref = useRef(null)
+  const [revealed, setRevealed] = useState(false)
+
+  useEffect(() => {
+    if (!animateOnMount) return
+    const id = requestAnimationFrame(() => setRevealed(true))
+    return () => cancelAnimationFrame(id)
+  }, [animateOnMount])
 
   const transition = spring
     ? { ...springConfig, delay }
@@ -85,15 +93,22 @@ export function FadeIn({
     )
   }
 
+  // Above-the-fold content reveals via a post-mount state flip (a prop change
+  // framer animates deterministically) so it never depends on a flaky mount
+  // animation or an IntersectionObserver; below-the-fold content reveals on
+  // scroll.
+  const revealProps = animateOnMount
+    ? { animate: revealed ? 'visible' : 'hidden' }
+    : { whileInView: 'visible', viewport: { once, amount } }
+
   return (
     <Component
       ref={ref}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount }}
       variants={variants}
       transition={transition}
       className={className}
+      {...revealProps}
       {...props}
     >
       {children}

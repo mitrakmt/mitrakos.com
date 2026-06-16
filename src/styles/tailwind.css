@@ -2,3 +2,85 @@
 @import 'tailwindcss/components';
 @import './prism.css';
 @import 'tailwindcss/utilities';
+
+@layer utilities {
+  /* Flowing gradient text — used for the highlighted phrase in the hero. */
+  @keyframes gradient-pan {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-text {
+    background-size: 200% auto;
+    animation: gradient-pan 6s ease-in-out infinite;
+  }
+
+  /* Per-word hero headline reveal — staggered via the inline --word-index. */
+  @keyframes headline-word-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.5em);
+      filter: blur(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .headline-word {
+    display: inline-block;
+    animation: headline-word-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--word-index, 0) * 0.07s + 0.05s);
+  }
+
+  /* Gradient words also flow their gradient; both animations run together. */
+  .headline-word.headline-gradient {
+    background-size: 200% auto;
+    animation:
+      headline-word-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both,
+      gradient-pan 6s ease-in-out infinite;
+    animation-delay: calc(var(--word-index, 0) * 0.07s + 0.05s), 0s;
+  }
+
+  /* Slow atmospheric drift for the hero aurora orbs. */
+  @keyframes aurora-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    33% {
+      transform: translate3d(3%, -4%, 0) scale(1.08);
+    }
+    66% {
+      transform: translate3d(-3%, 3%, 0) scale(0.96);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  .animate-aurora {
+    animation: aurora-drift 18s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-text,
+  .animate-aurora,
+  .headline-word,
+  .headline-word.headline-gradient {
+    animation: none !important;
+  }
+
+  .headline-word {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
