@@ -310,7 +310,13 @@ export default async function Home() {
                 leading teams to build high-quality web applications.
               </p>
             </FadeIn>
-            <FadeIn direction="fade-up" delay={0.6} animateOnMount>
+            <FadeIn direction="fade-up" delay={0.55} animateOnMount>
+              <p className="mt-4 text-base text-zinc-500 dark:text-zinc-500">
+                Translation: I was shipping enterprise-grade software back when
+                “vibe coding” still meant good headphones — not a good prompt.
+              </p>
+            </FadeIn>
+            <FadeIn direction="fade-up" delay={0.7} animateOnMount>
               <div className="mt-6 flex gap-6">
                 <SocialLink href="https://x.com/mike_mitrakos" aria-label="Follow on X" icon={XIcon} target="_blank" />
                 <SocialLink

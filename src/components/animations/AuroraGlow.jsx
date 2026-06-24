@@ -60,8 +60,13 @@ export function AuroraGlow({ className }) {
     return () => window.removeEventListener('pointermove', handleMove)
   }, [pointerX, pointerY, shouldReduceMotion])
 
+  // Fade the whole field to fully transparent before it reaches any edge of the
+  // box. `closest-side` sizes the ellipse to the nearest edge on each axis, so
+  // the glow dies out symmetrically instead of getting hard-clipped by
+  // `overflow-hidden`. Centered horizontally and biased slightly up to sit
+  // behind the headline.
   const edgeFade =
-    'radial-gradient(ellipse 75% 75% at 35% 35%, #000 30%, transparent 78%)'
+    'radial-gradient(closest-side at 50% 42%, #000 28%, transparent 80%)'
 
   return (
     <div
