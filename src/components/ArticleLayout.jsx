@@ -7,6 +7,7 @@ import { AppContext } from '@/app/providers'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import { formatDate } from '@/lib/formatDate'
+import { siteName, siteUrl } from '@/lib/site'
 
 function ArrowLeftIcon(props) {
   return (
@@ -31,12 +32,23 @@ export function ArticleLayout({ article, children }) {
     headline: article.title,
     datePublished: article.date,
     dateModified: article.date,
+    inLanguage: 'en-US',
     author: {
       '@type': 'Person',
       name: article.author,
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: siteName,
+      url: siteUrl,
     },
     description: article.description,
-    mainEntityOfPage: article.url,
+    image: `${siteUrl}/opengraph-image`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': article.url,
+    },
   }
 
   return (

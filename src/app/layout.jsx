@@ -47,6 +47,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Michael Mitrakos - Software designer, founder, and world traveler',
     description: siteDescription,
+    site: '@Mike_Mitrakos',
     creator: '@Mike_Mitrakos',
   },
   robots: {
@@ -67,7 +68,29 @@ const personSchema = {
   '@type': 'Person',
   name: siteName,
   jobTitle: 'Senior Software Engineer and Tech Lead',
+  description: siteDescription,
   url: siteUrl,
+  image: `${siteUrl}/opengraph-image`,
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Higglo Digital',
+    url: 'https://www.higglo.io',
+  },
+  knowsAbout: [
+    'Software Engineering',
+    'Full-Stack Web Development',
+    'Frontend Engineering',
+    'React',
+    'Next.js',
+    'JavaScript',
+    'Technical Leadership',
+  ],
+  award: [
+    'Winner — Web Design Awards',
+    'Best of Software Development 2026 — Web Design Awards',
+    'Best of Portfolio 2026 — Web Design Awards',
+    'Best of Creative Studio 2026 — Web Design Awards',
+  ],
   sameAs: [
     'https://x.com/Mike_Mitrakos',
     'https://www.instagram.com/mike_mitrakos/',
@@ -108,13 +131,11 @@ export default function RootLayout({ children }) {
             />
           </>
         )}
-        <Script
-          id="person-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <Script
-          id="website-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
