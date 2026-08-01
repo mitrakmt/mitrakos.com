@@ -335,6 +335,7 @@ export async function RevenueSection() {
       {(caveats.lifetimeIsFloor ||
         caveats.incompleteMonths.length > 0 ||
         caveats.mismatchedCurrency.length > 0 ||
+        caveats.discounted.length > 0 ||
         caveats.metered.length > 0) && (
         <ul className="mt-6 space-y-2 border-t border-zinc-100 pt-4 text-xs text-zinc-500 dark:border-zinc-700/40 dark:text-zinc-400">
           {caveats.lifetimeIsFloor && (
@@ -356,6 +357,20 @@ export async function RevenueSection() {
               {caveats.mismatchedCurrency.map((p) => p.name).join(', ')} settles
               in a different currency and is listed separately rather than
               converted, so it is excluded from the totals above.
+            </li>
+          )}
+          {caveats.discounted.length > 0 && (
+            <li>
+              {caveats.discounted
+                .map(
+                  (p) =>
+                    `${p.name} (${p.discountedSubscriptions} of ${p.activeSubscriptions})`,
+                )
+                .join(', ')}{' '}
+              — some active subscriptions carry a discount or are fully comped.
+              They are counted as subscribers, but recurring revenue is stated
+              after the discount, so a comped account adds a subscriber without
+              adding revenue.
             </li>
           )}
           {caveats.metered.length > 0 && (

@@ -146,7 +146,13 @@ function monthOf(unixSeconds) {
 }
 
 /**
- * Normalises one subscription to a monthly amount in minor units.
+ * Normalises one subscription to a monthly amount in minor units, after any
+ * coupon it carries.
+ *
+ * The discount is not optional detail. A comped account is a real, active
+ * subscription at full list price on the price object, and reading only
+ * `unit_amount` reports a customer paying nothing as though they pay list —
+ * which is how a portfolio of free accounts turns into a five-figure MRR.
  *
  * Metered and tiered prices carry no `unit_amount` — there is no recurring
  * figure to state, so they are reported as excluded rather than counted as
@@ -155,6 +161,9 @@ function monthOf(unixSeconds) {
 function monthlyValueOf(subscription) {
   let amount = 0
   let excluded = 0
+  // Coupons are applied to the invoice, so an `amount_off` has to be spread
+  // over the same period the items were normalised to.
+  let billingMonths = 1
 
   for (const item of subscription.items?.data ?? []) {
     const price = item.price
@@ -167,10 +176,23 @@ function monthlyValueOf(subscription) {
     const months =
       (MONTHS_PER_INTERVAL[recurring.interval] ?? 1) *
       (recurring.interval_count || 1)
+    billingMonths = months
     amount += (price.unit_amount * (item.quantity ?? 1)) / months
   }
 
-  return { amount, excluded }
+  // `discounts` is the newer plural form; `discount` is what this pinned API
+  // version returns. Accept either so a version bump cannot silently drop the
+  // adjustment and re-inflate the figure.
+  const coupon = (subscription.discount ?? subscription.discounts?.[0])?.coupon
+  const discounted = Boolean(coupon)
+
+  if (coupon?.percent_off) {
+    amount *= 1 - coupon.percent_off / 100
+  } else if (coupon?.amount_off) {
+    amount = Math.max(0, amount - coupon.amount_off / billingMonths)
+  }
+
+  return { amount, excluded, discounted }
 }
 
 /**
@@ -272,10 +294,12 @@ async function fetchAccount({ id: projectId, stripe }, key, months, request) {
 
   let mrr = 0
   let meteredItems = 0
+  let discountedSubscriptions = 0
   for (const subscription of subscriptions.items) {
-    const { amount, excluded } = monthlyValueOf(subscription)
+    const { amount, excluded, discounted } = monthlyValueOf(subscription)
     mrr += amount
     meteredItems += excluded
+    if (discounted) discountedSubscriptions += 1
   }
 
   return {
@@ -290,6 +314,7 @@ async function fetchAccount({ id: projectId, stripe }, key, months, request) {
     monthly: months.map((month) => byMonth.get(month)),
     mrr: Math.round(mrr),
     activeSubscriptions: subscriptions.items.length,
+    discountedSubscriptions,
     meteredItems,
     otherCurrency,
     // Lifetime is only a true lifetime if we reached the start of the account.

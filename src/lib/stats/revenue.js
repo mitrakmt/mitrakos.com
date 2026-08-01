@@ -116,6 +116,7 @@ export const getRevenue = cache(async function getRevenue() {
         change: percentChange(latest, previous),
         mrr: row.mrr,
         activeSubscriptions: row.activeSubscriptions,
+        discountedSubscriptions: row.discountedSubscriptions ?? 0,
         meteredItems: row.meteredItems ?? 0,
         otherCurrency: row.otherCurrency ?? 0,
         lifetimeComplete: row.lifetimeComplete !== false,
@@ -169,6 +170,12 @@ export const getRevenue = cache(async function getRevenue() {
       incompleteMonths: counted.filter((project) => !project.monthlyComplete),
       mismatchedCurrency: projects.filter((project) => project.currencyMismatch),
       metered: counted.filter((project) => project.meteredItems > 0),
+      // A roster of comped accounts is a real subscriber count and a near-zero
+      // recurring figure at the same time. Saying so is the only way the two
+      // numbers read as consistent rather than as one of them being wrong.
+      discounted: counted.filter(
+        (project) => project.discountedSubscriptions > 0,
+      ),
       unpublished: projects.filter((project) => !project.connected),
     },
     totals: {
