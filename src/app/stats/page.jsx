@@ -149,11 +149,22 @@ export default async function Stats() {
       <FadeIn direction="fade-up" className="mt-16 sm:mt-20">
         <Section title={`All ${totals.projectCount} projects`}>
           <p className="mt-2 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
-            Ranked by lifetime visitors. {totals.measuredProjectCount} of{' '}
-            {totals.projectCount} recorded traffic in the last three months
+            Ranked by lifetime visitors. {totals.measuredProjectCount} of the{' '}
+            {totals.gaProjectCount} tracked in Google Analytics recorded
+            traffic in the last three months
             {totals.gappedProjectCount > 0 &&
               `, and ${totals.gappedProjectCount} is currently unmeasured`}
             .
+            {totals.externalProjectCount > 0 && (
+              <>
+                {' '}
+                The remaining {totals.externalProjectCount === 1
+                  ? 'one is'
+                  : `${totals.externalProjectCount} are`}{' '}
+                measured elsewhere and listed last, since a figure that is not
+                a lifetime visitor count has no place in that ranking.
+              </>
+            )}
           </p>
           <ProjectStatsList
             projects={stats.projects}
@@ -182,6 +193,20 @@ export default async function Stats() {
                         {footnote.gap.reason}. Lifetime totals are unaffected;
                         monthly figures from that date are withheld rather than
                         reported as a decline.
+                        {footnote.note ? ' ' : ''}
+                      </>
+                    )}
+                    {footnote.external && (
+                      <>
+                        measured by the {footnote.external.source} rather than
+                        Google Analytics, because an extension runs in the
+                        browser rather than on a site. {' '}
+                        {formatNumber(footnote.external.users)}{' '}
+                        {footnote.external.metric} as of{' '}
+                        {formatDay(footnote.external.asOf)} — a current
+                        headcount, not a cumulative total, so it is listed
+                        separately and is not added to the lifetime visitor or
+                        page-view figures above.
                         {footnote.note ? ' ' : ''}
                       </>
                     )}
@@ -233,8 +258,11 @@ export default async function Stats() {
                 the Analytics Data API. One figure is not GA&apos;s: the
                 audience InitJS built on Medium before the site had analytics
                 of its own, which is added once to its lifetime page views and
-                marked in the table. Nothing else on this page is entered by
-                hand, and no figure is adjusted after it is read.
+                marked in the table. The Chrome extension is not a website and
+                has no GA property at all — its audience is the Chrome Web
+                Store&apos;s own weekly figure, listed separately and excluded
+                from every total on this page. Nothing else is entered by hand,
+                and no figure is adjusted after it is read.
               </dd>
             </div>
             <div>

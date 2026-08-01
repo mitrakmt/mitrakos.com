@@ -138,29 +138,49 @@ export function ProjectStatsList({
                   {project.description}
                 </p>
               </th>
-              <td className="px-4 py-4">
-                <Sparkline
-                  id={project.id}
-                  data={project.reliable}
-                  dormant={project.dormant || project.gapped}
-                  className="h-7 w-24"
-                />
-              </td>
-              <td className="px-4 py-4 text-right">
-                <div className="flex items-center justify-end gap-2">
-                  <LatestCell
-                    project={project}
-                    className="font-medium text-zinc-800 dark:text-zinc-100"
-                  />
-                  {!project.dormant && <ChangeBadge change={project.change} />}
-                </div>
-              </td>
-              <td className="px-4 py-4 text-right font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
-                {formatNumber(project.lifetime.users)}
-              </td>
-              <td className="py-4 pl-4 text-right text-zinc-500 tabular-nums dark:text-zinc-400">
-                {formatNumber(project.lifetime.pageViews)}
-              </td>
+              {project.isExternal ? (
+                // The GA columns mean specific things — a 12-month trend, a
+                // month's visitors, a lifetime total. None of them are what a
+                // weekly headcount is, so the figure is stated in its own
+                // words across the row instead of being dropped into a column
+                // whose header would mislabel it.
+                <td colSpan={4} className="px-4 py-4 text-left">
+                  <span className="font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
+                    {formatNumber(project.external.users)}
+                  </span>{' '}
+                  <span className="text-zinc-500 dark:text-zinc-400">
+                    {project.external.metric} · {project.external.source}
+                  </span>
+                </td>
+              ) : (
+                <>
+                  <td className="px-4 py-4">
+                    <Sparkline
+                      id={project.id}
+                      data={project.reliable}
+                      dormant={project.dormant || project.gapped}
+                      className="h-7 w-24"
+                    />
+                  </td>
+                  <td className="px-4 py-4 text-right">
+                    <div className="flex items-center justify-end gap-2">
+                      <LatestCell
+                        project={project}
+                        className="font-medium text-zinc-800 dark:text-zinc-100"
+                      />
+                      {!project.dormant && (
+                        <ChangeBadge change={project.change} />
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-4 py-4 text-right font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
+                    {formatNumber(project.lifetime.users)}
+                  </td>
+                  <td className="py-4 pl-4 text-right text-zinc-500 tabular-nums dark:text-zinc-400">
+                    {formatNumber(project.lifetime.pageViews)}
+                  </td>
+                </>
+              )}
             </tr>
           ))}
         </tbody>
@@ -186,39 +206,58 @@ export function ProjectStatsList({
               <CategoryBadge category={project.category} />
             </div>
 
-            <Sparkline
-              id={`m-${project.id}`}
-              data={project.reliable}
-              dormant={project.dormant || project.gapped}
-              className="mt-4 h-8 w-full"
-            />
-
-            <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-zinc-100 pt-3 text-sm dark:border-zinc-700/40">
-              <div>
+            {project.isExternal ? (
+              <dl className="mt-4 border-t border-zinc-100 pt-3 text-sm dark:border-zinc-700/40">
                 <dt className="text-xs text-zinc-500 dark:text-zinc-400">
-                  {formatMonth(latestMonth, { short: true })}
+                  {project.external.metric} · {project.external.source}
                 </dt>
-                <dd className="mt-0.5 flex items-center gap-1.5">
-                  <LatestCell
-                    project={project}
-                    className="font-medium text-zinc-800 dark:text-zinc-100"
-                  />
-                  {!project.dormant && <ChangeBadge change={project.change} />}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs text-zinc-500 dark:text-zinc-400">Visitors</dt>
                 <dd className="mt-0.5 font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
-                  {formatNumber(project.lifetime.users)}
+                  {formatNumber(project.external.users)}
                 </dd>
-              </div>
-              <div>
-                <dt className="text-xs text-zinc-500 dark:text-zinc-400">Views</dt>
-                <dd className="mt-0.5 font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
-                  {formatNumber(project.lifetime.pageViews)}
-                </dd>
-              </div>
-            </dl>
+              </dl>
+            ) : (
+              <>
+                <Sparkline
+                  id={`m-${project.id}`}
+                  data={project.reliable}
+                  dormant={project.dormant || project.gapped}
+                  className="mt-4 h-8 w-full"
+                />
+
+                <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-zinc-100 pt-3 text-sm dark:border-zinc-700/40">
+                  <div>
+                    <dt className="text-xs text-zinc-500 dark:text-zinc-400">
+                      {formatMonth(latestMonth, { short: true })}
+                    </dt>
+                    <dd className="mt-0.5 flex items-center gap-1.5">
+                      <LatestCell
+                        project={project}
+                        className="font-medium text-zinc-800 dark:text-zinc-100"
+                      />
+                      {!project.dormant && (
+                        <ChangeBadge change={project.change} />
+                      )}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs text-zinc-500 dark:text-zinc-400">
+                      Visitors
+                    </dt>
+                    <dd className="mt-0.5 font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
+                      {formatNumber(project.lifetime.users)}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs text-zinc-500 dark:text-zinc-400">
+                      Views
+                    </dt>
+                    <dd className="mt-0.5 font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
+                      {formatNumber(project.lifetime.pageViews)}
+                    </dd>
+                  </div>
+                </dl>
+              </>
+            )}
           </li>
         ))}
       </ul>

@@ -57,6 +57,27 @@ export const trackedProjects = [
     stripe: { accountId: 'acct_1MRLRMEPO2m8KS3J' },
   },
   {
+    id: 'wanderlust-extension',
+    name: 'Wanderlust Chrome Extension',
+    description: 'Beautiful places on every new tab, as a browser extension.',
+    category: 'Product',
+    url: 'https://chromewebstore.google.com/detail/wanderlust-new-tab/eengninahgaajcfgddamfpbjhcoghdbj',
+    // No GA property, deliberately: an extension runs in the browser's new tab
+    // rather than on a site, so there are no page views or sessions to report
+    // and no monthly series to draw. The Chrome Web Store publishes one
+    // figure — weekly active users — which is a current headcount rather than
+    // a cumulative total. It is shown on its own terms, sorted below the
+    // measured projects, and kept out of the site-wide visitor and page-view
+    // totals: adding a weekly headcount to lifetime visitors would be adding
+    // two numbers that do not mean the same thing.
+    external: {
+      users: 12114,
+      metric: 'weekly active users',
+      source: 'Chrome Web Store',
+      asOf: '2026-08-01',
+    },
+  },
+  {
     id: 'web-design-awards',
     propertyId: '401977647',
     name: 'Web Design Awards',
@@ -157,6 +178,10 @@ export const trackedProjects = [
   },
 ]
 
+// Externally-measured projects carry no GA property, so they are skipped
+// rather than registered under an `undefined` key that would collide.
 export const projectsByPropertyId = new Map(
-  trackedProjects.map((project) => [project.propertyId, project]),
+  trackedProjects
+    .filter((project) => project.propertyId)
+    .map((project) => [project.propertyId, project]),
 )

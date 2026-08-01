@@ -74,7 +74,7 @@ export const getStats = cache(async function getStats() {
   const report = await loadReport()
   const { months } = report
 
-  const projects = report.projects
+  const measured = report.projects
     .map((row) => {
       const project = projectsByPropertyId.get(row.propertyId)
       if (!project) return null
@@ -129,13 +129,26 @@ export const getStats = cache(async function getStats() {
     .filter(Boolean)
     .sort((a, b) => b.lifetime.users - a.lifetime.users)
 
+  // Projects measured somewhere other than GA — currently the Chrome
+  // extension, whose audience the Web Store reports as a weekly headcount.
+  // They are appended rather than ranked in: the table is ordered by lifetime
+  // visitors, and a figure that is not a lifetime visitor count has no
+  // position in that order.
+  const external = trackedProjects
+    .filter((project) => project.external)
+    .map((project) => ({ ...project, isExternal: true }))
+    .sort((a, b) => b.external.users - a.external.users)
+
+  const projects = [...measured, ...external]
+
   // Site-wide monthly totals: index i is the sum across every project for
   // months[i]. Projects contribute nothing once their tracking gap starts, so
-  // a broken tag never reads as an audience decline.
+  // a broken tag never reads as an audience decline. Externally-measured
+  // projects have no monthly series and contribute nothing at all.
   const monthlySeries = months.map((month, index) => ({
     month,
     users: sum(
-      projects.map((project) =>
+      measured.map((project) =>
         project.gapped && index >= project.gapFrom
           ? 0
           : (project.monthly[index] ?? 0),
@@ -156,11 +169,18 @@ export const getStats = cache(async function getStats() {
     monthlySeries,
     // Everything the page has to disclose, in the order it should be read.
     footnotes: projects
-      .filter((project) => project.note || project.gapped || project.baseline)
+      .filter(
+        (project) =>
+          project.note ||
+          project.gapped ||
+          project.baseline ||
+          project.isExternal,
+      )
       .map((project) => ({
         id: project.id,
         name: project.name,
         gap: project.gapped ? project.trackingGap : null,
+        external: project.isExternal ? project.external : null,
         // Carries the measured figure alongside it so the footnote can show
         // the split rather than just admitting one exists.
         baseline: project.baseline
@@ -169,17 +189,23 @@ export const getStats = cache(async function getStats() {
         note: project.note ?? null,
       })),
     totals: {
-      lifetimeUsers: sum(projects.map((p) => p.lifetime.users)),
-      lifetimePageViews: sum(projects.map((p) => p.lifetime.pageViews)),
-      lifetimeSessions: sum(projects.map((p) => p.lifetime.sessions)),
+      // Every lifetime figure below is Google Analytics' alone. The Chrome
+      // extension's weekly headcount is deliberately absent: it would inflate
+      // a visitor total with a number that counts something else.
+      lifetimeUsers: sum(measured.map((p) => p.lifetime.users)),
+      lifetimePageViews: sum(measured.map((p) => p.lifetime.pageViews)),
+      lifetimeSessions: sum(measured.map((p) => p.lifetime.sessions)),
       monthlyUsers: latestMonthUsers,
       monthlyChange: percentChange(latestMonthUsers, previousMonthUsers),
       trailingYearUsers: sum(monthlySeries.map((point) => point.users)),
       projectCount: projects.length,
-      measuredProjectCount: projects.filter(
+      gaProjectCount: measured.length,
+      externalProjectCount: external.length,
+      externalUsers: sum(external.map((p) => p.external.users)),
+      measuredProjectCount: measured.filter(
         (project) => !project.dormant && !project.gapped,
       ).length,
-      gappedProjectCount: projects.filter((project) => project.gapped).length,
+      gappedProjectCount: measured.filter((project) => project.gapped).length,
     },
   }
 })
