@@ -71,6 +71,16 @@
       "propertyId": "509093508",
       "lifetime": { "users": 853, "pageViews": 1443, "sessions": 1090 },
       "monthly": [0, 0, 33, 9, 70, 71, 47, 85, 78, 140, 89, 237]
+    },
+    {
+      "propertyId": "543855806",
+      "lifetime": { "users": 426, "pageViews": 456, "sessions": 433 },
+      "monthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 426]
+    },
+    {
+      "propertyId": "539861168",
+      "lifetime": { "users": 246, "pageViews": 627, "sessions": 320 },
+      "monthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90, 156]
     }
   ]
 }

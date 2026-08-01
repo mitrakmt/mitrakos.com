@@ -127,6 +127,23 @@ export const trackedProjects = [
     url: 'https://www.outlinkai.com',
     stripe: { accountId: 'acct_1Thn79JdsVSzFiEO' },
   },
+  {
+    id: 'initjs',
+    propertyId: '543855806',
+    name: 'InitJS',
+    description: 'Teaching JavaScript to over 400,000 readers.',
+    category: 'Content',
+    url: 'https://www.initjs.org',
+  },
+  {
+    id: 'hireaiscore',
+    propertyId: '539861168',
+    name: 'HireAIScore',
+    description: 'AI-powered candidate scoring and hiring intelligence.',
+    category: 'Product',
+    url: 'https://www.hireaiscore.com',
+    stripe: { accountId: 'acct_1TuBx9JfgFYJrwum' }
+  },
 ]
 
 export const projectsByPropertyId = new Map(
