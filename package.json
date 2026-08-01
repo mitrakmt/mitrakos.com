@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "stats:refresh": "node scripts/refresh-stats.mjs"
+    "stats:refresh": "node scripts/refresh-stats.mjs",
+    "revenue:refresh": "node scripts/refresh-revenue.mjs"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {

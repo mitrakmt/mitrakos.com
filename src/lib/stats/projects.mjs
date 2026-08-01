@@ -8,13 +8,26 @@
  *
  * To add a project: create/locate its GA4 property, add an entry below, then
  * run `npm run stats:refresh`.
+ *
+ * `stripe.accountId` opts a project into the published revenue figures and
+ * names the account those figures must come from. Its key is looked up by
+ * project id in STRIPE_RESTRICTED_KEYS, and a key resolving to any other
+ * account is rejected rather than published under the wrong name. Omit the
+ * field entirely and the project's revenue is simply not published — which is
+ * rendered as "not published", never as $0.
+ *
+ * One account per project: revenue is attributed by account, so two projects
+ * sharing a Stripe account would each be credited with the whole of it.
+ * Splitting one account across projects needs product-level attribution, which
+ * this does not do.
  */
 export const trackedProjects = [
   {
     id: 'lives-of-the-saints',
     propertyId: '330297200',
     name: 'Lives of the Saints Calendar',
-    description: 'Daily Orthodox saints calendar, readings, and print editions.',
+    description:
+      'Daily Orthodox saints calendar, readings, and print editions.',
     category: 'Content',
     url: 'https://www.livesofthesaintscalendar.com',
     // The GA tag stopped firing on 8 Jun 2026 — daily users went from ~200 to
@@ -41,6 +54,7 @@ export const trackedProjects = [
     description: 'Beautiful places on your new tab page.',
     category: 'Product',
     url: 'https://www.wanderlustapp.io',
+    stripe: { accountId: 'acct_1MRLRMEPO2m8KS3J' },
   },
   {
     id: 'web-design-awards',
@@ -49,13 +63,15 @@ export const trackedProjects = [
     description: 'Recognizing the best of the web.',
     category: 'Product',
     url: 'https://www.webdesignawards.io',
+    stripe: { accountId: 'acct_1MRLzyBzDx2evTOq' },
     note: 'July 2026 includes a large volume of unverified direct traffic, concentrated in a small number of regions and averaging under 5% engagement. Engaged-visitor figures available on request.',
   },
   {
     id: 'higglo',
     propertyId: '347428937',
     name: 'Higglo Digital',
-    description: 'Memorable brand experiences, SEO, and award-winning websites.',
+    description:
+      'Memorable brand experiences, SEO, and award-winning websites.',
     category: 'Agency',
     url: 'https://www.higglo.io',
   },
@@ -66,6 +82,7 @@ export const trackedProjects = [
     description: 'Elite ice hockey training, resources, and community.',
     category: 'Product',
     url: 'https://www.elitehockeyhq.com',
+    stripe: { accountId: 'acct_1RxMQoLaWreVvtrK' },
   },
   {
     id: 'enhl',
@@ -82,6 +99,7 @@ export const trackedProjects = [
     description: 'Sustainability certification platform for businesses.',
     category: 'Product',
     url: 'https://www.verdacert.com',
+    stripe: { accountId: 'acct_1TVvkZJqfe0ICXlq' },
   },
   {
     id: 'aba-rank',
@@ -98,6 +116,7 @@ export const trackedProjects = [
     description: 'Early-stage job discovery for engineers.',
     category: 'Product',
     url: 'https://www.landearly.com',
+    stripe: { accountId: 'acct_1ThnLLJdbnqJNEMK' },
   },
   {
     id: 'outlink-ai',
@@ -106,6 +125,7 @@ export const trackedProjects = [
     description: 'AI-assisted link building and outreach.',
     category: 'Product',
     url: 'https://www.outlinkai.com',
+    stripe: { accountId: 'acct_1Thn79JdsVSzFiEO' },
   },
 ]
 

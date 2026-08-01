@@ -63,6 +63,56 @@ Rewrites `stats-snapshot.json` from GA and prints the new totals. Commit the
 result. Worth running whenever you add a project, and periodically if you skip
 the live setup.
 
+## Public revenue
+
+`/stats` also publishes net revenue per project, read from Stripe. It follows
+the same shape as the traffic numbers: a committed snapshot renders by default,
+and live keys upgrade it to a direct read.
+
+- **Which projects publish revenue** — a `stripe: { accountId }` entry on the
+  project in `src/lib/stats/projects.mjs`. Projects without one render as
+  **not published**, never as `$0`; the two are different claims and only one
+  of them would be true.
+- **The numbers** — `src/data/revenue-snapshot.json`, in minor units (cents).
+
+Revenue is attributed **per Stripe account**, so each project needs its own
+account. Two projects sharing one account would each be credited with all of
+it — splitting a single account across projects would need product-level
+attribution, which this does not do.
+
+### Connecting an account
+
+1. In the Stripe Dashboard for that account, create a **restricted key** with
+   read access to **Balance transactions**, **Subscriptions**, and **Account**.
+   Nothing else is needed, and nothing write-scoped should be granted.
+2. Add the project's `stripe.accountId` in `projects.mjs`. A key that resolves
+   to any other account is rejected rather than published under the wrong
+   project's name.
+3. Set the keys as a JSON object keyed by project id:
+
+```
+STRIPE_RESTRICTED_KEYS='{"wanderlust":"rk_live_...","verdacert":"rk_live_..."}'
+```
+
+Raw JSON locally, base64 on Vercel (`base64 -i keys.json | pbcopy`), matching
+how `GA_SERVICE_ACCOUNT_KEY` is handled. If the variable is missing or any
+account fails, the page falls back to the snapshot rather than publishing a
+total that silently omits an account.
+
+> The Stripe CLI's own key in `~/.config/stripe/config.toml` is not usable
+> here — it is machine-local and expires every 90 days. Use a Dashboard
+> restricted key.
+
+### Refreshing the snapshot
+
+```bash
+npm run revenue:refresh
+```
+
+Rewrites `revenue-snapshot.json` and prints lifetime net, latest month, and MRR
+per account, warning if any account's history was too long to read in full.
+Commit the result.
+
 ## License
 
 This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).

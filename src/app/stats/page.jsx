@@ -1,6 +1,7 @@
 import { Container } from '@/components/Container'
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations'
 import { ProjectStatsList } from '@/components/stats/ProjectStatsList'
+import { RevenueSection } from '@/components/stats/RevenueSection'
 import { StatTile } from '@/components/stats/StatTile'
 import { TrendChart } from '@/components/stats/TrendChart'
 import {
@@ -10,6 +11,7 @@ import {
   formatNumber,
   getStats,
 } from '@/lib/stats'
+import { getRevenue } from '@/lib/stats/revenue'
 import { pageMetadata } from '@/lib/site'
 
 // Rebuild hourly so the published numbers track Google Analytics without a
@@ -19,7 +21,7 @@ export const revalidate = 3600
 export const metadata = pageMetadata({
   title: 'Stats',
   description:
-    'Public traction dashboard for every project built by Michael Mitrakos — monthly visitors, lifetime users, and page views, straight from Google Analytics.',
+    'Public traction dashboard for every project built by Michael Mitrakos — monthly visitors, lifetime users, and page views straight from Google Analytics, plus net revenue per project straight from Stripe.',
   path: '/stats',
 })
 
@@ -35,7 +37,8 @@ function Section({ title, children, className }) {
 }
 
 export default async function Stats() {
-  const stats = await getStats()
+  // Both are cached per request, so RevenueSection below shares this fetch.
+  const [stats, revenue] = await Promise.all([getStats(), getRevenue()])
   const { totals } = stats
 
   const footnoteNumbers = new Map(
@@ -48,12 +51,16 @@ export default async function Stats() {
   const caveated = stats.footnotes.find((footnote) => footnote.note)
   const caveatNumber = caveated ? footnoteNumbers.get(caveated.id) : null
 
-  const updated = new Date(stats.generatedAt).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: 'UTC',
-  })
+  const asDate = (iso) =>
+    new Date(iso).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'UTC',
+    })
+
+  const updated = asDate(stats.generatedAt)
+  const revenueUpdated = asDate(revenue.generatedAt)
 
   return (
     <Container className="mt-16 sm:mt-32">
@@ -66,9 +73,10 @@ export default async function Stats() {
         <FadeIn direction="fade-up" delay={0.1}>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             Most portfolios show you the screenshots. This one shows you the
-            traffic. Every project I run is tracked in Google Analytics, and
-            every one of those numbers is on this page — the ones that took off
-            and the ones that quietly flatlined.
+            traffic and the money. Every project I run is tracked in Google
+            Analytics, and the ones that take payments are read straight from
+            Stripe — the ones that took off, the ones that quietly flatlined,
+            and exactly what each has earned after fees.
           </p>
         </FadeIn>
         <FadeIn direction="fade-up" delay={0.15}>
@@ -187,6 +195,12 @@ export default async function Stats() {
       </FadeIn>
 
       <FadeIn direction="fade-up" className="mt-16 sm:mt-20">
+        <Section title="Revenue">
+          <RevenueSection />
+        </Section>
+      </FadeIn>
+
+      <FadeIn direction="fade-up" className="mt-16 sm:mt-20">
         <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
           <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             Methodology
@@ -239,6 +253,54 @@ export default async function Stats() {
             </div>
             <div>
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
+                Where the revenue comes from
+              </dt>
+              <dd className="mt-1">
+                Stripe, one account per project, read directly from the Balance
+                Transactions API — the same ledger the payouts are made from,
+                not a sales figure typed in by hand.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-medium text-zinc-800 dark:text-zinc-200">
+                What &ldquo;net revenue&rdquo; means
+              </dt>
+              <dd className="mt-1">
+                Everything charged, minus refunds, chargebacks, and every fee
+                Stripe takes — in other words what actually reached the bank,
+                not what was billed. Gross is shown alongside it so the
+                difference is visible rather than assumed. Figures are cash
+                received in the month it settled, not accrual accounting, and
+                they are before tax and before any other cost of running the
+                project.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-medium text-zinc-800 dark:text-zinc-200">
+                Recurring revenue
+              </dt>
+              <dd className="mt-1">
+                The monthly value of currently active subscriptions, with annual
+                plans divided across twelve months. It is a snapshot of what is
+                billing today, not a forecast, and it excludes usage-based
+                pricing that has no fixed monthly amount.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-medium text-zinc-800 dark:text-zinc-200">
+                Projects with no revenue figure
+              </dt>
+              <dd className="mt-1">
+                A project marked <em>not published</em> has no Stripe account
+                connected to this page. That is not a claim that it earned
+                nothing — some take no payments at all, and others are billed
+                through arrangements I have not made public. Where a figure is
+                published it is complete for that project; nothing is netted off
+                or left out to make it look better.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 Traffic quality
               </dt>
               <dd className="mt-1">
@@ -252,7 +314,8 @@ export default async function Stats() {
             </div>
           </dl>
           <p className="mt-6 border-t border-zinc-100 pt-4 text-xs text-zinc-500 dark:border-zinc-700/40 dark:text-zinc-500">
-            Data refreshed {updated} from {stats.source}. Press enquiries:{' '}
+            Traffic refreshed {updated} from {stats.source}; revenue refreshed{' '}
+            {revenueUpdated} from {revenue.source}. Press enquiries:{' '}
             <a
               href="mailto:mike@higglo.io"
               className="font-medium text-teal-500 transition-colors duration-200 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300"

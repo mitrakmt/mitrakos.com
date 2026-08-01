@@ -12,14 +12,23 @@ function niceMax(value) {
 }
 
 /**
- * Monthly visitors across every tracked project.
+ * A monthly series across every tracked project.
  *
  * CSS-sized bars rather than an SVG plot: the labels stay crisp text, the
  * layout reflows without recomputing geometry, and hover states are ordinary
  * CSS. Four gridlines carry the scale.
+ *
+ * Defaults render monthly visitors; `valueKey` and the two formatters let the
+ * revenue series reuse it rather than fork a second chart that would drift.
  */
-export function TrendChart({ series }) {
-  const max = niceMax(Math.max(...series.map((point) => point.users)))
+export function TrendChart({
+  series,
+  valueKey = 'users',
+  formatValue = formatNumber,
+  formatAxis = formatCompact,
+  label = 'Monthly visitors',
+}) {
+  const max = niceMax(Math.max(...series.map((point) => point[valueKey])))
   const gridlines = [1, 0.75, 0.5, 0.25, 0]
 
   return (
@@ -33,7 +42,7 @@ export function TrendChart({ series }) {
               style={{ top: `${(1 - fraction) * 100}%` }}
               className="absolute right-0 -translate-y-1/2 text-xs tabular-nums text-zinc-400 dark:text-zinc-500"
             >
-              {formatCompact(Math.round(max * fraction))}
+              {formatAxis(Math.round(max * fraction))}
             </span>
           ))}
           <span className="absolute right-0 bottom-0 translate-y-1/2 text-xs tabular-nums text-zinc-400 dark:text-zinc-500">
@@ -55,7 +64,10 @@ export function TrendChart({ series }) {
 
           <div className="relative flex h-56 items-end gap-1 sm:gap-2">
             {series.map((point) => {
-              const height = (point.users / max) * 100
+              // A month can go negative once refunds outweigh charges. It
+              // bottoms out as a sliver rather than inverting the bar; the
+              // tooltip still reports the real figure.
+              const height = (point[valueKey] / max) * 100
               return (
                 <div
                   key={point.month}
@@ -67,7 +79,7 @@ export function TrendChart({ series }) {
                   />
                   <div className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 scale-95 rounded-lg bg-zinc-900 px-2.5 py-1.5 text-center opacity-0 shadow-lg transition-all duration-150 group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-100">
                     <span className="block text-sm font-semibold whitespace-nowrap text-white tabular-nums dark:text-zinc-900">
-                      {formatNumber(point.users)}
+                      {formatValue(point[valueKey])}
                     </span>
                     <span className="block text-xs whitespace-nowrap text-zinc-400 dark:text-zinc-500">
                       {formatMonth(point.month)}
@@ -95,9 +107,12 @@ export function TrendChart({ series }) {
       </div>
 
       <p className="sr-only">
-        Monthly visitors:{' '}
+        {label}:{' '}
         {series
-          .map((point) => `${formatMonth(point.month)}: ${formatNumber(point.users)}`)
+          .map(
+            (point) =>
+              `${formatMonth(point.month)}: ${formatValue(point[valueKey])}`,
+          )
           .join('; ')}
         .
       </p>
