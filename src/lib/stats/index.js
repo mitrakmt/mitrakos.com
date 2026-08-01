@@ -26,6 +26,30 @@ async function loadReport() {
     const live = await fetchStatsFromGa(
       trackedProjects.map((project) => project.propertyId),
     )
+
+    // A per-property read can fail on its own (access not granted, property
+    // deleted) without failing the batch, so a valid key with missing GA
+    // permissions would otherwise publish a page with most projects silently
+    // gone and the totals quietly wrong. Partial coverage is treated as a
+    // failed fetch: better a slightly stale snapshot than understated numbers
+    // on a page the press is reading.
+    const expected = trackedProjects.length
+    if (live.projects.length < Math.ceil(expected / 2)) {
+      console.error(
+        `[stats] only ${live.projects.length}/${expected} properties returned data — ` +
+          'falling back to snapshot. Check the service account has Viewer ' +
+          'access on every property in projects.mjs.',
+      )
+      return { ...snapshot, live: false }
+    }
+
+    if (live.projects.length < expected) {
+      console.warn(
+        `[stats] ${expected - live.projects.length} of ${expected} properties ` +
+          'returned no data; publishing the rest live.',
+      )
+    }
+
     return { ...live, live: true }
   } catch (error) {
     console.error('[stats] falling back to snapshot:', error.message)
