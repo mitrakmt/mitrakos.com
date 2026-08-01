@@ -134,6 +134,17 @@ export const trackedProjects = [
     description: 'Teaching JavaScript to over 400,000 readers.',
     category: 'Content',
     url: 'https://www.initjs.org',
+    // The audience InitJS built on Medium before the site had analytics of
+    // its own. A fixed historical figure: it is added once to the lifetime
+    // total and never moves again — every month from July 2026 onward is GA's
+    // and grows on top of it. Medium reports views rather than unique
+    // readers, so it lands in page views; counting it as visitors would claim
+    // 402,532 distinct people, which the source does not support.
+    baseline: {
+      pageViews: 402532,
+      source: 'Medium',
+      reason: 'published on Medium before the site had its own analytics',
+    },
   },
   {
     id: 'hireaiscore',

@@ -192,10 +192,13 @@ export async function TractionSection() {
               to carry the same disclosure rather than only the flattering half. */}
           {stats.footnotes.length > 0 && (
             <p className="mt-3 px-3 text-xs text-zinc-500 dark:text-zinc-500">
+              {/* Deliberately not enumerating the reasons: the previous copy
+                  named them, and silently stopped being true the moment a
+                  third note was added. */}
               {stats.footnotes.length === 1
                 ? 'One project carries a data-quality note'
-                : `${stats.footnotes.length} projects carry data-quality notes`}{' '}
-              — unverified traffic and a tracking gap.{' '}
+                : `${stats.footnotes.length} projects carry data-quality notes`}
+              .{' '}
               <Link
                 href="/stats"
                 className="font-medium text-teal-600 hover:underline dark:text-teal-400"

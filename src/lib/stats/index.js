@@ -97,9 +97,23 @@ export const getStats = cache(async function getStats() {
       const previous = gapped ? null : (monthly.at(-2) ?? 0)
       const trailing = monthly.slice(-DORMANT_AFTER_MONTHS)
 
+      // A pre-analytics baseline is added to the lifetime totals only. It is
+      // history, not activity: letting it touch the monthly series would
+      // invent traffic in months it never happened, and letting it touch the
+      // trend would show a project growing when it is merely being counted.
+      const baseline = project.baseline
+      const lifetime = baseline
+        ? {
+            users: row.lifetime.users + (baseline.users ?? 0),
+            pageViews: row.lifetime.pageViews + (baseline.pageViews ?? 0),
+            sessions: row.lifetime.sessions + (baseline.sessions ?? 0),
+          }
+        : row.lifetime
+
       return {
         ...project,
-        lifetime: row.lifetime,
+        lifetime,
+        measured: row.lifetime,
         monthly,
         reliable,
         gapped,
@@ -142,11 +156,16 @@ export const getStats = cache(async function getStats() {
     monthlySeries,
     // Everything the page has to disclose, in the order it should be read.
     footnotes: projects
-      .filter((project) => project.note || project.gapped)
+      .filter((project) => project.note || project.gapped || project.baseline)
       .map((project) => ({
         id: project.id,
         name: project.name,
         gap: project.gapped ? project.trackingGap : null,
+        // Carries the measured figure alongside it so the footnote can show
+        // the split rather than just admitting one exists.
+        baseline: project.baseline
+          ? { ...project.baseline, measured: project.measured }
+          : null,
         note: project.note ?? null,
       })),
     totals: {

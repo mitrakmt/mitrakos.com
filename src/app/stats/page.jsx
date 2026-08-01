@@ -185,6 +185,24 @@ export default async function Stats() {
                         {footnote.note ? ' ' : ''}
                       </>
                     )}
+                    {footnote.baseline && (
+                      <>
+                        {formatNumber(footnote.baseline.pageViews)} of the
+                        lifetime page views were earned on{' '}
+                        {footnote.baseline.source} —{' '}
+                        {footnote.baseline.reason}. That figure is fixed and
+                        counted once; the{' '}
+                        {formatNumber(footnote.baseline.measured.pageViews)}{' '}
+                        views and{' '}
+                        {formatNumber(footnote.baseline.measured.users)}{' '}
+                        visitors measured since are Google Analytics&apos;, and
+                        only those appear in the monthly figures and the trend.
+                        Because {footnote.baseline.source} reports views rather
+                        than unique readers, it is counted in page views only
+                        and adds nothing to the visitor totals.
+                        {footnote.note ? ' ' : ''}
+                      </>
+                    )}
                     {footnote.note}
                   </span>
                 </li>
@@ -212,7 +230,11 @@ export default async function Stats() {
               </dt>
               <dd className="mt-1">
                 Google Analytics 4, one property per project, read directly via
-                the Analytics Data API. Nothing on this page is entered by hand.
+                the Analytics Data API. One figure is not GA&apos;s: the
+                audience InitJS built on Medium before the site had analytics
+                of its own, which is added once to its lifetime page views and
+                marked in the table. Nothing else on this page is entered by
+                hand, and no figure is adjusted after it is read.
               </dd>
             </div>
             <div>
