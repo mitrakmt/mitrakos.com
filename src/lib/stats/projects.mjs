@@ -92,14 +92,6 @@ export const trackedProjects = [
     url: 'https://www.abarank.com',
   },
   {
-    id: 'mitrakos',
-    propertyId: '470989602',
-    name: 'mitrakos.com',
-    description: 'This site — writing, projects, and engineering notes.',
-    category: 'Content',
-    url: 'https://www.mitrakos.com',
-  },
-  {
     id: 'landearly',
     propertyId: '543873379',
     name: 'LandEarly',

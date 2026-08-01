@@ -63,11 +63,6 @@
       "monthly": [0, 0, 0, 0, 0, 0, 0, 0, 41, 311, 497, 1032]
     },
     {
-      "propertyId": "470989602",
-      "lifetime": { "users": 1621, "pageViews": 3022, "sessions": 1755 },
-      "monthly": [504, 43, 97, 69, 50, 62, 74, 60, 23, 21, 130, 88]
-    },
-    {
       "propertyId": "543873379",
       "lifetime": { "users": 1079, "pageViews": 4023, "sessions": 1557 },
       "monthly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1078]
