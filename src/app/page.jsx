@@ -22,6 +22,7 @@ import {
   AuroraGlow,
   ScrollProgress,
 } from '@/components/animations'
+import { TractionSection } from '@/components/stats/TractionSection'
 import logoHigglo from '@/images/logos/higglo_digital.jpg'
 import logoLively from '@/images/logos/livelyvideo.png'
 import logoItalic from '@/images/logos/italic.png'
@@ -33,6 +34,9 @@ import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
+
+// Matches /stats so the traction numbers on both pages refresh together.
+export const revalidate = 3600
 
 export const metadata = {
   title: 'Home',
@@ -343,6 +347,7 @@ export default async function Home() {
         </div>
       </Container>
       <Photos />
+      <TractionSection />
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <StaggerContainer className="flex flex-col gap-16" staggerDelay={0.12}>

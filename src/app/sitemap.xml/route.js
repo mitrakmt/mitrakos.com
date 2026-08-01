@@ -31,6 +31,11 @@ const staticPages = [
     priority: '0.8',
   },
   {
+    path: '/stats',
+    changefreq: 'daily',
+    priority: '0.8',
+  },
+  {
     path: '/technology',
     changefreq: 'monthly',
     priority: '0.6',
