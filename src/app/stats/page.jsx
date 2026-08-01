@@ -149,9 +149,11 @@ export default async function Stats() {
       <FadeIn direction="fade-up" className="mt-16 sm:mt-20">
         <Section title={`All ${totals.projectCount} projects`}>
           <p className="mt-2 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
-            Ranked by lifetime visitors. {totals.measuredProjectCount} of the{' '}
-            {totals.gaProjectCount} tracked in Google Analytics recorded
-            traffic in the last three months
+            Ranked by lifetime visitors.{' '}
+            {/* "12 of the 12" reads as a near-miss rather than a clean sweep. */}
+            {totals.measuredProjectCount === totals.gaProjectCount
+              ? `All ${totals.gaProjectCount} tracked in Google Analytics recorded traffic in the last three months`
+              : `${totals.measuredProjectCount} of the ${totals.gaProjectCount} tracked in Google Analytics recorded traffic in the last three months`}
             {totals.gappedProjectCount > 0 &&
               `, and ${totals.gappedProjectCount} is currently unmeasured`}
             .

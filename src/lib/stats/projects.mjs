@@ -23,23 +23,6 @@
  */
 export const trackedProjects = [
   {
-    id: 'lives-of-the-saints',
-    propertyId: '330297200',
-    name: 'Lives of the Saints Calendar',
-    description:
-      'Daily Orthodox saints calendar, readings, and print editions.',
-    category: 'Content',
-    url: 'https://www.livesofthesaintscalendar.com',
-    // The GA tag stopped firing on 8 Jun 2026 — daily users went from ~200 to
-    // single digits overnight. Months from the gap onward are withheld rather
-    // than published as a 92% audience collapse that did not happen. Delete
-    // this block once the tag is fixed and the numbers speak for themselves.
-    trackingGap: {
-      since: '2026-06-08',
-      reason: 'analytics tag stopped firing',
-    },
-  },
-  {
     id: 'orthodox-christianity-101',
     propertyId: '433513657',
     name: 'Orthodox Christianity 101',
