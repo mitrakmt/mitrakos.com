@@ -30,7 +30,7 @@ function Tool({ title, href, children }) {
 export const metadata = pageMetadata({
   title: 'Technology',
   description:
-    'Software, development tools, gadgets, marketing products, and productivity apps Michael Mitrakos uses and recommends.',
+    'The tech stack Michael Mitrakos builds with — JavaScript, TypeScript, React, Next.js, Node.js, Tailwind CSS — plus the software, development tools, gadgets, marketing products, and productivity apps he uses and recommends.',
   path: '/technology',
 })
 
@@ -51,6 +51,44 @@ export default function Technology() {
             Something about all the gestures makes me feel like a wizard with
             special powers. I really like feeling like a wizard with special
             powers.
+          </Tool>
+        </ToolsSection>
+        <ToolsSection title="Tech stack">
+          <Tool title="JavaScript">
+            The language I keep coming back to after almost a decade of writing
+            it. It runs everywhere, the ecosystem moves fast, and I&apos;ve
+            written enough of it to know exactly where the sharp edges are.
+          </Tool>
+          <Tool title="TypeScript">
+            JavaScript with a safety net. Types catch the class of bug that used
+            to eat an afternoon, and the editor tooling you get for free makes
+            refactoring something I&apos;ll actually do instead of avoid.
+          </Tool>
+          <Tool title="React">
+            My default for anything with a user interface. Components compose,
+            state is predictable, and the mental model has held up across every
+            project I&apos;ve shipped with it.
+          </Tool>
+          <Tool title="Next.js">
+            The framework I reach for on nearly every new project. Server-side
+            rendering, file-based routing, and image optimization out of the box
+            mean I spend my time on the product instead of the plumbing — and
+            the SEO benefits are hard to argue with.
+          </Tool>
+          <Tool title="Node.js">
+            Everything on the server side. APIs, background jobs, scrapers, CLI
+            scripts — being able to use one language across the whole stack is
+            still the thing I appreciate most about it.
+          </Tool>
+          <Tool title="Tailwind CSS">
+            Utility classes instead of a stylesheet I&apos;ll be scared to touch
+            in six months. It keeps design decisions in the markup where I can
+            see them and makes it easy to stay consistent across a project.
+          </Tool>
+          <Tool title="Vercel">
+            Where most of my projects live. Push to Git, get a deployment,
+            preview every branch — the workflow disappears into the background,
+            which is exactly what I want from hosting.
           </Tool>
         </ToolsSection>
         <ToolsSection title="Development tools">
