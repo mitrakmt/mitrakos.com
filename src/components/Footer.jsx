@@ -18,6 +18,13 @@ const awardsProfileUrl = 'https://www.webdesignawards.io/nominees/mitrakos?ref=b
 
 const awards = [
   {
+    img: 'https://www.webdesignawards.io/badges/2024/winner_2024.webp',
+    alt: 'Web Design Award Winner – Web Design Awards',
+    title:
+      'Awarded by Web Design Awards · Winner 2024 — view full award profile on Web Design Awards',
+    heading: 'Awarded by Web Design Awards · Winner 2024',
+  },
+  {
     img: 'https://www.webdesignawards.io/badges/2025/winner_2025.webp',
     alt: 'Winner – Web Design Awards',
     title:
