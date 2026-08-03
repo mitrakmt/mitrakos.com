@@ -1,6 +1,6 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { StaggerContainer, StaggerItem } from '@/components/animations'
 import { pageMetadata } from '@/lib/site'
@@ -11,92 +11,119 @@ import logoWebdesign from '@/images/logos/webdesignawards.avif'
 import logonomads from '@/images/logos/nomads.png'
 import logoenhl from '@/images/logos/enhl.png'
 import logoOrthodoxChristianity101 from '@/images/logos/oc101.avif'
-
-function ProjectLogo({ name, color = 'bg-zinc-100 dark:bg-zinc-800' }) {
-  const initials = name
-    .split(' ')
-    .map((word) => word[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase()
-  return (
-    <div
-      className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-zinc-600 dark:text-zinc-300 ${color}`}
-    >
-      {initials}
-    </div>
-  )
-}
+import shotPrintClubSociety from '@/images/projects/print-club-society.webp'
+import shotVerdacert from '@/images/projects/verdacert.webp'
+import shotHabeo from '@/images/projects/habeo.webp'
+import shotCasework from '@/images/projects/casework.webp'
+import shotHireaiscore from '@/images/projects/hireaiscore.webp'
+import shotEliteHockeyHq from '@/images/projects/elite-hockey-hq.webp'
+import shotAbaRank from '@/images/projects/aba-rank.webp'
+import shotHigglo from '@/images/projects/higglo-digital.webp'
+import shotWanderlust from '@/images/projects/wanderlust-app.webp'
+import shotWebdesign from '@/images/projects/web-design-awards.webp'
+import shotEnhl from '@/images/projects/enhl.webp'
+import shotOrthodoxChristianity101 from '@/images/projects/orthodox-christianity-101.webp'
+import shotInitjs from '@/images/projects/initjs.webp'
 
 const projects = [
   {
     name: 'Print Club Society',
-    description: 'Premium print-on-demand community and marketplace.',
-    link: { href: 'https://www.printclubsociety.com', label: 'printclubsociety.com' },
+    description:
+      'A curated directory of the world’s print clubs — riso studios, archival photography, and collectible editions in one library.',
+    link: {
+      href: 'https://www.printclubsociety.com',
+      label: 'printclubsociety.com',
+    },
+    screenshot: shotPrintClubSociety,
     logo: null,
-    logoColor: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300',
+    logoColor:
+      'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300',
   },
   {
     name: 'Verdacert',
-    description: 'Sustainability certification platform for businesses.',
+    description:
+      'Certified document translation — Arabic, Farsi, Urdu and more, native-speaker reviewed and delivered in 24 hours.',
     link: { href: 'https://www.verdacert.com', label: 'verdacert.com' },
+    screenshot: shotVerdacert,
     logo: null,
-    logoColor: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
+    logoColor:
+      'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
   },
   {
     name: 'Habeo',
-    description: 'Modern platform for managing and sharing digital assets.',
+    description:
+      'The IT asset system of record for higher education — built to replace ServiceNow ITAM at universities.',
     link: { href: 'https://www.usehabeo.com', label: 'usehabeo.com' },
+    screenshot: shotHabeo,
     logo: null,
-    logoColor: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+    logoColor:
+      'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
   },
   {
     name: 'Casework',
-    description: 'Streamlined case management for modern teams.',
+    description:
+      'EU AI Act conformity files, risk assessments, and Article 9 documentation for teams shipping hiring AI.',
     link: { href: 'https://www.getcasework.com', label: 'getcasework.com' },
+    screenshot: shotCasework,
     logo: null,
-    logoColor: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300',
+    logoColor:
+      'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300',
   },
   {
     name: 'HireAIScore',
-    description: 'AI-powered candidate scoring and hiring intelligence.',
+    description:
+      'Independent scoring of AI hiring vendors against the regulations they have to answer to. No paid placement.',
     link: { href: 'https://www.hireaiscore.com', label: 'hireaiscore.com' },
+    screenshot: shotHireaiscore,
     logo: null,
-    logoColor: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
+    logoColor:
+      'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
   },
   {
     name: 'Elite Hockey HQ',
-    description: 'Elite ice hockey training, resources, and community.',
+    description:
+      '52-week periodized training programs, pro-built workouts, and daily readiness for hockey players.',
     link: { href: 'https://www.elitehockeyhq.com', label: 'elitehockeyhq.com' },
+    screenshot: shotEliteHockeyHq,
     logo: null,
-    logoColor: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300',
+    logoColor:
+      'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300',
   },
   {
     name: 'ABA Rank',
-    description: 'Ranking and analytics platform for applied behavior analysis.',
+    description:
+      'The objective directory for Applied Behavior Analysis providers — ranked on disclosed inputs, never on ad spend.',
     link: { href: 'https://www.abarank.com', label: 'abarank.com' },
+    screenshot: shotAbaRank,
     logo: null,
-    logoColor: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+    logoColor:
+      'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
   },
   {
     name: 'Higglo Digital',
-    description: 'Memorable brand experiences, SEO & award winning websites',
-    link: { href: 'http://www.higglo.io', label: 'higglo.io' },
+    description:
+      'An integrated growth engine — SEO, GEO, CRO, and web — wired into one system for ABA and behavioral health.',
+    link: { href: 'https://www.higglo.io', label: 'higglo.io' },
+    screenshot: shotHigglo,
     logo: logoHigglo,
   },
   {
     name: 'Wanderlust App',
-    description: 'Beautiful places on your new tab page',
+    description:
+      'Plan a trip on real city data, live it offline on the ground, and turn it into something worth sharing.',
     link: { href: 'https://www.wanderlustapp.io', label: 'wanderlustapp.io' },
+    screenshot: shotWanderlust,
     logo: logoWanderlust,
   },
   {
     name: 'Web Design Awards',
-    description: 'Recognizing the best of the web.',
+    description:
+      'An editorially-curated index of the web’s best work, judged every cycle by working designers since 2014.',
     link: {
       href: 'https://www.webdesignawards.io',
       label: 'webdesignawards.io',
     },
+    screenshot: shotWebdesign,
     logo: logoWebdesign,
   },
   {
@@ -106,6 +133,9 @@ const projects = [
       href: 'https://www.nomadsicehockey.com',
       label: 'nomadsicehockey.com',
     },
+    // nomadsicehockey.com no longer resolves, so there is no live page to
+    // capture — the card falls back to the logo lockup.
+    screenshot: null,
     logo: logonomads,
   },
   {
@@ -116,33 +146,134 @@ const projects = [
       href: 'https://www.egyptianhockeyleague.com',
       label: 'egyptianhockeyleague.com',
     },
+    screenshot: shotEnhl,
     logo: logoenhl,
   },
   {
     name: 'Orthodox Christianity 101',
-    description: 'Teaching the basics of Orthodox Christianity for beginners',
+    description: 'Teaching the basics of Orthodox Christianity for beginners.',
     link: {
       href: 'https://www.orthodoxchristianity101.com',
       label: 'orthodoxchristianity101.com',
     },
+    screenshot: shotOrthodoxChristianity101,
     logo: logoOrthodoxChristianity101,
   },
   {
     name: 'InitJS',
-    description: 'Teaching JavaScript to over 400,000 readers..',
+    description: 'Teaching JavaScript to over 400,000 readers.',
     link: { href: 'https://www.initjs.org', label: 'initjs.org' },
+    screenshot: shotInitjs,
     logo: logoInitjs,
   },
 ]
 
-function LinkIcon(props) {
+function ProjectFavicon({ project }) {
+  if (project.logo) {
+    return (
+      <Image
+        src={project.logo}
+        alt=""
+        className="h-4 w-4 flex-none rounded-full object-cover"
+        unoptimized
+      />
+    )
+  }
+
+  const initials = project.name
+    .split(' ')
+    .map((word) => word[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
+
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+    <span
+      aria-hidden="true"
+      className={`flex h-4 w-4 flex-none items-center justify-center rounded-full text-[0.5rem] font-bold leading-none ${
+        project.logoColor ?? 'bg-zinc-100 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-300'
+      }`}
+    >
+      {initials}
+    </span>
+  )
+}
+
+function ArrowIcon(props) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
-        d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
-        fill="currentColor"
+        d="M6.75 5.75 9.25 8l-2.5 2.25"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
+  )
+}
+
+function ProjectCard({ project, priority = false }) {
+  return (
+    <article className="group relative flex flex-col">
+      {/* A miniature browser window: the chrome gives fourteen very different
+          landing pages one consistent frame, and doubles as the URL label. */}
+      <div className="overflow-hidden rounded-2xl bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-zinc-800/10 group-hover:ring-zinc-900/10 dark:bg-zinc-800 dark:ring-white/10 dark:group-hover:ring-white/20">
+        <div className="flex items-center gap-2 px-3 py-2.5">
+          <div className="flex flex-none gap-1.5" aria-hidden="true">
+            <span className="h-2 w-2 rounded-full bg-zinc-200 dark:bg-zinc-600" />
+            <span className="h-2 w-2 rounded-full bg-zinc-200 dark:bg-zinc-600" />
+            <span className="h-2 w-2 rounded-full bg-zinc-200 dark:bg-zinc-600" />
+          </div>
+          <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-md bg-zinc-50 px-2 py-1 dark:bg-zinc-900/60">
+            <ProjectFavicon project={project} />
+            <span className="truncate text-xs text-zinc-400 dark:text-zinc-500">
+              {project.link.label}
+            </span>
+          </div>
+        </div>
+        <div className="relative aspect-[16/10] overflow-hidden bg-zinc-50 dark:bg-zinc-900">
+          {project.screenshot ? (
+            <Image
+              src={project.screenshot}
+              alt={`Landing page of ${project.name}`}
+              placeholder="blur"
+              priority={priority}
+              sizes="(min-width: 1024px) 30rem, (min-width: 640px) 20rem, 100vw"
+              className="h-full w-full object-cover object-top transition duration-500 ease-out group-hover:scale-[1.03] dark:brightness-[0.92] dark:group-hover:brightness-100"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-800/60">
+              {project.logo ? (
+                <Image
+                  src={project.logo}
+                  alt=""
+                  className="h-16 w-16 rounded-full object-cover opacity-80 shadow-sm transition duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-100"
+                  unoptimized
+                />
+              ) : null}
+            </div>
+          )}
+          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-zinc-900/5 dark:ring-white/5" />
+        </div>
+      </div>
+
+      <h2 className="mt-6 text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+        <Link href={project.link.href}>
+          <span className="absolute inset-0 z-20 rounded-2xl" />
+          <span className="relative z-10">{project.name}</span>
+        </Link>
+      </h2>
+      <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        {project.description}
+      </p>
+      <div
+        aria-hidden="true"
+        className="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500 transition-transform duration-200 group-hover:translate-x-1"
+      >
+        Visit site
+        <ArrowIcon className="ml-1 h-4 w-4 stroke-current transition-transform duration-200 group-hover:translate-x-0.5" />
+      </div>
+    </article>
   )
 }
 
@@ -161,33 +292,14 @@ export default function Projects() {
     >
       <StaggerContainer
         role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2"
         staggerDelay={0.06}
       >
-        {projects.map((project) => (
-          <StaggerItem key={project.name}>
-            <Card as="li" className="transition-transform duration-300 hover:-translate-y-1">
-              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition-all duration-300 hover:shadow-lg dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                {project.logo ? (
-                  <Image
-                    src={project.logo}
-                    alt=""
-                    className="h-8 w-8 rounded-full"
-                    unoptimized
-                  />
-                ) : (
-                  <ProjectLogo name={project.name} color={project.logoColor} />
-                )}
-              </div>
-              <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                <Card.Link href={project.link.href}>{project.name}</Card.Link>
-              </h2>
-              <Card.Description>{project.description}</Card.Description>
-              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition-all duration-200 group-hover:text-teal-500 dark:text-zinc-200">
-                <LinkIcon className="h-6 w-6 flex-none transition-transform duration-200 group-hover:scale-110" />
-                <span className="ml-2">{project.link.label}</span>
-              </p>
-            </Card>
+        {projects.map((project, index) => (
+          <StaggerItem key={project.name} role="listitem">
+            {/* The first row is above the fold on desktop — eager-load it so the
+                screenshot is the LCP element rather than a blur placeholder. */}
+            <ProjectCard project={project} priority={index < 2} />
           </StaggerItem>
         ))}
       </StaggerContainer>
