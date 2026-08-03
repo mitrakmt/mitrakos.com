@@ -139,9 +139,8 @@ const projects = [
     logo: logonomads,
   },
   {
-    name: 'ENHL',
-    description:
-      'The Egyptian National Hockey League, the first ice hockey league in Egypt.',
+    name: 'Egyptian Hockey League (EHL)',
+    description: 'The first ice hockey league in Egypt.',
     link: {
       href: 'https://www.egyptianhockeyleague.com',
       label: 'egyptianhockeyleague.com',
