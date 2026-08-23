@@ -33,9 +33,9 @@ function Article({ article }) {
 }
 
 export const metadata = pageMetadata({
-  title: 'initJS | Learn JavaScript',
+  title: 'initJS: Learn JavaScript',
   description:
-    'Learn JavaScript with initJS articles and resources that take you from beginner concepts to more advanced programming topics.',
+    'initJS is a growing library of JavaScript writing by Michael Mitrakos, from core language fundamentals through to more advanced programming topics.',
   path: '/initjs',
 })
 

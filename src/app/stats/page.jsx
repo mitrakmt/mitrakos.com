@@ -19,9 +19,9 @@ import { pageMetadata } from '@/lib/site'
 export const revalidate = 3600
 
 export const metadata = pageMetadata({
-  title: 'Stats',
+  title: 'Traffic & Revenue Stats',
   description:
-    'Public traction dashboard for every project built by Michael Mitrakos — monthly visitors, lifetime users, and page views straight from Google Analytics, plus net revenue per project straight from Stripe.',
+    'Live traction for every project I’ve built — monthly visitors and lifetime users from Google Analytics, plus net Stripe revenue for the ones that take payments.',
   path: '/stats',
 })
 

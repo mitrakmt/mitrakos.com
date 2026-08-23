@@ -28,9 +28,9 @@ function Tool({ title, href, children }) {
 }
 
 export const metadata = pageMetadata({
-  title: 'Technology',
+  title: 'Tech Stack & Tools I Use',
   description:
-    'The tech stack Michael Mitrakos builds with — JavaScript, TypeScript, React, Next.js, Node.js, Tailwind CSS — plus the software, development tools, gadgets, marketing products, and productivity apps he uses and recommends.',
+    'The stack Michael Mitrakos builds with — JavaScript, TypeScript, React, Next.js, Node.js, Tailwind CSS — plus the tools, gadgets, and apps he recommends.',
   path: '/technology',
 })
 

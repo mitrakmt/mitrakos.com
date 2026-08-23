@@ -1,5 +1,6 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
 import tailwindImage from './tailwind.avif'
+import { alternateTypes } from '@/lib/site'
 
 export const article = {
   author: 'Michael Mitrakos',
@@ -8,14 +9,18 @@ export const article = {
     'Mastering Tailwind CSS: Why It’s a Game-Changer and How to Use It Effectively',
   url: `https://www.mitrakos.com/articles/mastering-tailwind-css`,
   description:
-    'Discover why Tailwind CSS is a powerful utility-first framework for modern web design. Learn its benefits, setup process, and practical examples to streamline your workflow.',
+    'Why Tailwind CSS is a powerful utility-first framework for modern web design — its benefits, setup process, and practical examples for your workflow.',
 }
 
 export const metadata = {
-  title: article.title,
+  // Shorter than the on-page H1 (`article.title`) so it survives Google's
+  // ~60-character title truncation. The full title still renders on the page,
+  // in the article cards, and in the social previews below.
+  title: 'Mastering Tailwind CSS: A Practical Guide',
   description: article.description,
   alternates: {
     canonical: '/articles/mastering-tailwind-css',
+    types: alternateTypes,
   },
   openGraph: {
     type: 'article',

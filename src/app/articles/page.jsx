@@ -35,9 +35,9 @@ function Article({ article }) {
 }
 
 export const metadata = pageMetadata({
-  title: 'Articles',
+  title: 'Articles on Software & Engineering',
   description:
-    "Read Michael Mitrakos's articles on programming, frontend engineering, leadership, product design, and building high-quality web applications.",
+    'Long-form writing by Michael Mitrakos on programming, frontend engineering, technical leadership, product design, and building high-quality web apps.',
   path: '/articles',
 })
 

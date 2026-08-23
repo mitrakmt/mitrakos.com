@@ -2,7 +2,8 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 
 export const metadata = {
   title: 'You’re subscribed',
-  description: 'Thanks for subscribing to my newsletter.',
+  description:
+    'Thanks for subscribing — you’re on the list for new writing from Michael Mitrakos on software engineering, leadership, and building for the web.',
   robots: {
     index: false,
     follow: true,

@@ -1,6 +1,7 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
 import Image from 'next/image'
 import reactImage from './react.png'
+import { alternateTypes } from '@/lib/site'
 
 export const article = {
   author: 'Michael Mitrakos',
@@ -9,14 +10,18 @@ export const article = {
     'Mastering React: Key Concepts, Best Practices, and How to Build Efficient Applications',
   url: `https://www.mitrakos.com/articles/mastering-react`,
   description:
-    'Learn the core principles of React, its advantages for building scalable UIs, and practical tips to structure, optimize, and maintain your applications effectively.',
+    'Learn the core principles of React, its advantages for building scalable UIs, and practical tips to structure and optimize your applications.',
 }
 
 export const metadata = {
-  title: article.title,
+  // Shorter than the on-page H1 (`article.title`) so it survives Google's
+  // ~60-character title truncation. The full title still renders on the page,
+  // in the article cards, and in the social previews below.
+  title: 'Mastering React Best Practices',
   description: article.description,
   alternates: {
     canonical: '/articles/mastering-react',
+    types: alternateTypes,
   },
   openGraph: {
     type: 'article',

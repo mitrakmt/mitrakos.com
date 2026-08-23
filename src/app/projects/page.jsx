@@ -277,9 +277,9 @@ function ProjectCard({ project, priority = false }) {
 }
 
 export const metadata = pageMetadata({
-  title: 'Projects',
+  title: 'Selected Projects',
   description:
-    'Explore selected projects by Michael Mitrakos, including web applications, startup products, and engineering work across frontend and full-stack development.',
+    'Selected work by Michael Mitrakos — web apps and startup products including Print Club Society, Verdacert, Habeo, Casework, and HireAIScore.',
   path: '/projects',
 })
 

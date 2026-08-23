@@ -33,17 +33,37 @@ import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import { getAllArticles } from '@/lib/articles'
+import { alternateTypes, homeUrl, siteName, siteTitle } from '@/lib/site'
 import { formatDate } from '@/lib/formatDate'
 
 // Matches /stats so the traction numbers on both pages refresh together.
 export const revalidate = 3600
 
+const description =
+  'US-based senior software engineer and tech lead. Ten years leading teams to build high-quality web applications — see the work and the real numbers.'
+
 export const metadata = {
-  title: 'Home',
-  description:
-    'Portfolio of Michael Mitrakos, a US-based senior software engineer and tech lead focused on building high-quality web applications.',
+  // The root page shares a route segment with the root layout, so the layout's
+  // `title.template` never applies here — this title has to carry the brand
+  // itself. It previously read just "Home".
+  title: siteTitle,
+  description,
+  // `canonical: null` suppresses the resolver's own tag so the hand-rendered
+  // one below is the only canonical on the page. See the note there.
   alternates: {
-    canonical: '/',
+    canonical: null,
+    types: alternateTypes,
+  },
+  // Declared here (which replaces the root layout's `openGraph` wholesale)
+  // purely to omit `url` — Next drops og:url entirely when it's absent, so the
+  // hand-rendered tag below is the only one. `images` is deliberately left out
+  // so the file convention in src/app/opengraph-image.jsx still applies.
+  openGraph: {
+    type: 'website',
+    title: siteTitle,
+    description,
+    siteName,
+    locale: 'en_US',
   },
 }
 
@@ -296,6 +316,19 @@ export default async function Home() {
 
   return (
     <>
+      {/*
+        Rendered by hand rather than through the metadata API. Next's resolver
+        collapses any root-path URL to the bare origin, so `canonical: '/'`
+        emits `https://www.mitrakos.com` while crawlers fetch
+        `https://www.mitrakos.com/`. The two are the same resource per RFC 3986
+        and Google normalises them, but SEO auditors compare the strings and
+        report the homepage as "Not indexable". These bypass that collapse and
+        match the sitemap's homepage <loc>. Do not move them back into the
+        `metadata` export — `alternates.canonical` is set to `null` there so
+        these stay the only canonical/og:url tags on the page.
+      */}
+      <link rel="canonical" href={homeUrl} />
+      <meta property="og:url" content={homeUrl} />
       <ScrollProgress />
       <Container className="mt-9">
         <div className="relative isolate">

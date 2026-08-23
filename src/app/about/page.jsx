@@ -43,9 +43,9 @@ function MailIcon(props) {
 }
 
 export const metadata = pageMetadata({
-  title: 'About Michael Mitrakos',
+  title: 'About',
   description:
-    'Learn about Michael Mitrakos, a US-based senior software engineer and tech lead focused on frontend engineering, team leadership, and web product development.',
+    'Michael Mitrakos is a US-based senior software engineer and tech lead — ten years building for the web, leading teams, and shipping product.',
   path: '/about',
 })
 

@@ -3,7 +3,14 @@ import { Layout } from '@/components/Layout'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 
-import { siteDescription, siteName, siteUrl } from '@/lib/site'
+import {
+  alternateTypes,
+  homeUrl,
+  siteDescription,
+  siteName,
+  siteTitle,
+  siteUrl,
+} from '@/lib/site'
 
 import '@/styles/tailwind.css'
 
@@ -13,8 +20,7 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: '%s - Michael Mitrakos',
-    default:
-      'Michael Mitrakos - Software designer, founder, and world traveler',
+    default: siteTitle,
   },
   description: siteDescription,
   keywords: [
@@ -30,22 +36,22 @@ export const metadata = {
   publisher: siteName,
   alternates: {
     canonical: '/',
-    types: {
-      'application/rss+xml': `${siteUrl}/feed.xml`,
-      'text/plain': `${siteUrl}/llms.txt`,
-    },
+    types: alternateTypes,
   },
   openGraph: {
     type: 'website',
+    // Left unslashed on purpose: Next's resolver collapses any root-path URL to
+    // the bare origin, so writing `homeUrl` here would be silently discarded.
+    // The homepage renders its own og:url by hand — see src/app/page.jsx.
     url: siteUrl,
-    title: 'Michael Mitrakos - Software designer, founder, and world traveler',
+    title: siteTitle,
     description: siteDescription,
     siteName,
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Michael Mitrakos - Software designer, founder, and world traveler',
+    title: siteTitle,
     description: siteDescription,
     site: '@Mike_Mitrakos',
     creator: '@Mike_Mitrakos',
@@ -69,7 +75,8 @@ const personSchema = {
   name: siteName,
   jobTitle: 'Senior Software Engineer and Tech Lead',
   description: siteDescription,
-  url: siteUrl,
+  // Matches the homepage canonical rendered in src/app/page.jsx.
+  url: homeUrl,
   image: `${siteUrl}/opengraph-image`,
   worksFor: {
     '@type': 'Organization',
@@ -103,7 +110,8 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: siteName,
-  url: siteUrl,
+  // Matches the homepage canonical rendered in src/app/page.jsx.
+  url: homeUrl,
   inLanguage: 'en-US',
 }
 
