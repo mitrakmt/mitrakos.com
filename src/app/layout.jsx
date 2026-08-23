@@ -35,7 +35,6 @@ export const metadata = {
   creator: siteName,
   publisher: siteName,
   alternates: {
-    canonical: '/',
     types: alternateTypes,
   },
   openGraph: {
