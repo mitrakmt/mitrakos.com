@@ -1,0 +1,116 @@
+name: Refresh public stats
+
+# The /stats page and the home page render committed snapshots, so the public
+# numbers are only as fresh as the last `stats:refresh` / `revenue:refresh`
+# commit. This job is what keeps them moving without anyone remembering to.
+
+on:
+  schedule:
+    # 06:00 UTC on the 3rd. completeMonths() only ever reports finished months,
+    # so the 1st would already be correct — but GA4 takes a day or two to
+    # finalise the tail of a month, and a run that early publishes the newest
+    # month under-counted for the next thirty days.
+    - cron: '0 6 3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-stats
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # No `npm ci`: both refresh scripts import only node builtins and
+      # src/lib/stats, so there is nothing to install and nothing to break.
+
+      # Each refresh runs even if the other fails. A missing GA key should not
+      # cost us the Stripe numbers, and vice versa — whatever succeeded still
+      # gets published, and the job is failed at the end so the gap is visible.
+      - name: Refresh traffic from Google Analytics
+        id: traffic
+        continue-on-error: true
+        env:
+          GA_SERVICE_ACCOUNT_KEY: ${{ secrets.GA_SERVICE_ACCOUNT_KEY }}
+        run: npm run stats:refresh
+
+      - name: Refresh revenue from Stripe
+        id: revenue
+        continue-on-error: true
+        env:
+          STRIPE_RESTRICTED_KEYS: ${{ secrets.STRIPE_RESTRICTED_KEYS }}
+        run: npm run revenue:refresh
+
+      # A refresh whose upstream call failed for one project writes a snapshot
+      # with that project absent and still exits 0 — publishing it as "revenue
+      # not published" or dropping its traffic outright. Stale beats wrong, so
+      # any snapshot that lost a project is thrown away and the committed one
+      # kept. The other snapshot still lands.
+      - name: Discard any snapshot that lost projects
+        id: guard
+        run: |
+          set +e
+          regressed=$(node scripts/check-snapshot-coverage.mjs)
+          code=$?
+          set -e
+
+          if [ "$code" -eq 0 ]; then
+            echo "regressed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "$regressed" | while read -r file; do
+            [ -n "$file" ] && git checkout -- "$file"
+          done
+          echo "regressed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit whatever refreshed
+        id: commit
+        run: |
+          if git diff --quiet -- src/data; then
+            echo "Snapshots unchanged — nothing to commit."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/data
+          git commit -m 'Refresh the published traffic and revenue snapshots'
+          git push
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Summarise
+        if: always()
+        run: |
+          {
+            echo "| Step | Result |"
+            echo "| --- | --- |"
+            echo "| Google Analytics | ${{ steps.traffic.outcome }} |"
+            echo "| Stripe | ${{ steps.revenue.outcome }} |"
+            echo "| Snapshot discarded | ${{ steps.guard.outputs.regressed || 'n/a' }} |"
+            echo "| Committed | ${{ steps.commit.outputs.committed || 'no' }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Surfaced as a failed run rather than a silent skip: a refresh that stops
+      # working is exactly the condition this workflow exists to catch.
+      - name: Fail if a refresh did not run cleanly
+        if: >-
+          steps.traffic.outcome == 'failure' ||
+          steps.revenue.outcome == 'failure' ||
+          steps.guard.outputs.regressed == 'true'
+        run: |
+          echo "traffic: ${{ steps.traffic.outcome }}"
+          echo "revenue: ${{ steps.revenue.outcome }}"
+          echo "snapshot discarded: ${{ steps.guard.outputs.regressed }}"
+          echo "See the step logs above for the underlying error."
+          exit 1

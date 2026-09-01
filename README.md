@@ -113,6 +113,46 @@ Rewrites `revenue-snapshot.json` and prints lifetime net, latest month, and MRR
 per account, warning if any account's history was too long to read in full.
 Commit the result.
 
+## Automatic monthly refresh
+
+`.github/workflows/refresh-stats.yml` runs both refresh scripts at 06:00 UTC on
+the 3rd of each month and commits whatever changed, so the published numbers
+move without anyone remembering to run them. It can also be triggered by hand
+from the Actions tab.
+
+It needs two repository secrets, in the same encoding the scripts expect
+locally (base64 for the GA key):
+
+```bash
+gh secret set GA_SERVICE_ACCOUNT_KEY -R mitrakmt/mitrakos.com
+gh secret set STRIPE_RESTRICTED_KEYS -R mitrakmt/mitrakos.com
+```
+
+The 3rd rather than the 1st: `completeMonths()` only ever reports finished
+months, so the 1st would already be correct — but GA4 takes a day or two to
+finalise the tail of a month, and a run that early publishes the newest month
+under-counted for the next thirty days.
+
+Traffic and revenue refresh independently; a missing GA key does not cost you
+the Stripe numbers. Either failing fails the run so it shows up in the Actions
+tab, but whatever succeeded is still committed.
+
+### Why a snapshot can be thrown away
+
+Both refresh scripts overwrite their snapshot with whatever the upstream API
+returned, and a project whose fetch failed is **absent rather than zero** — they
+warn and exit 0. Run by hand that is right; you read the warning and re-run.
+Unattended it would publish a working project as "revenue not published", or
+drop its traffic outright.
+
+So the workflow runs `scripts/check-snapshot-coverage.mjs` before committing,
+which compares each snapshot against the committed one and discards any that
+lost a project, keeping the other. Stale beats wrong. Run it yourself any time:
+
+```bash
+node scripts/check-snapshot-coverage.mjs
+```
+
 ## License
 
 This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
