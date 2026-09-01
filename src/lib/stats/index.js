@@ -2,7 +2,11 @@ import { cache } from 'react'
 
 import snapshot from '@/data/stats-snapshot.json'
 import { fetchStatsFromGa, getServiceAccount } from '@/lib/stats/ga.mjs'
-import { projectsByPropertyId, trackedProjects } from '@/lib/stats/projects.mjs'
+import {
+  gaProjects,
+  projectsByPropertyId,
+  trackedProjects,
+} from '@/lib/stats/projects.mjs'
 
 /**
  * How many complete months without traffic before a project is treated as
@@ -24,7 +28,7 @@ async function loadReport() {
 
   try {
     const live = await fetchStatsFromGa(
-      trackedProjects.map((project) => project.propertyId),
+      gaProjects.map((project) => project.propertyId),
     )
 
     // A per-property read can fail on its own (access not granted, property
@@ -33,7 +37,7 @@ async function loadReport() {
     // gone and the totals quietly wrong. Partial coverage is treated as a
     // failed fetch: better a slightly stale snapshot than understated numbers
     // on a page the press is reading.
-    const expected = trackedProjects.length
+    const expected = gaProjects.length
     if (live.projects.length < Math.ceil(expected / 2)) {
       console.error(
         `[stats] only ${live.projects.length}/${expected} properties returned data — ` +

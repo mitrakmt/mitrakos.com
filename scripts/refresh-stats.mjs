@@ -14,7 +14,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { fetchStatsFromGa } from '../src/lib/stats/ga.mjs'
-import { trackedProjects } from '../src/lib/stats/projects.mjs'
+import { gaProjects } from '../src/lib/stats/projects.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const snapshotPath = resolve(root, 'src/data/stats-snapshot.json')
@@ -52,7 +52,7 @@ async function main() {
     process.exit(1)
   }
 
-  const propertyIds = trackedProjects.map((project) => project.propertyId)
+  const propertyIds = gaProjects.map((project) => project.propertyId)
   console.log(`Fetching ${propertyIds.length} GA properties…`)
 
   const report = await fetchStatsFromGa(propertyIds)

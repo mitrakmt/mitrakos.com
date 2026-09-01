@@ -161,10 +161,14 @@ export const trackedProjects = [
   },
 ]
 
-// Externally-measured projects carry no GA property, so they are skipped
-// rather than registered under an `undefined` key that would collide.
+// Externally-measured projects carry no GA property. Deriving the measured set
+// once is what keeps callers from mapping the whole registry and handing GA an
+// `undefined` property id — which comes back as a failed read and reads as a
+// project that stopped reporting.
+export const gaProjects = trackedProjects.filter((project) => project.propertyId)
+
+// Skips the same projects rather than registering them under an `undefined` key
+// that would collide.
 export const projectsByPropertyId = new Map(
-  trackedProjects
-    .filter((project) => project.propertyId)
-    .map((project) => [project.propertyId, project]),
+  gaProjects.map((project) => [project.propertyId, project]),
 )
