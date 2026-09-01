@@ -91,8 +91,8 @@ export const trackedProjects = [
   {
     id: 'enhl',
     propertyId: '498129113',
-    name: 'ENHL',
-    description: 'The Egyptian National Hockey League, the first in Egypt.',
+    name: 'Egyptian Hockey League (EHL)',
+    description: 'The first ice hockey league in Egypt.',
     category: 'Community',
     url: 'https://www.egyptianhockeyleague.com',
   },
