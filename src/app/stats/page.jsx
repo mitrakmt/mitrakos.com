@@ -45,12 +45,6 @@ export default async function Stats() {
     stats.footnotes.map((footnote, index) => [footnote.id, index + 1]),
   )
 
-  // The chart caption points at whichever project carries a data-quality note,
-  // so renumbering the footnotes can never leave the caption pointing at the
-  // wrong one.
-  const caveated = stats.footnotes.find((footnote) => footnote.note)
-  const caveatNumber = caveated ? footnoteNumbers.get(caveated.id) : null
-
   const asDate = (iso) =>
     new Date(iso).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -129,20 +123,6 @@ export default async function Stats() {
             Complete months only.
           </p>
           <TrendChart series={stats.monthlySeries} />
-          {caveatNumber && (
-            <p className="mt-4 text-xs text-zinc-500 dark:text-zinc-500">
-              The {formatMonth(stats.latestMonth)} step up is concentrated in{' '}
-              {caveated.name} and includes a large volume of unverified direct
-              traffic — see note{' '}
-              <a
-                href={`#stats-note-${caveatNumber}`}
-                className="font-medium text-teal-600 hover:underline dark:text-teal-400"
-              >
-                {caveatNumber}
-              </a>{' '}
-              below. Treat it as an upper bound rather than a trend.
-            </p>
-          )}
         </Section>
       </FadeIn>
 
