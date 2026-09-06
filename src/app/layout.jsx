@@ -1,7 +1,6 @@
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
 import Script from 'next/script'
-import { Analytics } from '@vercel/analytics/next'
 
 import {
   alternateTypes,
@@ -151,7 +150,6 @@ export default function RootLayout({ children }) {
             <Layout>{children}</Layout>
           </div>
         </Providers>
-        <Analytics />
       </body>
     </html>
   )
