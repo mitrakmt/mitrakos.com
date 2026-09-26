@@ -148,11 +148,15 @@ export async function RevenueSection() {
           Monthly net revenue
         </h3>
         <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-          {formatMonth(revenue.months[0])} – {monthLabel}. Complete months only,
+          {formatMonth(revenue.months[0])} – {monthLabel}
+          {revenue.monthToDate
+            ? `, plus ${formatMonth(revenue.monthToDate.month)} so far,`
+            : '. Complete months only,'}{' '}
           after Stripe fees and refunds.
         </p>
         <TrendChart
           series={revenue.monthlySeries}
+          monthToDate={revenue.monthToDate}
           valueKey="net"
           formatValue={value}
           formatAxis={axis}

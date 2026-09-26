@@ -112,7 +112,7 @@ export function completeMonths(count = 12, now = new Date()) {
   return months
 }
 
-async function fetchProperty(propertyId, token, months) {
+async function fetchProperty(propertyId, token, months, currentMonth) {
   const [lifetime, monthly] = await Promise.all([
     runReport(propertyId, token, {
       dateRanges: [{ startDate: '2015-08-14', endDate: 'today' }],
@@ -124,7 +124,11 @@ async function fetchProperty(propertyId, token, months) {
     }),
     runReport(propertyId, token, {
       dateRanges: [
-        { startDate: `${months[0]}-01`, endDate: lastDayOf(months.at(-1)) },
+        {
+          startDate: `${months[0]}-01`,
+          // Running on to today adds the month under way as one more row.
+          endDate: currentMonth ? 'today' : lastDayOf(months.at(-1)),
+        },
       ],
       dimensions: [{ name: 'yearMonth' }],
       metrics: [{ name: 'activeUsers' }],
@@ -153,6 +157,9 @@ async function fetchProperty(propertyId, token, months) {
     // Months a property reported nothing for are absent from the response, not
     // zero — backfill so every project's series lines up with `months`.
     monthly: months.map((month) => byMonth.get(month) ?? 0),
+    // Kept out of `monthly` so nothing that reads the series can mistake a
+    // partial month for a finished one.
+    ...(currentMonth && { monthToDate: byMonth.get(currentMonth) ?? 0 }),
   }
 }
 
@@ -165,16 +172,28 @@ function lastDayOf(month) {
  * Fetches lifetime totals and a monthly active-user series for each property.
  * A property that errors (deleted, permissions revoked) is dropped rather than
  * failing the whole report.
+ *
+ * `includeMonthToDate` also reads the month under way, as each project's
+ * `monthToDate` and the report's `currentMonth`. Only the live page asks for
+ * it: a committed snapshot is read weeks after it was taken, by which point
+ * its partial month is stale.
  */
-export async function fetchStatsFromGa(propertyIds, { monthCount = 12 } = {}) {
+export async function fetchStatsFromGa(
+  propertyIds,
+  { monthCount = 12, includeMonthToDate = false } = {},
+) {
   const serviceAccount = getServiceAccount()
   if (!serviceAccount) throw new Error('GA_SERVICE_ACCOUNT_KEY is not set')
 
   const token = await getAccessToken(serviceAccount)
-  const months = completeMonths(monthCount)
+  // One clock for the window, the month under way, and the timestamp, so a
+  // read that straddles midnight on the 1st cannot disagree with itself.
+  const now = new Date()
+  const months = completeMonths(monthCount, now)
+  const currentMonth = includeMonthToDate ? now.toISOString().slice(0, 7) : null
 
   const results = await Promise.allSettled(
-    propertyIds.map((id) => fetchProperty(id, token, months)),
+    propertyIds.map((id) => fetchProperty(id, token, months, currentMonth)),
   )
 
   const projects = []
@@ -190,9 +209,10 @@ export async function fetchStatsFromGa(propertyIds, { monthCount = 12 } = {}) {
   }
 
   return {
-    generatedAt: new Date().toISOString(),
+    generatedAt: now.toISOString(),
     source: 'Google Analytics 4',
     months,
+    ...(currentMonth && { currentMonth }),
     projects,
   }
 }

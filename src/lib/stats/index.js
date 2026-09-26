@@ -29,6 +29,7 @@ async function loadReport() {
   try {
     const live = await fetchStatsFromGa(
       gaProjects.map((project) => project.propertyId),
+      { includeMonthToDate: true },
     )
 
     // A per-property read can fail on its own (access not granted, property
@@ -128,6 +129,7 @@ export const getStats = cache(async function getStats() {
         // A gapped project is not dormant — it is unmeasured.
         dormant: !gapped && sum(trailing) === 0,
         peak: Math.max(...reliable, 0),
+        monthToDate: row.monthToDate ?? 0,
       }
     })
     .filter(Boolean)
@@ -163,6 +165,28 @@ export const getStats = cache(async function getStats() {
   const latestMonthUsers = monthlySeries.at(-1)?.users ?? 0
   const previousMonthUsers = monthlySeries.at(-2)?.users ?? 0
 
+  // The month under way, drawn apart from the series rather than appended to
+  // it: nothing below reads it, so every total and comparison stays on
+  // complete months. Only a live read carries it — a partial month from the
+  // snapshot would be weeks stale by the time it rendered.
+  const monthToDate =
+    report.live && report.currentMonth
+      ? {
+          month: report.currentMonth,
+          asOf: report.generatedAt,
+          users: sum(
+            measured.map((project) =>
+              // A tag that broke this month or earlier is no more trustworthy
+              // now than for the months it has already cost.
+              project.trackingGap &&
+              project.trackingGap.since.slice(0, 7) <= report.currentMonth
+                ? 0
+                : project.monthToDate,
+            ),
+          ),
+        }
+      : null
+
   return {
     live: report.live,
     generatedAt: report.generatedAt,
@@ -171,6 +195,7 @@ export const getStats = cache(async function getStats() {
     latestMonth: months.at(-1),
     projects,
     monthlySeries,
+    monthToDate,
     // Everything the page has to disclose, in the order it should be read.
     footnotes: projects
       .filter(
@@ -252,4 +277,16 @@ export function formatMonth(month, { short = false } = {}) {
     timeZone: 'UTC',
   })
   return short ? label : `${label} ${year}`
+}
+
+/** "2026-09" read on the 26th -> { label: "Sep 1–26", day: 26, days: 30 } */
+export function monthProgress(month, asOf) {
+  const [year, monthIndex] = month.split('-').map(Number)
+  const day = new Date(asOf).getUTCDate()
+  const short = formatMonth(month, { short: true })
+  return {
+    label: day === 1 ? `${short} 1` : `${short} 1–${day}`,
+    day,
+    days: new Date(Date.UTC(year, monthIndex, 0)).getUTCDate(),
+  }
 }

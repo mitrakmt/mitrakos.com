@@ -18,7 +18,9 @@ async function loadReport() {
   const expected = trackedProjects.filter((project) => project.stripe).length
 
   try {
-    const live = await fetchRevenueFromStripe(trackedProjects)
+    const live = await fetchRevenueFromStripe(trackedProjects, {
+      includeMonthToDate: true,
+    })
 
     // An account can fail on its own — a revoked key, a permission removed —
     // without failing the batch. Publishing the remainder would understate
@@ -110,6 +112,7 @@ export const getRevenue = cache(async function getRevenue() {
         currencyMismatch: mismatched,
         lifetime: row.lifetime,
         monthly: row.monthly,
+        monthToDate: row.monthToDate ?? null,
         monthlyNet,
         latest,
         previous,
@@ -148,6 +151,20 @@ export const getRevenue = cache(async function getRevenue() {
   const latestMonthNet = monthlySeries.at(-1)?.net ?? 0
   const previousMonthNet = monthlySeries.at(-2)?.net ?? 0
 
+  // The month under way, on the same terms as the traffic side: kept apart
+  // from the series and every total, and only ever from a live read.
+  const monthToDate =
+    report.live && report.currentMonth
+      ? {
+          month: report.currentMonth,
+          asOf: report.generatedAt,
+          ...counted.reduce(
+            (acc, project) => addInto(acc, project.monthToDate ?? {}),
+            emptyTotals(),
+          ),
+        }
+      : null
+
   const lifetime = counted.reduce(
     (acc, project) => addInto(acc, project.lifetime),
     emptyTotals(),
@@ -162,6 +179,7 @@ export const getRevenue = cache(async function getRevenue() {
     latestMonth: months.at(-1),
     projects,
     monthlySeries,
+    monthToDate,
     // Everything the page has to disclose about the revenue figures.
     caveats: {
       // Any account whose history was too long to read in full understates its

@@ -119,10 +119,15 @@ export default async function Stats() {
       <FadeIn direction="fade-up" className="mt-16">
         <Section title="Monthly visitors across all projects">
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            {formatMonth(stats.months[0])} – {formatMonth(stats.latestMonth)}.
-            Complete months only.
+            {formatMonth(stats.months[0])} – {formatMonth(stats.latestMonth)}
+            {stats.monthToDate
+              ? `, plus ${formatMonth(stats.monthToDate.month)} so far.`
+              : '. Complete months only.'}
           </p>
-          <TrendChart series={stats.monthlySeries} />
+          <TrendChart
+            series={stats.monthlySeries}
+            monthToDate={stats.monthToDate}
+          />
         </Section>
       </FadeIn>
 
@@ -262,11 +267,15 @@ export default async function Stats() {
             </div>
             <div>
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
-                Complete months only
+                Complete months, and the month so far
               </dt>
               <dd className="mt-1">
-                The current month is excluded until it ends, so a partial month
-                never reads as a collapse in traffic.
+                Every total, trend, and month-on-month comparison uses complete
+                months only, so a partial month never reads as a collapse in
+                traffic. Where a chart is read live, the month under way is
+                drawn after the complete months as a hollow bar that fills as
+                the month goes on — and it is counted in no figure on this page
+                until the month ends.
               </dd>
             </div>
             <div>

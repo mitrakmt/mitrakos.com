@@ -219,7 +219,13 @@ function dominantCurrency(transactions) {
   return [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null
 }
 
-async function fetchAccount({ id: projectId, stripe }, key, months, request) {
+async function fetchAccount(
+  { id: projectId, stripe },
+  key,
+  months,
+  currentMonth,
+  request,
+) {
   const [accountResult, balance, subscriptions] = await Promise.all([
     // Reading the account is a nicety, not a requirement: it supplies the
     // settlement currency and lets the key be checked against the registry.
@@ -264,7 +270,14 @@ async function fetchAccount({ id: projectId, stripe }, key, months, request) {
 
   const empty = () => ({ gross: 0, refunded: 0, fees: 0, net: 0 })
   const lifetime = empty()
-  const byMonth = new Map(months.map((month) => [month, empty()]))
+  // The month under way is already in the transactions read; it just gets a
+  // bucket of its own, reported apart from `monthly`.
+  const byMonth = new Map(
+    [...months, ...(currentMonth ? [currentMonth] : [])].map((month) => [
+      month,
+      empty(),
+    ]),
+  )
 
   let oldestSeen = null
   let otherCurrency = 0
@@ -312,6 +325,7 @@ async function fetchAccount({ id: projectId, stripe }, key, months, request) {
     lifetime,
     // `monthly` is parallel to `months` so the series lines up with GA's.
     monthly: months.map((month) => byMonth.get(month)),
+    ...(currentMonth && { monthToDate: byMonth.get(currentMonth) }),
     mrr: Math.round(mrr),
     activeSubscriptions: subscriptions.items.length,
     discountedSubscriptions,
@@ -330,21 +344,32 @@ async function fetchAccount({ id: projectId, stripe }, key, months, request) {
  * Fetches revenue for every project with a configured key. An account that
  * errors (key revoked, insufficient permissions) is dropped rather than
  * failing the whole report.
+ *
+ * `includeMonthToDate` also reports the month under way, as each account's
+ * `monthToDate` and the report's `currentMonth` — for the live page only, on
+ * the same terms as fetchStatsFromGa.
  */
 export async function fetchRevenueFromStripe(
   projects_,
-  { monthCount = 12, request = httpRequest, keys = getStripeKeys() } = {},
+  {
+    monthCount = 12,
+    includeMonthToDate = false,
+    request = httpRequest,
+    keys = getStripeKeys(),
+  } = {},
 ) {
   if (!keys) throw new Error('STRIPE_RESTRICTED_KEYS is not set')
 
-  const months = completeMonths(monthCount)
+  const now = new Date()
+  const months = completeMonths(monthCount, now)
+  const currentMonth = includeMonthToDate ? now.toISOString().slice(0, 7) : null
   const configured = projects_.filter(
     (project) => project.stripe && keys.has(project.id),
   )
 
   const results = await Promise.allSettled(
     configured.map((project) =>
-      fetchAccount(project, keys.get(project.id), months, request),
+      fetchAccount(project, keys.get(project.id), months, currentMonth, request),
     ),
   )
 
@@ -361,9 +386,10 @@ export async function fetchRevenueFromStripe(
   }
 
   return {
-    generatedAt: new Date().toISOString(),
+    generatedAt: now.toISOString(),
     source: 'Stripe',
     months,
+    ...(currentMonth && { currentMonth }),
     projects,
   }
 }
