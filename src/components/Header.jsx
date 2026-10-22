@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Popover,
   PopoverButton,
@@ -15,6 +15,7 @@ import {
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
+import { usePrefersReducedMotion } from '@/components/animations'
 import avatarImage from '@/images/avatar.jpg'
 
 function CloseIcon(props) {
@@ -129,7 +130,7 @@ function MobileNavigation(props) {
 
 function NavItem({ href, children }) {
   let isActive = usePathname() === href
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   return (
     <li>
@@ -174,7 +175,7 @@ function ThemeToggle() {
   let { resolvedTheme, setTheme } = useTheme()
   let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
   let [mounted, setMounted] = useState(false)
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   useEffect(() => {
     setMounted(true)

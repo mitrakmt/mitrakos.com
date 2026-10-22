@@ -1,8 +1,10 @@
 'use client'
 
-import { motion, useMotionTemplate, useMotionValue, useReducedMotion } from 'framer-motion'
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import { useRef, useCallback } from 'react'
 import clsx from 'clsx'
+
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 export function Spotlight({
   children,
@@ -12,7 +14,7 @@ export function Spotlight({
   ...props
 })
 {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
   const ref = useRef(null)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)

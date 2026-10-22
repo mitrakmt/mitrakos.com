@@ -1,6 +1,8 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
+
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 const containerVariants = {
   hidden: {},
@@ -37,7 +39,7 @@ export function StaggerContainer({
   ...props
 })
 {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   if (shouldReduceMotion) {
     return (
@@ -75,7 +77,7 @@ export function StaggerContainer({
 }
 
 export function StaggerItem({ children, className, ...props }) {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   if (shouldReduceMotion) {
     return (

@@ -1,13 +1,10 @@
 'use client'
 
-import {
-  motion,
-  useMotionValue,
-  useMotionTemplate,
-  useReducedMotion,
-} from 'framer-motion'
+import { motion, useMotionValue, useMotionTemplate } from 'framer-motion'
 import { useRef } from 'react'
 import clsx from 'clsx'
+
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 /**
  * SpotlightCard — a surface that lights up under the cursor. A soft radial glow
@@ -33,7 +30,7 @@ export function SpotlightCard({
   ...props
 })
 {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
   const ref = useRef(null)
   const mouseX = useMotionValue(-size)
   const mouseY = useMotionValue(-size)

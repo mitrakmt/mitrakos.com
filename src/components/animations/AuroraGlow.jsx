@@ -1,14 +1,10 @@
 'use client'
 
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  useReducedMotion,
-} from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useEffect } from 'react'
 import clsx from 'clsx'
+
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 /**
  * AuroraGlow — an ambient, low-opacity field of blurred color orbs that slowly
@@ -16,7 +12,7 @@ import clsx from 'clsx'
  * hero content (pointer-events-none, decorative only).
  */
 export function AuroraGlow({ className }) {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   const pointerX = useMotionValue(0)
   const pointerY = useMotionValue(0)
