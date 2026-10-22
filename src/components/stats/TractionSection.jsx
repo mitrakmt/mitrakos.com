@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Container } from '@/components/Container'
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations'
 import { Sparkline } from '@/components/stats/Sparkline'
-import { ChangeBadge, StatTile } from '@/components/stats/StatTile'
+import { ChangeBadgeSlot, StatTile } from '@/components/stats/StatTile'
 import {
   formatCompact,
   formatMonth,
@@ -60,7 +60,7 @@ function TopProject({ project }) {
       className="group flex items-center gap-4 rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/40"
     >
       <div className="min-w-0 flex-auto">
-        <p className="truncate text-sm font-medium text-zinc-800 transition-colors duration-200 group-hover:text-teal-500 dark:text-zinc-100 dark:group-hover:text-teal-400">
+        <p className="text-sm font-medium text-zinc-800 transition-colors duration-200 group-hover:text-teal-500 dark:text-zinc-100 dark:group-hover:text-teal-400">
           {project.name}
         </p>
         <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
@@ -75,10 +75,12 @@ function TopProject({ project }) {
         className="hidden h-7 w-20 flex-none sm:block"
       />
 
-      <div className="flex w-24 flex-none items-center justify-end gap-1.5">
+      {/* Stacked on a phone so the project name keeps its line; side by side
+          from `sm`, where fixed widths line the figures up row to row. */}
+      <div className="flex flex-none flex-col items-end gap-1 sm:flex-row sm:items-center sm:gap-2">
         {project.dormant || project.gapped ? (
           <span
-            className="text-sm text-zinc-400 dark:text-zinc-500"
+            className="text-right text-sm text-zinc-400 sm:w-16 dark:text-zinc-500"
             title={
               project.gapped
                 ? `Not measured — ${project.trackingGap.reason}`
@@ -88,13 +90,13 @@ function TopProject({ project }) {
             —
           </span>
         ) : (
-          <>
-            <span className="text-sm font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
-              {formatNumber(project.latest)}
-            </span>
-            <ChangeBadge change={project.change} />
-          </>
+          <span className="text-right text-sm font-medium text-zinc-800 tabular-nums sm:w-16 dark:text-zinc-100">
+            {formatNumber(project.latest)}
+          </span>
         )}
+        <ChangeBadgeSlot
+          change={project.dormant || project.gapped ? null : project.change}
+        />
       </div>
     </Wrapper>
   )
@@ -115,7 +117,7 @@ export async function TractionSection() {
               <span className="ml-3">Traction</span>
             </h2>
             <p className="mt-3 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
-              Every project I&apos;ve built, with the real numbers behind it —
+              Every project I’ve built, with the real numbers behind it —
               pulled from Google Analytics, updated automatically, and public
               whether the chart goes up or down.
             </p>

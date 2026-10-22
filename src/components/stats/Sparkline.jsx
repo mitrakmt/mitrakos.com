@@ -59,7 +59,9 @@ export function Sparkline({ id, data, className, dormant = false }) {
           />
         </linearGradient>
       </defs>
-      <path d={area} fill={`url(#sparkline-${id})`} />
+      {/* A flat series has no shape to shade, and the fill under a centred
+          line reads as a solid grey bar. */}
+      {max !== min && <path d={area} fill={`url(#sparkline-${id})`} />}
       <path
         d={line}
         fill="none"
