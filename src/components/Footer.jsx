@@ -22,35 +22,40 @@ const awards = [
     alt: 'Web Design Award Winner – Web Design Awards',
     title:
       'Awarded by Web Design Awards · Winner 2024 — view full award profile on Web Design Awards',
-    heading: 'Awarded by Web Design Awards · Winner 2024',
+    issuer: 'Awarded by Web Design Awards',
+    name: 'Winner 2024',
   },
   {
     img: 'https://www.webdesignawards.io/badges/2025/winner_2025.webp',
     alt: 'Winner – Web Design Awards',
     title:
       'Awarded by Web Design Awards · Winner — view full award profile on Web Design Awards',
-    heading: 'Awarded by Web Design Awards · Winner',
+    issuer: 'Awarded by Web Design Awards',
+    name: 'Winner',
   },
   {
     img: 'https://www.webdesignawards.io/badges/2026/best_of_software-development_2026.webp',
     alt: 'Best of Software Development 2026 – Web Design Awards',
     title:
       'Recognized by Web Design Awards · Best of Software Development 2026 – Web Design Awards — view full award profile on Web Design Awards',
-    heading: 'Recognized by Web Design Awards · Best of Software Development 2026',
+    issuer: 'Recognized by Web Design Awards',
+    name: 'Best of Software Development 2026',
   },
   {
     img: 'https://www.webdesignawards.io/badges/2026/best_of_portfolio_2026.webp',
     alt: 'Best of Portfolio 2026 – Web Design Awards',
     title:
       'Recognized by Web Design Awards · Best of Portfolio 2026 – Web Design Awards — view full award profile on Web Design Awards',
-    heading: 'Recognized by Web Design Awards · Best of Portfolio 2026',
+    issuer: 'Recognized by Web Design Awards',
+    name: 'Best of Portfolio 2026',
   },
   {
     img: 'https://www.webdesignawards.io/badges/2026/best_of_creative-studio_2026.webp',
     alt: 'Best of Creative Studio 2026 – Web Design Awards',
     title:
       'Recognized by Web Design Awards · Best of Creative Studio 2026 – Web Design Awards — view full award profile on Web Design Awards',
-    heading: 'Recognized by Web Design Awards · Best of Creative Studio 2026',
+    issuer: 'Recognized by Web Design Awards',
+    name: 'Best of Creative Studio 2026',
   },
 ]
 
@@ -60,12 +65,14 @@ function Awards() {
       <h2 className="text-center text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
         Recognition
       </h2>
+      {/* Wrapped rather than gridded so an odd last badge centres under the
+          pair above it instead of hanging off to the left. */}
       <ul
         role="list"
-        className="mx-auto mt-6 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2"
+        className="mx-auto mt-6 flex max-w-2xl flex-wrap justify-center gap-x-8 gap-y-6"
       >
         {awards.map((award) => (
-          <li key={award.img}>
+          <li key={award.img} className="w-full sm:w-[19.5rem]">
             <a
               href={awardsProfileUrl}
               target="_blank"
@@ -83,8 +90,11 @@ function Awards() {
                 className="h-16 w-16 flex-none transition-transform duration-200 group-hover:scale-105 sm:h-20 sm:w-20"
               />
               <span className="flex flex-col text-xs">
+                <span className="text-zinc-500 dark:text-zinc-400">
+                  {award.issuer}{' '}
+                </span>
                 <strong className="text-[13px] font-semibold">
-                  {award.heading}
+                  {award.name}
                 </strong>
                 <span className="text-zinc-400 dark:text-zinc-500">
                   webdesignawards.io
@@ -109,6 +119,7 @@ export function Footer() {
               <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                   <NavLink href="/about">About</NavLink>
+                  <NavLink href="/articles">Articles</NavLink>
                   <NavLink href="/projects">Projects</NavLink>
                   <NavLink href="/stats">Stats</NavLink>
                   <NavLink href="/technology">Technology</NavLink>

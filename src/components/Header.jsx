@@ -79,10 +79,25 @@ function MoonIcon(props) {
   )
 }
 
+// Nested pages (an article, say) keep their section lit.
+function useIsActive(href) {
+  let pathname = usePathname()
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
+
 function MobileNavItem({ href, children }) {
+  let isActive = useIsActive(href)
+
   return (
     <li>
-      <PopoverButton as={Link} href={href} className="block py-2">
+      <PopoverButton
+        as={Link}
+        href={href}
+        className={clsx(
+          'block py-2',
+          isActive && 'text-teal-500 dark:text-teal-400',
+        )}
+      >
         {children}
       </PopoverButton>
     </li>
@@ -129,7 +144,7 @@ function MobileNavigation(props) {
 }
 
 function NavItem({ href, children }) {
-  let isActive = usePathname() === href
+  let isActive = useIsActive(href)
   const shouldReduceMotion = usePrefersReducedMotion()
 
   return (

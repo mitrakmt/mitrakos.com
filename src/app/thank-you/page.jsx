@@ -1,3 +1,4 @@
+import { Button } from '@/components/Button'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
 import { alternateTypes } from '@/lib/site'
@@ -24,6 +25,16 @@ export default function ThankYou() {
     <SimpleLayout
       title="Thanks for subscribing."
       intro="I’ll send you an email any time I publish a new blog post, release a new project, or have anything interesting to share that I think you’d want to hear about. You can unsubscribe at any time, no hard feelings."
-    />
+    >
+      {/* Somewhere to go next, rather than a dead end. SimpleLayout spaces its
+          children for a page of content; a row of buttons belongs closer to
+          the intro it follows, hence the pull-up. */}
+      <div className="-mt-6 flex flex-wrap gap-4 sm:-mt-10">
+        <Button href="/articles">Read the latest articles</Button>
+        <Button href="/" variant="secondary">
+          Back to home
+        </Button>
+      </div>
+    </SimpleLayout>
   )
 }
