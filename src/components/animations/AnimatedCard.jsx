@@ -1,7 +1,9 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import clsx from 'clsx'
+
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 export function AnimatedCard({
   children,
@@ -13,7 +15,7 @@ export function AnimatedCard({
   ...props
 })
 {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   if (shouldReduceMotion) {
     return (

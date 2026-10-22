@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Popover,
   PopoverButton,
@@ -15,6 +15,7 @@ import {
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
+import { usePrefersReducedMotion } from '@/components/animations'
 import avatarImage from '@/images/avatar.jpg'
 
 function CloseIcon(props) {
@@ -78,10 +79,25 @@ function MoonIcon(props) {
   )
 }
 
+// Nested pages (an article, say) keep their section lit.
+function useIsActive(href) {
+  let pathname = usePathname()
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
+
 function MobileNavItem({ href, children }) {
+  let isActive = useIsActive(href)
+
   return (
     <li>
-      <PopoverButton as={Link} href={href} className="block py-2">
+      <PopoverButton
+        as={Link}
+        href={href}
+        className={clsx(
+          'block py-2',
+          isActive && 'text-teal-500 dark:text-teal-400',
+        )}
+      >
         {children}
       </PopoverButton>
     </li>
@@ -128,8 +144,8 @@ function MobileNavigation(props) {
 }
 
 function NavItem({ href, children }) {
-  let isActive = usePathname() === href
-  const shouldReduceMotion = useReducedMotion()
+  let isActive = useIsActive(href)
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   return (
     <li>
@@ -174,7 +190,7 @@ function ThemeToggle() {
   let { resolvedTheme, setTheme } = useTheme()
   let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
   let [mounted, setMounted] = useState(false)
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   useEffect(() => {
     setMounted(true)

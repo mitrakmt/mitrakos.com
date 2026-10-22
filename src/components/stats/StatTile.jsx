@@ -38,9 +38,21 @@ export function ChangeBadge({ change, className }) {
   )
 }
 
+/**
+ * A fixed-width home for a ChangeBadge in a column of figures, so the figures
+ * beside it line up whatever the badge says — or whether there is one at all.
+ */
+export function ChangeBadgeSlot({ change }) {
+  return (
+    <span className="flex w-[5.5rem] flex-none justify-end">
+      <ChangeBadge change={change} />
+    </span>
+  )
+}
+
 export function StatTile({ label, value, sublabel, change }) {
   return (
-    <div className="rounded-2xl border border-zinc-100 p-5 transition-shadow duration-300 hover:shadow-lg hover:shadow-zinc-800/5 dark:border-zinc-700/40 dark:hover:shadow-white/5">
+    <div className="h-full rounded-2xl border border-zinc-100 p-5 transition-shadow duration-300 hover:shadow-lg hover:shadow-zinc-800/5 dark:border-zinc-700/40 dark:hover:shadow-white/5">
       <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
         {label}
       </p>

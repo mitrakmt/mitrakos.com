@@ -1,7 +1,9 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 const transitions = {
   fade: {
@@ -69,7 +71,7 @@ export function FadeIn({
   ...props
 })
 {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
   const ref = useRef(null)
   const [revealed, setRevealed] = useState(false)
 
@@ -86,8 +88,11 @@ export function FadeIn({
   const variants = transitions[direction] || transitions['fade-up']
 
   if (shouldReduceMotion) {
+    // Keyed so this replaces the animated element rather than updating it:
+    // both are the same `Component`, and an update would keep the hidden
+    // starting style the server rendered.
     return (
-      <Component className={className} {...props}>
+      <Component key="static" className={className} {...props}>
         {children}
       </Component>
     )

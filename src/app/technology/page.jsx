@@ -38,7 +38,7 @@ export default function Technology() {
   return (
     <SimpleLayout
       title="Software I use, gadgets I love, and other things I recommend."
-      intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I'm being productive when I'm really just procrastinating. Here's a big list of all of my favorite stuff."
+      intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."
     >
       <div className="space-y-20">
         <ToolsSection title="Workstation">
@@ -56,18 +56,18 @@ export default function Technology() {
         <ToolsSection title="Tech stack">
           <Tool title="JavaScript">
             The language I keep coming back to after almost a decade of writing
-            it. It runs everywhere, the ecosystem moves fast, and I&apos;ve
+            it. It runs everywhere, the ecosystem moves fast, and I’ve
             written enough of it to know exactly where the sharp edges are.
           </Tool>
           <Tool title="TypeScript">
             JavaScript with a safety net. Types catch the class of bug that used
             to eat an afternoon, and the editor tooling you get for free makes
-            refactoring something I&apos;ll actually do instead of avoid.
+            refactoring something I’ll actually do instead of avoid.
           </Tool>
           <Tool title="React">
             My default for anything with a user interface. Components compose,
             state is predictable, and the mental model has held up across every
-            project I&apos;ve shipped with it.
+            project I’ve shipped with it.
           </Tool>
           <Tool title="Next.js">
             The framework I reach for on nearly every new project. Server-side
@@ -81,7 +81,7 @@ export default function Technology() {
             still the thing I appreciate most about it.
           </Tool>
           <Tool title="Tailwind CSS">
-            Utility classes instead of a stylesheet I&apos;ll be scared to touch
+            Utility classes instead of a stylesheet I’ll be scared to touch
             in six months. It keeps design decisions in the markup where I can
             see them and makes it easy to stay consistent across a project.
           </Tool>
@@ -99,8 +99,8 @@ export default function Technology() {
             environment perfectly to my needs.
           </Tool>
           <Tool title="iTerm2">
-            I'm honestly not even sure what features I get with this that aren't
-            just part of the macOS Terminal but it's what I use.
+            I’m honestly not even sure what features I get with this that aren’t
+            just part of the macOS Terminal but it’s what I use.
           </Tool>
         </ToolsSection>
         <ToolsSection title="Marketing">
@@ -115,31 +115,31 @@ export default function Technology() {
             optimizing my content for better visibility.
           </Tool>
           <Tool title="Google Search Console">
-            This tool is essential for monitoring and maintaining my site's
+            This tool is essential for monitoring and maintaining my site’s
             presence in Google Search results. It gives me detailed reports on
             search traffic, crawl errors, and site security issues.
           </Tool>
         </ToolsSection>
         <ToolsSection title="Productivity">
           <Tool title="Notion">
-            I&apos;ve found Notion to be incredibly versatile for organizing my
-            thoughts, projects, and daily tasks. It&apos;s like having a digital
+            I’ve found Notion to be incredibly versatile for organizing my
+            thoughts, projects, and daily tasks. It’s like having a digital
             workspace where everything from notes to project management can be
             seamlessly integrated.
           </Tool>
           <Tool title="Google Drive">
             All my document storage, sharing, and collaboration happen here.
-            Google Drive's integration with other Google services makes it a
+            Google Drive’s integration with other Google services makes it a
             cornerstone for my digital workflow.
           </Tool>
           <Tool title="Pitch">
-            For presentations, Pitch has been a revelation. It's intuitive,
+            For presentations, Pitch has been a revelation. It’s intuitive,
             collaborative, and the templates are professional enough to make my
             presentations stand out without spending hours on design.
           </Tool>
           <Tool title="Canva">
-            When it comes to design, Canva simplifies everything. Whether it's
-            social media graphics, flyers, or even simple infographics, Canva's
+            When it comes to design, Canva simplifies everything. Whether it’s
+            social media graphics, flyers, or even simple infographics, Canva’s
             user-friendly interface lets me create professional-looking content
             quickly.
           </Tool>

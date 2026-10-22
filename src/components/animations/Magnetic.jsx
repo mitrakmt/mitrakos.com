@@ -1,7 +1,9 @@
 'use client'
 
-import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useRef } from 'react'
+
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 /**
  * Magnetic wrapper — the child is gently pulled toward the cursor while it is
@@ -15,7 +17,7 @@ export function Magnetic({
   ...props
 })
 {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
   const ref = useRef(null)
 
   const x = useMotionValue(0)

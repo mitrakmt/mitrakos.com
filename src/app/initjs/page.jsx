@@ -6,14 +6,24 @@ import { pageMetadata } from '@/lib/site'
 
 import articles from './articles.json'
 
+/** Medium's "Dec 26, 2022" -> "2022-12-26", for `<time dateTime>`. */
+function isoDate(date) {
+  const parsed = new Date(date)
+  return [parsed.getFullYear(), parsed.getMonth() + 1, parsed.getDate()]
+    .map((part) => String(part).padStart(2, '0'))
+    .join('-')
+}
+
 function Article({ article }) {
+  const dateTime = isoDate(article.date)
+
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
         <Card.Title href={article.url}>{article.title}</Card.Title>
         <Card.Eyebrow
           as="time"
-          dateTime={article.date}
+          dateTime={dateTime}
           className="md:hidden"
           decorate
         >
@@ -23,10 +33,10 @@ function Article({ article }) {
       </Card>
       <Card.Eyebrow
         as="time"
-        dateTime={article.date}
+        dateTime={dateTime}
         className="mt-1 hidden md:block"
       >
-        {article.date}
+        {formatDate(article.date)}
       </Card.Eyebrow>
     </article>
   )
@@ -45,12 +55,12 @@ export default async function ArticlesIndex() {
       <header className="max-w-2xl">
         <FadeIn direction="fade-up">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Writing on All Things Javascript
+            Writing on all things JavaScript.
           </h1>
         </FadeIn>
         <FadeIn direction="fade-up" delay={0.1}>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            All of my long-form thoughts on programming in Javascript.
+            All of my long-form thoughts on programming in JavaScript.
           </p>
         </FadeIn>
       </header>

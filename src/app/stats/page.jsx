@@ -61,7 +61,7 @@ export default async function Stats() {
       <header className="max-w-2xl">
         <FadeIn direction="fade-up">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            The numbers behind everything I&apos;ve built.
+            The numbers behind everything I’ve built.
           </h1>
         </FadeIn>
         <FadeIn direction="fade-up" delay={0.1}>
@@ -133,7 +133,7 @@ export default async function Stats() {
 
       <FadeIn direction="fade-up" className="mt-16 sm:mt-20">
         <Section title={`All ${totals.projectCount} projects`}>
-          <p className="mt-2 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
+          <p className="mt-2 mb-6 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400">
             Ranked by lifetime visitors.{' '}
             {/* "12 of the 12" reads as a near-miss rather than a clean sweep. */}
             {totals.measuredProjectCount === totals.gaProjectCount
@@ -165,7 +165,7 @@ export default async function Stats() {
                 <li
                   key={footnote.id}
                   id={`stats-note-${index + 1}`}
-                  className="flex gap-2 scroll-mt-24"
+                  className="flex max-w-3xl scroll-mt-24 gap-2"
                 >
                   <span className="font-medium text-teal-600 dark:text-teal-400">
                     {index + 1}
@@ -207,7 +207,7 @@ export default async function Stats() {
                         {formatNumber(footnote.baseline.measured.pageViews)}{' '}
                         views and{' '}
                         {formatNumber(footnote.baseline.measured.users)}{' '}
-                        visitors measured since are Google Analytics&apos;, and
+                        visitors measured since are Google Analytics’, and
                         only those appear in the monthly figures and the trend.
                         Because {footnote.baseline.source} reports views rather
                         than unique readers, it is counted in page views only
@@ -235,29 +235,29 @@ export default async function Stats() {
           <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             Methodology
           </h2>
-          <dl className="mt-4 space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
-            <div>
+          <dl className="mt-4 text-sm text-zinc-600 lg:columns-2 lg:gap-x-12 dark:text-zinc-400">
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 Where the numbers come from
               </dt>
               <dd className="mt-1">
                 Google Analytics 4, one property per project, read directly via
-                the Analytics Data API. One figure is not GA&apos;s: the
+                the Analytics Data API. One figure is not GA’s: the
                 audience InitJS built on Medium before the site had analytics
                 of its own, which is added once to its lifetime page views and
                 marked in the table. The Chrome extension is not a website and
                 has no GA property at all — its audience is the Chrome Web
-                Store&apos;s own weekly figure, listed separately and excluded
+                Store’s own weekly figure, listed separately and excluded
                 from every total on this page. Nothing else is entered by hand,
                 and no figure is adjusted after it is read.
               </dd>
             </div>
-            <div>
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 What &ldquo;visitors&rdquo; means
               </dt>
               <dd className="mt-1">
-                Monthly figures use GA4&apos;s <em>active users</em> — people
+                Monthly figures use GA4’s <em>active users</em> — people
                 who actually engaged, deduplicated within the month. Lifetime
                 figures use <em>total users</em> since each property started
                 recording. Because a person visiting in two different months is
@@ -265,7 +265,7 @@ export default async function Stats() {
                 total.
               </dd>
             </div>
-            <div>
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 Complete months, and the month so far
               </dt>
@@ -278,7 +278,7 @@ export default async function Stats() {
                 until the month ends.
               </dd>
             </div>
-            <div>
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 Dormant and unmeasured projects
               </dt>
@@ -292,7 +292,7 @@ export default async function Stats() {
                 are numbered in the table and explained beneath it.
               </dd>
             </div>
-            <div>
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 Where the revenue comes from
               </dt>
@@ -302,7 +302,7 @@ export default async function Stats() {
                 not a sales figure typed in by hand.
               </dd>
             </div>
-            <div>
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 What &ldquo;net revenue&rdquo; means
               </dt>
@@ -316,7 +316,7 @@ export default async function Stats() {
                 project.
               </dd>
             </div>
-            <div>
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 Recurring revenue
               </dt>
@@ -327,7 +327,7 @@ export default async function Stats() {
                 pricing that has no fixed monthly amount.
               </dd>
             </div>
-            <div>
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 Projects with no revenue figure
               </dt>
@@ -340,12 +340,12 @@ export default async function Stats() {
                 or left out to make it look better.
               </dd>
             </div>
-            <div>
+            <div className="break-inside-avoid pb-5">
               <dt className="font-medium text-zinc-800 dark:text-zinc-200">
                 Traffic quality
               </dt>
               <dd className="mt-1">
-                Figures are GA4&apos;s, with its standard known-bot exclusion
+                Figures are GA4’s, with its standard known-bot exclusion
                 applied and no further filtering. Automated traffic that GA does
                 not recognise is therefore included. Where a month is visibly
                 inflated by it, that is disclosed in the notes above rather than
@@ -354,7 +354,7 @@ export default async function Stats() {
               </dd>
             </div>
           </dl>
-          <p className="mt-6 border-t border-zinc-100 pt-4 text-xs text-zinc-500 dark:border-zinc-700/40 dark:text-zinc-500">
+          <p className="mt-1 border-t border-zinc-100 pt-4 text-xs text-zinc-500 dark:border-zinc-700/40 dark:text-zinc-500">
             Traffic refreshed {updated} from {stats.source}; revenue refreshed{' '}
             {revenueUpdated} from {revenue.source}. Press enquiries:{' '}
             <a

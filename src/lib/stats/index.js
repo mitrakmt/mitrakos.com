@@ -255,7 +255,7 @@ export function formatNumber(value) {
 export function formatChange(change) {
   if (change === null || !Number.isFinite(change)) return null
   const rounded = Math.round(change)
-  return `${rounded >= 0 ? '+' : ''}${rounded}%`
+  return `${rounded >= 0 ? '+' : ''}${formatNumber(rounded)}%`
 }
 
 /** "2026-06-08" -> "8 June 2026" */

@@ -5,10 +5,11 @@ import {
   useMotionValue,
   useSpring,
   useMotionTemplate,
-  useReducedMotion,
 } from 'framer-motion'
 import { useRef } from 'react'
 import clsx from 'clsx'
+
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 /**
  * TiltCard — gives a card a tactile, high-tech feel: it rotates in 3D toward
@@ -24,7 +25,7 @@ export function TiltCard({
   ...props
 })
 {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
   const ref = useRef(null)
 
   const rotateX = useMotionValue(0)

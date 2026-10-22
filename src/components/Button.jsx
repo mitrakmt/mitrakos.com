@@ -1,8 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import clsx from 'clsx'
+
+import { usePrefersReducedMotion } from '@/components/animations'
 
 const variantStyles = {
   primary:
@@ -12,7 +14,7 @@ const variantStyles = {
 }
 
 export function Button({ variant = 'primary', className, ...props }) {
-  const shouldReduceMotion = useReducedMotion()
+  const shouldReduceMotion = usePrefersReducedMotion()
 
   className = clsx(
     'inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition-colors active:transition-none',

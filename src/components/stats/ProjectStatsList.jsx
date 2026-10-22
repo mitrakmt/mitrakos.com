@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 import { Sparkline } from '@/components/stats/Sparkline'
-import { ChangeBadge } from '@/components/stats/StatTile'
+import { ChangeBadge, ChangeBadgeSlot } from '@/components/stats/StatTile'
 import { formatDay, formatMonth, formatNumber } from '@/lib/stats'
 
 /** Superscript marker tying a row to the footnotes under the table. */
@@ -168,9 +168,9 @@ export function ProjectStatsList({
                         project={project}
                         className="font-medium text-zinc-800 dark:text-zinc-100"
                       />
-                      {!project.dormant && (
-                        <ChangeBadge change={project.change} />
-                      )}
+                      <ChangeBadgeSlot
+                        change={project.dormant ? null : project.change}
+                      />
                     </div>
                   </td>
                   <td className="px-4 py-4 text-right font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
@@ -229,7 +229,7 @@ export function ProjectStatsList({
                     <dt className="text-xs text-zinc-500 dark:text-zinc-400">
                       {formatMonth(latestMonth, { short: true })}
                     </dt>
-                    <dd className="mt-0.5 flex items-center gap-1.5">
+                    <dd className="mt-0.5 flex flex-col items-start gap-1">
                       <LatestCell
                         project={project}
                         className="font-medium text-zinc-800 dark:text-zinc-100"

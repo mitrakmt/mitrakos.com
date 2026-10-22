@@ -231,10 +231,17 @@ export function formatMoney(minorUnits, currency = 'usd', { cents } = {}) {
   }).format(value)
 }
 
-/** Compact form for axis ticks: $1.2K, $18.94. */
+/**
+ * Compact form for axis ticks: $1.2K, $750, $18.75. Cents only where the tick
+ * actually has them, so "$750.00" never sits on the same axis as "$1.5K".
+ */
 export function formatMoneyCompact(minorUnits, currency = 'usd') {
   const value = minorUnits / 100
-  if (Math.abs(value) < 1000) return formatMoney(minorUnits, currency)
+  if (Math.abs(value) < 1000) {
+    return formatMoney(minorUnits, currency, {
+      cents: !Number.isInteger(value),
+    })
+  }
 
   return new Intl.NumberFormat('en-US', {
     style: 'currency',

@@ -286,8 +286,8 @@ export const metadata = pageMetadata({
 export default function Projects() {
   return (
     <SimpleLayout
-      title="My Projects: Things I've made trying to put my dent in the universe."
-      intro="I've worked on tons of little projects over the years but these are the ones that I'm most proud of. If you see something that piques your interest, check out the project and get in touch if you have ideas for how it can be improved."
+      title="My Projects: Things I’ve made trying to put my dent in the universe."
+      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. If you see something that piques your interest, check out the project and get in touch if you have ideas for how it can be improved."
     >
       <StaggerContainer
         role="list"

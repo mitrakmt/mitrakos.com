@@ -1,7 +1,11 @@
 import clsx from 'clsx'
 
 import { Sparkline } from '@/components/stats/Sparkline'
-import { ChangeBadge, StatTile } from '@/components/stats/StatTile'
+import {
+  ChangeBadge,
+  ChangeBadgeSlot,
+  StatTile,
+} from '@/components/stats/StatTile'
 import { TrendChart } from '@/components/stats/TrendChart'
 import { formatMonth } from '@/lib/stats'
 import { formatMoney, formatMoneyCompact, getRevenue } from '@/lib/stats/revenue'
@@ -101,7 +105,7 @@ export async function RevenueSection() {
 
   return (
     <>
-      <p className="mt-2 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
+      <p className="mt-2 mb-6 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400">
         Read from Stripe, net of fees and refunds. Revenue is published for{' '}
         {totals.publishedProjectCount} of {totals.projectCount} projects — the
         rest have no connected Stripe account, and are shown as{' '}
@@ -240,7 +244,7 @@ export async function RevenueSection() {
                       <span className="font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
                         {formatMoney(project.latest, project.currency)}
                       </span>
-                      <ChangeBadge change={project.change} />
+                      <ChangeBadgeSlot change={project.change} />
                     </div>
                   </td>
                   <td className="px-4 py-4 text-right font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
@@ -299,7 +303,7 @@ export async function RevenueSection() {
                     <dt className="text-xs text-zinc-500 dark:text-zinc-400">
                       {formatMonth(revenue.latestMonth, { short: true })} net
                     </dt>
-                    <dd className="mt-0.5 flex items-center gap-1.5">
+                    <dd className="mt-0.5 flex flex-col items-start gap-1">
                       <span className="font-medium text-zinc-800 tabular-nums dark:text-zinc-100">
                         {formatMoney(project.latest, project.currency)}
                       </span>
@@ -341,7 +345,7 @@ export async function RevenueSection() {
         caveats.mismatchedCurrency.length > 0 ||
         caveats.discounted.length > 0 ||
         caveats.metered.length > 0) && (
-        <ul className="mt-6 space-y-2 border-t border-zinc-100 pt-4 text-xs text-zinc-500 dark:border-zinc-700/40 dark:text-zinc-400">
+        <ul className="mt-6 space-y-2 border-t border-zinc-100 pt-4 text-xs text-zinc-500 dark:border-zinc-700/40 dark:text-zinc-400 [&>li]:max-w-3xl">
           {caveats.lifetimeIsFloor && (
             <li>
               One or more accounts have a longer payment history than could be
