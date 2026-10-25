@@ -41,7 +41,7 @@ function Tooltip({ value, caption, className }) {
  * complete month is solid. The two must never be confusable — a partial month
  * drawn like a finished one reads as a collapse.
  */
-const inProgress =
+export const inProgress =
   'border-teal-500/60 bg-teal-500/10 dark:border-teal-400/60 dark:bg-teal-400/15'
 
 /**

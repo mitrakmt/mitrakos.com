@@ -50,7 +50,7 @@ export function ChangeBadgeSlot({ change }) {
   )
 }
 
-export function StatTile({ label, value, sublabel, change }) {
+export function StatTile({ label, value, sublabel, change, children }) {
   return (
     <div className="h-full rounded-2xl border border-zinc-100 p-5 transition-shadow duration-300 hover:shadow-lg hover:shadow-zinc-800/5 dark:border-zinc-700/40 dark:hover:shadow-white/5">
       <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
@@ -65,6 +65,7 @@ export function StatTile({ label, value, sublabel, change }) {
       {sublabel && (
         <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">{sublabel}</p>
       )}
+      {children}
     </div>
   )
 }

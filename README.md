@@ -46,10 +46,11 @@ hourly. If the key is missing or the API call fails, they fall back to the
 snapshot — a GA outage can never break a build.
 
 A live read also draws the month under way on the `/stats` charts — a hollow
-bar marked "so far" that grows until the month ends, counted in no total. The
-revenue chart does the same whenever its Stripe keys are live. Snapshots never
-carry it (a partial month would be weeks stale by the time one rendered), so a
-chart without live keys shows complete months only.
+bar marked "so far" that grows until the month ends, counted in no total — and
+adds it beneath the latest month's tile on the home page. The revenue chart
+does the same whenever its Stripe keys are live. Snapshots never carry it (a
+partial month would be weeks stale by the time one rendered), so without live
+keys both pages show complete months only.
 
 1. In Google Cloud, create a service account and enable the **Google Analytics
    Data API**.

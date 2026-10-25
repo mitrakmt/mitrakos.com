@@ -1,14 +1,17 @@
 import Link from 'next/link'
+import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations'
 import { Sparkline } from '@/components/stats/Sparkline'
 import { ChangeBadgeSlot, StatTile } from '@/components/stats/StatTile'
+import { inProgress } from '@/components/stats/TrendChart'
 import {
   formatCompact,
   formatMonth,
   formatNumber,
   getStats,
+  monthProgress,
 } from '@/lib/stats'
 
 function ChartIcon(props) {
@@ -102,6 +105,34 @@ function TopProject({ project }) {
   )
 }
 
+/**
+ * The month under way, beneath the last complete one and keyed with the same
+ * hollow swatch as its bar on /stats. It is a figure to read, not to compare:
+ * no change badge, and the day count travels with it so a partial month never
+ * passes for a collapse.
+ */
+function MonthSoFar({ monthToDate }) {
+  const progress = monthProgress(monthToDate.month, monthToDate.asOf)
+
+  return (
+    <div className="mt-4 border-t border-zinc-100 pt-3 dark:border-zinc-700/40">
+      <p className="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+        <span
+          aria-hidden="true"
+          className={clsx(inProgress, 'h-3 w-2.5 flex-none rounded-[2px] border')}
+        />
+        {formatMonth(monthToDate.month, { short: true })} so far
+      </p>
+      <p className="mt-1 flex flex-wrap items-baseline gap-x-1.5 text-xs text-zinc-500 dark:text-zinc-500">
+        <span className="text-sm font-semibold text-zinc-800 tabular-nums dark:text-zinc-100">
+          {formatCompact(monthToDate.users)}
+        </span>
+        day {progress.day} of {progress.days}
+      </p>
+    </div>
+  )
+}
+
 export async function TractionSection() {
   const stats = await getStats()
   const { totals } = stats
@@ -149,7 +180,11 @@ export async function TractionSection() {
             value={formatCompact(totals.monthlyUsers)}
             change={totals.monthlyChange}
             sublabel="vs. the month before"
-          />
+          >
+            {stats.monthToDate && (
+              <MonthSoFar monthToDate={stats.monthToDate} />
+            )}
+          </StatTile>
         </StaggerItem>
         <StaggerItem>
           <StatTile
