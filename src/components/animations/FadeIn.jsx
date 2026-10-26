@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
+import { revealViewport } from './revealViewport'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 const transitions = {
@@ -65,7 +66,6 @@ export function FadeIn({
   duration = 0.5,
   spring = false,
   once = true,
-  amount = 0.2,
   animateOnMount = false,
   className,
   ...props
@@ -104,7 +104,7 @@ export function FadeIn({
   // scroll.
   const revealProps = animateOnMount
     ? { animate: revealed ? 'visible' : 'hidden' }
-    : { whileInView: 'visible', viewport: { once, amount } }
+    : { whileInView: 'visible', viewport: { ...revealViewport, once } }
 
   return (
     <Component

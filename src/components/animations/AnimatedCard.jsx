@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 
+import { revealViewport } from './revealViewport'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 export function AnimatedCard({
@@ -29,7 +30,7 @@ export function AnimatedCard({
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ ...revealViewport, once: true }}
       transition={{
         type: 'spring',
         stiffness: 300,

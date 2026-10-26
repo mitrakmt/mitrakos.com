@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 
+import { revealViewport } from './revealViewport'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 const containerVariants = {
@@ -34,7 +35,6 @@ export function StaggerContainer({
   staggerDelay = 0.08,
   delayChildren = 0.05,
   once = true,
-  amount = 0.15,
   animate = false,
   ...props
 })
@@ -61,7 +61,7 @@ export function StaggerContainer({
 
   const animationProps = animate
     ? { animate: 'visible', initial: 'visible' }
-    : { whileInView: 'visible', viewport: { once, amount } }
+    : { whileInView: 'visible', viewport: { ...revealViewport, once } }
 
   return (
     <motion.div

@@ -22,7 +22,7 @@ function Tooltip({ value, caption, className }) {
   return (
     <div
       className={clsx(
-        'pointer-events-none absolute bottom-full z-10 mb-2 scale-95 rounded-lg bg-zinc-900 px-2.5 py-1.5 text-center opacity-0 shadow-lg transition-all duration-150 group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-100',
+        'pointer-events-none absolute bottom-full z-10 mb-2 scale-95 rounded-lg bg-zinc-900 px-2.5 py-1.5 text-center opacity-0 shadow-lg transition-all duration-150 group-hover:scale-100 group-hover:opacity-100 group-focus:scale-100 group-focus:opacity-100 dark:bg-zinc-100',
         className ?? 'left-1/2 -translate-x-1/2',
       )}
     >
@@ -85,6 +85,11 @@ export function TrendChart({
   const tooltipEdge = (index) =>
     index === 0 ? 'left-0' : index === columns - 1 ? 'right-0' : undefined
 
+  // Focusable so a tap opens the tooltip too: iOS Safari never applies :hover
+  // to a plain div, and with the y axis hidden on a phone the bars were the
+  // only thing left — no scale, no figures. Keyboard users get it as well.
+  const column = 'group relative flex h-full flex-1 items-end outline-none'
+
   return (
     <div className="mt-8">
       <div className="flex gap-3">
@@ -118,13 +123,10 @@ export function TrendChart({
 
           <div className="relative flex h-56 items-end gap-1 sm:gap-2">
             {series.map((point, index) => (
-              <div
-                key={point.month}
-                className="group relative flex h-full flex-1 items-end"
-              >
+              <div key={point.month} tabIndex={0} className={column}>
                 <div
                   style={{ height: heightOf(point) }}
-                  className="w-full rounded-t-[3px] bg-gradient-to-t from-teal-500/40 to-teal-500 transition-all duration-200 group-hover:from-teal-500/60 group-hover:to-teal-400 dark:from-teal-400/30 dark:to-teal-400 dark:group-hover:to-teal-300"
+                  className="w-full rounded-t-[3px] bg-gradient-to-t from-teal-500/40 to-teal-500 transition-all duration-200 group-hover:from-teal-500/60 group-hover:to-teal-400 group-focus:from-teal-500/60 group-focus:to-teal-400 dark:from-teal-400/30 dark:to-teal-400 dark:group-hover:to-teal-300 dark:group-focus:to-teal-300"
                 />
                 <Tooltip
                   value={formatValue(point[valueKey])}
@@ -135,12 +137,12 @@ export function TrendChart({
             ))}
 
             {monthToDate && (
-              <div className="group relative flex h-full flex-1 items-end">
+              <div tabIndex={0} className={column}>
                 <div
                   style={{ height: heightOf(monthToDate) }}
                   className={clsx(
                     inProgress,
-                    'relative w-full rounded-t-[3px] border border-b-0 transition-colors duration-200 group-hover:bg-teal-500/20 dark:group-hover:bg-teal-400/25',
+                    'relative w-full rounded-t-[3px] border border-b-0 transition-colors duration-200 group-hover:bg-teal-500/20 group-focus:bg-teal-500/20 dark:group-hover:bg-teal-400/25 dark:group-focus:bg-teal-400/25',
                   )}
                 >
                   {/* Still counting: a live marker riding the top of the bar. */}
